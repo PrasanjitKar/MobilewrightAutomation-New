@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@helpers/*": ["src/helper/*"],
+      "@pages/*": ["src/pages/*"],
+      "@steps/*": ["src/steps/*"],
+      "@utils/*": ["src/utils/*"]
+    },
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "types": ["node", "@playwright/test"]
+  },
+  "include": ["src/**/*", "src/config/ConfigurationManager.ts"],
+  "exclude": ["node_modules", "dist"]
+}
+

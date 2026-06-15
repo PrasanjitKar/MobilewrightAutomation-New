@@ -1,0 +1,10 @@
+{
+  "defaultTimeOut": 60000,
+  "platform": "android",
+  "headless": false,
+  "video.recording": false,
+  "trace.enabled": true,
+  "screenshot.path": "test-results/screenshots/",
+  "video.path": "test-results/videos/",
+  "trace.path": "test-results/traces/"
+}
