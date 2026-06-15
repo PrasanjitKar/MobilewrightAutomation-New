@@ -414,15 +414,6 @@ Or use the `github-mcp-server-get_file_contents` / `github-mcp-server-search_cod
 | API calls from mobile | `lib/src/repositories/` |
 | WebView entry point | `lib/src/ui/screens/app_web_view.dart` |
 
-**For web-app locators inside the WebView**, also check the Angular source (`CT-CONTIPLUS/ctp-contiplus-angular-app`):
-
-| What you need | Where to look |
-|---|---|
-| Component templates / DOM | `src/app/components/**/<page>.component.html` |
-| Route paths | `src/app/**/*-routing.module.ts` |
-| Form field names | `src/app/components/**/<page>.component.ts` — `fb.group({...})` |
-| Visible text | i18n assets or inline template text |
-
 ---
 
 ## Device Setup

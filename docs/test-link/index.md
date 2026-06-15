@@ -8,9 +8,9 @@ This folder contains TestLink XML exports converted to Markdown test case docume
 
 | Metric | Count |
 |---|---|
-| Total Modules | 1 |
-| Total TCs | 82 |
-| 📋 Planned | 82 |
+| Total Modules | 2 |
+| Total TCs | 174 |
+| 📋 Planned | 174 |
 | 🟢 Active — Automated | 0 (0%) |
 | 🔵 In Progress | 0 |
 
@@ -19,27 +19,27 @@ This folder contains TestLink XML exports converted to Markdown test case docume
 | Module | Sub-Suites | Total TCs | Automated | Status |
 |---|---|---|---|---|
 | [Login](./login/index.md) | LoginPage, Home, Profile, Negative | 82 | 0 (0%) | ⚪ Not Started |
+| [Company](./company/index.md) | Corporate_List, Site_List, Add_Edit-Site_Shop, Negative_cases | 92 | 0 (0%) | ⚪ Not Started |
 
 ## Folder Structure
 
 ```
 docs/test-link/
-├── index.md                    ← This file — master registry
-└── login/
-    ├── index.md                ← Login module overview (82 TCs)
-    ├── Login.testsuite.xml     ← Original TestLink export
-    ├── LoginPage/
-    │   ├── index.md            ← 30 TCs
-    │   └── tc-<id>-<slug>.md  ← Individual TC files
-    ├── Home/
-    │   ├── index.md            ← 27 TCs
-    │   └── tc-<id>-<slug>.md
-    ├── Profile/
-    │   ├── index.md            ← 21 TCs
-    │   └── tc-<id>-<slug>.md
-    └── Negative/
-        ├── index.md            ← 4 TCs
-        └── tc-<id>-<slug>.md
+├── index.md                         ← This file — master registry
+├── login/
+│   ├── index.md                     ← Login module overview (82 TCs)
+│   ├── Login.testsuite.xml          ← Original TestLink export
+│   ├── LoginPage/                   ← 30 TCs
+│   ├── Home/                        ← 27 TCs
+│   ├── Profile/                     ← 21 TCs
+│   └── Negative/                    ← 4 TCs
+└── company/
+    ├── index.md                     ← Company module overview (92 TCs)
+    ├── Company.testsuite-deep.xml   ← Original TestLink export
+    ├── Corporate_List/              ← 34 TCs
+    ├── Site_List/                   ← 30 TCs
+    ├── Add_Edit-Site_Shop/          ← 19 TCs
+    └── Negative_cases/              ← 9 TCs
 ```
 
 ## Status Values

@@ -3,10 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
 interface AppConfig {
-  browser: string;
-  headless: boolean;
   defaultTimeout: number;
-  baseUrl: string;
   authToken: string;
   orgId: string;
   apiTimeout: number;
@@ -49,12 +46,8 @@ export class ConfigurationManager {
     const raw = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
     return {
-      browser: process.env.BROWSER || raw.browser || 'chromium',
-      headless: process.env.HEADLESS === 'false' ? false : process.env.HEADLESS === 'true' ? true : (raw.headless ?? true),
       defaultTimeout: Number(raw.defaultTimeOut) || 120000,
-      baseUrl: process.env.BASEURL || '',
       authToken: process.env.AUTH_TOKEN || '',
-      orgId: process.env.ORG_ID || '',
       apiTimeout: Number(process.env.API_TIMEOUT) || 30000,
       screenshotPath: raw['screenshot.path'] || 'test-results/screenshots',
       videoPath: raw['video.path'] || 'test-results/videos',

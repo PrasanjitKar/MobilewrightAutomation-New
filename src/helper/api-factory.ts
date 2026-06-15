@@ -64,8 +64,6 @@ export class ApiClient {
                 Authorization:
                     `Bearer ${ConfigurationManager.config().authToken}`,
 
-                'X-ORG-ID':
-                    ConfigurationManager.config().orgId
             },
 
             timeout:

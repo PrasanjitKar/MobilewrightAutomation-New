@@ -1,5 +1,5 @@
 {
-  "defaultTimeOut": 60000,
+  "defaultTimeOut": 30000,
   "platform": "android",
   "headless": false,
   "video.recording": false,
