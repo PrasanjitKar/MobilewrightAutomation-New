@@ -82,7 +82,7 @@ bool _isValidForm() {
 }
 ```
 
-> **Note:** The `LowerCaseTextFormatter` is applied as the user types, so leading/trailing spaces in the email field are preserved in display but trimmed on submit. The password field has no such formatter — spaces are accepted and trimmed on submit.
+> **Note:** The email field displays exactly what the user types/pastes, including any surrounding spaces and original case — the `LowerCaseTextFormatter` is not wired to the field's `inputFormatters` (see TC-LOGIN-007). Both leading/trailing spaces and case are only normalized once, at submit time, via `.trim().toLowerCase()` for email and `.trim()` for password.
 
 ---
 
@@ -107,6 +107,6 @@ Scenario Outline: Login succeeds when email or password has surrounding spaces
 
 ## 🔗 Related
 
-- [TC-LOGIN-007 — Email auto-lowercase](./tc-login-007-email-auto-lowercase.md)
+- [TC-LOGIN-007 — Email lowercased/trimmed on submit](./tc-login-007-email-lowercase-on-submit.md)
 - [TC-LOGIN-009 — Login form validation: empty fields](./tc-login-009-login-form-empty-fields.md)
 - [Suite index](./index.md)

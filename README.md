@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # MobileWright + Playwright-BDD — Conti+ Mobile QA Automation
 
 Behaviour-driven test automation framework for the **Conti+** Flutter mobile application using **MobileWright** (iOS + Android) and **playwright-bdd** (Gherkin/BDD scenarios). TypeScript provides static typing across the entire codebase.
@@ -299,7 +298,18 @@ The Conti+ Flutter app (`CT-CONTIPLUS/ctp-contiplus-flutter-app`) renders the Co
 | i18n strings (English) | `lib/src/l10n/app_en.arb` |
 | App flavours | `lib/flavors.dart` |
 
-=======
+==============================================
 # ctp-contiplus-web-qa-mobilewright-automation
 web-qa-mobilewright-automation
->>>>>>> 63c963bfea9f4ccf0aa014eb6a19c34e9dc60632
+==============================================
+Test execution using tag:
+ANDROID_PACKAGE=com.continental.contiplus \
+ANDROID_APP='/Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk' \
+ANDROID_DEVICE_NAME=emulator-5554 \
+ANDROID_DEVICE=emulator-5554 \
+ANDROID_PLATFORM_VERSION=16.0 \
+npm run test:conveyor-poc
+
+To show report after test execution:
+npx playwright show-report config/reports
+==============================================

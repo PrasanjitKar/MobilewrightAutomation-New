@@ -73,10 +73,12 @@ SemanticsLabel(
   ),
 )
 
-// Note: email field uses LowerCaseTextFormatter which also converts pasted text to lowercase
+// Note: the email field's LowerCaseTextFormatter wiring is currently commented out,
+// so pasted text (like typed text) keeps its original case on screen; lowercasing
+// happens only once, at submit time, in _onLogin() via .trim().toLowerCase().
 ```
 
-> **Note:** The email field's `LowerCaseTextFormatter` also applies to pasted text — pasted uppercase email addresses are automatically lowercased.
+> **Note:** Pasting an uppercase email address into the email field does **not** get auto-lowercased on screen — the `LowerCaseTextFormatter` is defined in source but not currently wired to the field's `inputFormatters`. The lowercase conversion is applied only at submit time (see TC-LOGIN-007).
 
 ---
 

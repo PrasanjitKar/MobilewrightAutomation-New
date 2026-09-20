@@ -2,8 +2,9 @@ import './env';
 
 function required(key: string): string {
   const value = process.env[key];
-  if (!value) throw new Error(`Missing required env var: ${key}`);
-  return value;
+  if (value) return value;
+  if (process.env['PLATFORM'] === 'ios') return '';
+  throw new Error(`Missing required env var: ${key}`);
 }
 
 export const androidConfig = {

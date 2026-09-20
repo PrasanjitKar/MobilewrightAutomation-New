@@ -1,10 +1,12 @@
 import { Page, BrowserContext, APIRequestContext, TestInfo } from '@playwright/test';
-import { Screen } from 'mobilewright';
+import { Device, Screen } from 'mobilewright';
 import { Logger } from 'winston';
 import { HTMLSubStepLogger } from './htmlSubStepLogger';
  
 import { LoginPage } from '../pages/login.page';
 import { HomePage } from '../pages/home.page';
+import { AppLaunchPage } from '../pages/app-launch.page';
+import { ConveyorPage } from '../pages/conveyor.page';
 import { ApiFactory } from '../helper/api-factory';
 import { ConfigurationManager } from '../config/ConfigurationManager';
 
@@ -19,10 +21,13 @@ export interface ISoftAssertState {
 
 export class ScenarioContext implements ISoftAssertState {
   // Browser / page (injected by world fixture in test-fixtures.ts)
-  page!: Page;
+  page?: Page;
   screen!: Screen;
+  device!: Device;
+  bundleId?: string;
+  installApps?: string | string[];
   platform!: 'ios' | 'android' | undefined;
-  context!: BrowserContext;
+  context?: BrowserContext;
   testInfo!: TestInfo;
 
   // Logging
@@ -51,6 +56,28 @@ export class ScenarioContext implements ISoftAssertState {
   // Lazy-cached page objects (one instance per scenario, created on first access)
   private _loginPage?: LoginPage;
   private _homePage?: HomePage;
+  private _appLaunchPage?: AppLaunchPage;
+  private _conveyorPage?: ConveyorPage;
+
+  get appLaunchPage(): AppLaunchPage {
+    if (!this._appLaunchPage) {
+      this._appLaunchPage = new AppLaunchPage(
+        this.screen,
+        this.device,
+        this.bundleId,
+        this.installApps,
+        this.subStepLogger,
+      );
+    }
+    return this._appLaunchPage;
+  }
+
+  get conveyorPage(): ConveyorPage {
+    if (!this._conveyorPage) {
+      this._conveyorPage = new ConveyorPage(this.screen, this.subStepLogger);
+    }
+    return this._conveyorPage;
+  }
 
   get loginPage(): LoginPage {
     if (!this._loginPage) {

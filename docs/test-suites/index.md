@@ -2,7 +2,7 @@
 
 > Repository: `CT-CONTIPLUS/ctp-contiplus-web-qa-mobilewright-automation`  
 > Framework: MobileWright + Playwright-BDD (Cucumber) | TypeScript  
-> Last updated: 2026-06-15
+> Last updated: 2026-09-21
 
 ---
 
@@ -10,14 +10,14 @@
 
 | Metric | Value |
 |--------|-------|
-| Total Suites | 1 |
-| Total Test Cases | 42 |
+| Total Suites | 3 |
+| Total Test Cases | 108 |
 | 🟢 Active — Automated | 0 (0%) |
 | 🔵 In Progress | 0 |
-| 📋 Planned | 33 |
+| 📋 Planned | 99 |
 | 🔴 Blocked (infra) | 9 |
-| 🟢 Smoke TCs | 4 |
-| 🟡 Regression TCs | 38 |
+| 🟢 Smoke TCs | 7 |
+| 🟡 Regression TCs | 101 |
 | Platforms | iOS + Android |
 | Environments | STG / PRD |
 
@@ -28,6 +28,8 @@
 | Suite | Flutter Source | Test Cases | Automated | 🟢 Smoke | 🟡 Regression | Platforms | Status |
 |-------|---------------|:----------:|:---------:|:--------:|:-------------:|:---------:|--------|
 | [**login**](./login/index.md) | `lib/src/blocs/authentication/` + `lib/src/ui/screens/` | **42** | 0 (0%) | 4 | 38 | iOS + Android | 📋 Planned |
+| [**dashboard**](./dashboard/index.md) | `lib/src/ui/screens/home/` + `lib/src/ui/app.dart` + `lib/src/ui/app/conti_app_bar.dart` | **32** | 0 (0%) | 1 | 31 | iOS + Android | 📋 Planned |
+| [**conveyors**](./conveyors/index.md) | `lib/src/ui/screens/conveyors/` + `lib/src/blocs/conveyor/` | **34** | 0 (0%) | 2 | 32 | iOS + Android | 📋 Planned |
 
 ---
 
@@ -36,11 +38,21 @@
 ```
 docs/test-suites/
 ├── index.md                  ← this file (master registry)
-└── login/
+├── login/
+│   ├── index.md              ← suite KPI + TC table
+│   ├── tc-login-001-splash-screen.md
+│   ├── tc-login-002-welcome-screen-ui.md
+│   └── ...                   (tc-login-001 … tc-login-042)
+├── dashboard/
+│   ├── index.md              ← suite KPI + TC table
+│   ├── tc-dashboard-001-dashboard-loads-with-permitted-cards.md
+│   ├── tc-dashboard-002-card-visibility-permission-based.md
+│   └── ...                   (tc-dashboard-001 … tc-dashboard-032)
+└── conveyors/
     ├── index.md              ← suite KPI + TC table
-    ├── tc-login-001-splash-screen.md
-    ├── tc-login-002-welcome-screen-ui.md
-    └── ...                   (tc-login-001 … tc-login-042)
+    ├── tc-conveyors-001-list-loads-with-permitted-view.md
+    ├── tc-conveyors-002-add-conveyor-happy-path.md
+    └── ...                   (tc-conveyors-001 … tc-conveyors-034)
 
 features/
 ├── smoke/                    → @smoke @both (fast critical paths, STG)

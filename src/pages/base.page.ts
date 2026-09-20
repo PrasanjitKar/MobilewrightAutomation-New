@@ -99,6 +99,28 @@ export default class BasePage {
     await locator.scrollIntoViewIfNeeded();
   }
 
+  /**
+   * Waits (polling) until the first locator among the candidates becomes visible, returning it.
+   * Useful when the same action can surface one of several possible UI variants
+   * (e.g. phone vs tablet layout, or different navigation paths reaching the same feature).
+   */
+  protected async findFirstVisible(locators: Locator[], timeout: number): Promise<Locator | undefined> {
+    const deadline = Date.now() + timeout;
+
+    while (Date.now() < deadline) {
+      for (const locator of locators) {
+        try {
+          await locator.waitFor({ state: 'visible', timeout: Math.min(500, Math.max(1, deadline - Date.now())) });
+          return locator;
+        } catch {
+          // Try the next locator until the overall timeout expires.
+        }
+      }
+    }
+
+    return undefined;
+  }
+
   async logTree(): Promise<void> {
     console.log(await this.screen.viewTree());
   }

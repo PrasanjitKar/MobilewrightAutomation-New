@@ -1,0 +1,36 @@
+◇ injected env (7) from resources/.env.STG // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+ℹ️  No passwords file found at /Users/prasanjitkar/Downloads/mobile/ctp-contiplus-web-qa-mobilewright-automation/resources/data/.env.passwords, relying on system environment variables
+info: Sep-20-2026 16:00:45: Test data loaded: key="app_launch_login" env="STG" file="resources/data/testdata.csv"
+info: Sep-20-2026 16:00:45: [info] Step started → the Conti+ app is launched
+info: Sep-20-2026 16:00:45: [info] Preparing fresh install for com.continental.contiplus
+info: Sep-20-2026 16:00:46: [info] Uninstalling existing app: com.continental.contiplus
+info: Sep-20-2026 16:00:46: [info] Installing fresh app from: /Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk
+info: Sep-20-2026 16:00:54: [success] Fresh app launched: com.continental.contiplus
+info: Sep-20-2026 16:00:54: [info] Step started → the Conti+ app has loaded completely
+info: Sep-20-2026 16:00:54: [info] Waiting for Conti+ app to finish loading
+info: Sep-20-2026 16:01:02: [success] Conti+ app finished loading
+info: Sep-20-2026 16:01:02: [info] Step started → the user accepts all consent options
+info: Sep-20-2026 16:01:15: [success] Accepted all consent options
+info: Sep-20-2026 16:01:24: [success] Welcome screen is displayed
+info: Sep-20-2026 16:01:24: [info] Step started → the Welcome screen should be displayed
+info: Sep-20-2026 16:01:33: [success] Welcome screen is displayed
+info: Sep-20-2026 16:01:33: [info] Step started → the user opens Continental Account login
+info: Sep-20-2026 16:01:39: [success] Continental Account login opened
+info: Sep-20-2026 16:01:39: [info] Step started → the email and password fields should be displayed
+info: Sep-20-2026 16:01:41: [success] Email and password fields are displayed
+info: Sep-20-2026 16:01:41: [info] Step started → the user provides username as "td.Username" and password as "********" from test data
+Waiting 500ms...
+Waiting 500ms...
+info: Sep-20-2026 16:01:51: [success] Credentials entered for prasanjitmm@yopmail.com
+info: Sep-20-2026 16:01:51: [info] Step started → the user clicks on the login button
+info: Sep-20-2026 16:01:54: [success] Login button clicked
+info: Sep-20-2026 16:01:54: [info] Step started → the user should be logged in successfully
+info: Sep-20-2026 16:02:02: [success] User logged in successfully
+info: Sep-20-2026 16:02:02: [info] Step started → wait for the home screen to load completely
+info: Sep-20-2026 16:02:02: [info] Waiting for Home screen data to finish loading
+info: Sep-20-2026 16:02:31: [success] Home screen data loaded completely
+info: Sep-20-2026 16:02:31: [info] Step started → the user should see the home screen
+info: Sep-20-2026 16:02:33: [success] Home screen is displayed
+info: Sep-20-2026 16:02:33: [info] Step started → verify the conveyor count is displayed on the home screen
+info: Sep-20-2026 16:03:03: [logFailure] Step failed → verify the conveyor count is displayed on the home screen
+info: Sep-20-2026 16:03:04: Execution report generated

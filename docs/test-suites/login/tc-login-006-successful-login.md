@@ -40,7 +40,7 @@ Verify that entering valid credentials and tapping the Login button successfully
 
 | # | Action | Expected Result |
 |---|--------|----------------|
-| 1 | Enter valid email into `emailTextFieldBox` | Email is accepted; auto-lowercased |
+| 1 | Enter valid email into `emailTextFieldBox` | Email is accepted and displayed exactly as typed (not live-lowercased) |
 | 2 | Enter valid password into `passwordTextFieldBox` | Password is entered (masked) |
 | 3 | Tap the `loginButton` | "Login..." snackbar appears; button enters disabled/loading state (`AuthenticationLoadingState`) |
 | 4 | Wait for API response | `POST /auth/login` API call completes successfully |

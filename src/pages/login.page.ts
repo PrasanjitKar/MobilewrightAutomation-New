@@ -14,19 +14,19 @@ export class LoginPage extends BasePage {
 
   get usernameInput() {
     return this.platform === 'android'
-      ? this.screen.getByLabel('input-email')
+      ? this.screen.getByLabel('emailTextFieldBox')
       : this.screen.getByPlaceholder('Email');
   }
 
   get passwordInput() {
     return this.platform === 'android'
-      ? this.screen.getByLabel('input-password')
+      ? this.screen.getByLabel('passwordTextFieldBox')
       : this.screen.getByPlaceholder('Password');
   }
 
   get loginButton() {
     return this.platform === 'android'
-      ? this.screen.getByLabel('button-LOGIN')
+      ? this.screen.getByLabel('loginButton')
       : this.screen.getByText('LOGIN', { exact: true });
   }
 
@@ -38,13 +38,13 @@ export class LoginPage extends BasePage {
 
   get forgotPasswordLink() {
     return this.platform === 'android'
-      ? this.screen.getByLabel('link-forgot-password')
+      ? this.screen.getByLabel('forgotPasswordText')
       : this.screen.getByText('Forgot Password?', { exact: false });
   }
 
   get forgotPasswordEmailInput() {
     return this.platform === 'android'
-      ? this.screen.getByLabel('input-email')
+      ? this.screen.getByLabel('emailTextFieldBox')
       : this.screen.getByPlaceholder('Email');
   }
 

@@ -26,7 +26,7 @@ The **Login** suite covers the full authentication module of the Conti+ mobile a
 
 ### Key Behaviours
 
-- Email field auto-lowercases all input via `LowerCaseTextFormatter`; values are `.trim()`'d before validation and API submission
+- Email field value is lowercased (`.toLowerCase()`) and trimmed (`.trim()`) once at submit time in `_onLogin()`; the on-screen field itself does **not** auto-lowercase as you type — the `LowerCaseTextFormatter` wiring is currently commented out in `login_form.dart`
 - Password fields use eye icon toggle (`eye_open.svg` / `eye.svg`) across all forms
 - Autofill via `AutofillGroup` + `AutofillHints.email` / `AutofillHints.password`; `TextInput.finishAutofillContext()` called before API
 - 500 ms delay before login API call (to let iOS commit autofill fields)
@@ -92,7 +92,7 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 
 | ID | Title | Priority | Status |
 |----|-------|----------|--------|
-| [TC-LOGIN-007](./tc-login-007-email-auto-lowercase.md) | Email field auto-converts input to lowercase | Medium | 📋 Planned |
+| [TC-LOGIN-007](./tc-login-007-email-lowercase-on-submit.md) | Email value is lowercased and trimmed on submit (not live as-you-type) | Medium | 📋 Planned |
 | [TC-LOGIN-008](./tc-login-008-password-visibility-toggle.md) | Password field visibility toggle (eye icon) | Medium | 📋 Planned |
 | [TC-LOGIN-009](./tc-login-009-login-form-empty-fields.md) | Login form validation — empty fields _(Outline × 3)_ | Critical | 📋 Planned |
 | [TC-LOGIN-010](./tc-login-010-login-form-invalid-email.md) | Login form validation — invalid email format _(Outline × 4)_ | High | 📋 Planned |
@@ -203,7 +203,7 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 |------|---------|
 | `lib/src/ui/screens/splash_screen.dart` | Splash screen branding |
 | `lib/src/ui/screens/contiplus_form_template.dart` | Shared auth template — all form types |
-| `lib/src/ui/screens/forms/login_form.dart` | Login form: email lowercase, trim, autofill, 500ms delay, eye icon |
+| `lib/src/ui/screens/forms/login_form.dart` | Login form: email lowercase-on-submit (live formatter is commented out), trim, autofill, 500ms delay, eye icon |
 | `lib/src/ui/screens/forms/forgot_password_form.dart` | Forgot password form |
 | `lib/src/ui/screens/forms/reset_password_form.dart` | Reset password form |
 | `lib/src/ui/screens/forms/change_password_form.dart` | Change password form |

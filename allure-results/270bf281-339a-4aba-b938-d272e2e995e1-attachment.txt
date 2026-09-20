@@ -1,0 +1,54 @@
+◇ injected env (7) from resources/.env.STG // tip: ⌘ override existing { override: true }
+ℹ️  No passwords file found at /Users/prasanjitkar/Downloads/mobile/ctp-contiplus-web-qa-mobilewright-automation/resources/data/.env.passwords, relying on system environment variables
+info: Sep-20-2026 16:31:32: Test data loaded: key="app_launch_login" env="STG" file="resources/data/testdata.csv"
+info: Sep-20-2026 16:31:32: [info] Step started → the Conti+ app is launched
+info: Sep-20-2026 16:31:32: [info] Preparing fresh install for com.continental.contiplus
+info: Sep-20-2026 16:31:32: [info] Uninstalling existing app: com.continental.contiplus
+info: Sep-20-2026 16:31:33: [info] Installing fresh app from: /Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk
+info: Sep-20-2026 16:31:41: [success] Fresh app launched: com.continental.contiplus
+info: Sep-20-2026 16:31:41: [info] Step started → the Conti+ app has loaded completely
+info: Sep-20-2026 16:31:41: [info] Waiting for Conti+ app to finish loading
+info: Sep-20-2026 16:31:49: [success] Conti+ app finished loading
+info: Sep-20-2026 16:31:49: [info] Step started → the user accepts all consent options
+info: Sep-20-2026 16:32:02: [success] Accepted all consent options
+info: Sep-20-2026 16:32:12: [success] Welcome screen is displayed
+info: Sep-20-2026 16:32:12: [info] Step started → the Welcome screen should be displayed
+info: Sep-20-2026 16:32:21: [success] Welcome screen is displayed
+info: Sep-20-2026 16:32:21: [info] Step started → the user opens Continental Account login
+info: Sep-20-2026 16:32:27: [success] Continental Account login opened
+info: Sep-20-2026 16:32:27: [info] Step started → the email and password fields should be displayed
+info: Sep-20-2026 16:32:29: [success] Email and password fields are displayed
+info: Sep-20-2026 16:32:29: [info] Step started → the user provides username as "td.Username" and password as "********" from test data
+Waiting 500ms...
+Waiting 500ms...
+info: Sep-20-2026 16:32:40: [success] Credentials entered for prasanjitmm@yopmail.com
+info: Sep-20-2026 16:32:40: [info] Step started → the user clicks on the login button
+info: Sep-20-2026 16:32:42: [success] Login button clicked
+info: Sep-20-2026 16:32:42: [info] Step started → the user should be logged in successfully
+info: Sep-20-2026 16:32:53: [success] User logged in successfully
+info: Sep-20-2026 16:32:53: [info] Step started → wait for the home screen to load completely
+info: Sep-20-2026 16:32:53: [info] Waiting for Home screen data to finish loading
+info: Sep-20-2026 16:33:23: [success] Home screen data loaded completely
+info: Sep-20-2026 16:33:23: [info] Step started → the user should see the home screen
+info: Sep-20-2026 16:33:24: [success] Home screen is displayed
+info: Sep-20-2026 16:33:24: [info] Step started → verify the conveyor count is displayed on the home screen
+info: Sep-20-2026 16:33:26: [success] Conveyor count on Home screen: 5019
+info: Sep-20-2026 16:33:26: [info] Step started → the user clicks on the conveyor card
+info: Sep-20-2026 16:33:29: [success] Conveyor card tapped from Home screen
+info: Sep-20-2026 16:33:29: [info] Step started → the user should see the conveyor details screen
+info: Sep-20-2026 16:33:30: [success] Conveyor list/details screen is displayed
+info: Sep-20-2026 16:33:30: [info] Step started → verify the same conveyor count is displayed on the bottom of the conveyor details screen
+info: Sep-20-2026 16:33:32: [success] Conveyor list count (5019) matches Home screen count
+info: Sep-20-2026 16:33:32: [info] Step started → user clicks on add conveyor button
+info: Sep-20-2026 16:33:41: [success] Add Conveyor button tapped
+info: Sep-20-2026 16:33:41: [info] Step started → the user should see the add conveyor screen
+info: Sep-20-2026 16:33:42: [success] Add Conveyor screen is displayed
+info: Sep-20-2026 16:33:42: [info] Step started → user provides the conveyor name as "td.ConveyorName" from test data
+info: Sep-20-2026 16:33:50: [success] Conveyor name entered: Tes Conveyot_Mobile_1789902222811
+info: Sep-20-2026 16:33:50: [info] Step started → user provides the customer site as "td.CustomerSite" from test data
+Waiting 1000ms...
+info: Sep-20-2026 16:34:01: [success] Customer site selected: AB1 Automation Site
+info: Sep-20-2026 16:34:01: [info] Step started → user clicks on the Create button
+info: Sep-20-2026 16:34:05: [success] Create button tapped
+info: Sep-20-2026 16:34:36: [logFailure] Step failed → user clicks on the Create button
+info: Sep-20-2026 16:34:37: Execution report generated

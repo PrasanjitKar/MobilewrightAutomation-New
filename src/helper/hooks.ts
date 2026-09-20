@@ -46,10 +46,7 @@ BeforeAll(async function () {
 // Before Scenario
 // =====================================================
 
-Before(async function (this: ScenarioContext, _fixtures) {
-  // Cast to access BDD auto-inject fixtures ($tags) alongside standard fixtures
-  const { $tags } = _fixtures as typeof _fixtures & BddAutoFixtures;
-
+Before(async function (this: ScenarioContext, { $tags }: Pick<BddAutoFixtures, '$tags'>) {
   const config = ConfigurationManager.config();
   const scenarioName = `${this.testInfo.title}_${this.testInfo.testId.slice(0, 8)}`;
 
@@ -97,7 +94,7 @@ Before(async function (this: ScenarioContext, _fixtures) {
 
     if (!fs.existsSync(fullPath)) throw new Error(`Data file not found: ${fullPath}`);
 
-    let dataSource: Record<string, unknown>[] = [];
+    let dataSource: Record<string, unknown>[];
 
     if (fileExt === '.json') {
       dataSource = JSON.parse(fs.readFileSync(fullPath, 'utf-8')) as Record<string, unknown>[];
@@ -141,8 +138,7 @@ Before(async function (this: ScenarioContext, _fixtures) {
 // BeforeStep
 // =====================================================
 
-BeforeStep(async function (this: ScenarioContext, _fixtures) {
-  const { $step } = _fixtures as typeof _fixtures & BddAutoFixtures;
+BeforeStep(async function (this: ScenarioContext, { $step }: Pick<BddAutoFixtures, '$step'>) {
   const stepText = maskPasswords($step.title);
 
   this.currentStep = stepText;
@@ -158,8 +154,7 @@ BeforeStep(async function (this: ScenarioContext, _fixtures) {
 // AfterStep
 // =====================================================
 
-AfterStep(async function (this: ScenarioContext, _fixtures) {
-  const { $step } = _fixtures as typeof _fixtures & BddAutoFixtures;
+AfterStep(async function (this: ScenarioContext, { $step }: Pick<BddAutoFixtures, '$step'>) {
   const stepText = maskPasswords($step.title);
   const hasFailed = !!$step.error;
 
@@ -201,9 +196,9 @@ AfterStep(async function (this: ScenarioContext, _fixtures) {
 // After Scenario
 // =====================================================
 
-After({ timeout: 120000 }, async function (this: ScenarioContext, _fixtures) {
-  const { $bddContext } = _fixtures as typeof _fixtures & BddAutoFixtures;
-
+After(
+  { timeout: 120000 },
+  async function (this: ScenarioContext, { $bddContext }: Pick<BddAutoFixtures, '$bddContext'>) {
   const end = Date.now();
   const scenarioPassed = this.testInfo.status === 'passed';
   const hasSoftErrors = this.softAssertErrors?.length > 0;
@@ -284,7 +279,8 @@ After({ timeout: 120000 }, async function (this: ScenarioContext, _fixtures) {
     error: this.testInfo.error?.message || (hasSoftErrors ? this.softAssertErrors.join('\n') : ''),
     startTime: time(this.scenarioStart ?? end),
     endTime: time(end),
-  });
+    },
+  );
 
   this.softAssertErrors = [];
   this.softAssertStepFailures = [];
