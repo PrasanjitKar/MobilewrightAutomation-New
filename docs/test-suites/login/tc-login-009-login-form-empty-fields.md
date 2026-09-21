@@ -1,6 +1,6 @@
 # TC-LOGIN-009 — Login form validation — empty and blank fields
 
-> Suite: [Login](./index.md) | Priority: Critical | Status: 📋 Planned
+> Suite: [Login](./index.md) | Priority: Critical | Status: 🟢 Active — Automated
 
 ---
 
@@ -14,9 +14,9 @@
 | **Type** | Regression |
 | **Suggested Tags** | `@regression @both` |
 | **Data Key** | *(none)* |
-| **Feature File** | `features/regression/login.feature` |
+| **Feature File** | `features/regression/login/login.feature` (automated) |
 | **Page Objects** | `src/pages/login.page.ts` |
-| **Status** | 📋 Planned |
+| **Status** | 🟢 Active — Automated |
 | **Platform** | iOS + Android |
 
 ---

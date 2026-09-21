@@ -1,0 +1,27 @@
+info: Sep-21-2026 09:48:47: [info] Step started → the Conti+ app is launched
+info: Sep-21-2026 09:48:47: [info] Preparing fresh install for com.continental.contiplus
+info: Sep-21-2026 09:48:47: [info] Uninstalling existing app: com.continental.contiplus
+info: Sep-21-2026 09:48:47: [info] Installing fresh app from: /Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk
+info: Sep-21-2026 09:48:54: [success] Fresh app launched: com.continental.contiplus
+info: Sep-21-2026 09:48:54: [info] Step started → the Conti+ app has loaded completely
+info: Sep-21-2026 09:48:54: [info] Waiting for Conti+ app to finish loading
+info: Sep-21-2026 09:49:02: [success] Conti+ app finished loading
+info: Sep-21-2026 09:49:02: [info] Step started → the user accepts all consent options
+info: Sep-21-2026 09:49:15: [success] Accepted all consent options
+info: Sep-21-2026 09:49:24: [success] Welcome screen is displayed
+info: Sep-21-2026 09:49:24: [info] Step started → the Welcome screen should be displayed
+info: Sep-21-2026 09:49:33: [success] Welcome screen is displayed
+info: Sep-21-2026 09:49:33: [info] Step started → the user opens Continental Account login
+info: Sep-21-2026 09:49:39: [success] Continental Account login opened
+info: Sep-21-2026 09:49:39: [info] Step started → the email and password fields should be displayed
+info: Sep-21-2026 09:49:41: [success] Email and password fields are displayed
+info: Sep-21-2026 09:49:41: [info] Step started → the user provides username as "" and password as "ValidP@ssw0rd1"
+Waiting 500ms...
+Waiting 500ms...
+info: Sep-21-2026 09:49:50: [success] Credentials entered for 
+info: Sep-21-2026 09:49:50: [info] Step started → the user clicks on the login button
+info: Sep-21-2026 09:49:53: [success] Login button clicked
+info: Sep-21-2026 09:49:53: [info] Step started → the email field shows the error "Please enter email" and the password field shows the error ""
+info: Sep-21-2026 09:49:54: [success] Email field shows validation error: "Please enter email"
+info: Sep-21-2026 09:49:54: [info] Step started → no login request should be sent
+info: Sep-21-2026 09:49:57: [success] No login request was sent; user remains on the Login screen

@@ -1,0 +1,28 @@
+◇ injected env (7) from resources/.env.STG // tip: ⌘ suppress logs { quiet: true }
+info: Sep-21-2026 11:16:39: [info] Step started → the Conti+ app is launched
+info: Sep-21-2026 11:16:39: [info] Preparing fresh install for com.continental.contiplus
+info: Sep-21-2026 11:16:39: [info] Uninstalling existing app: com.continental.contiplus
+info: Sep-21-2026 11:16:40: [info] Installing fresh app from: /Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk
+info: Sep-21-2026 11:16:47: [success] Fresh app launched: com.continental.contiplus
+info: Sep-21-2026 11:16:47: [info] Step started → the Conti+ app has loaded completely
+info: Sep-21-2026 11:16:47: [info] Waiting for Conti+ app to finish loading
+info: Sep-21-2026 11:17:11: [success] Conti+ app finished loading
+info: Sep-21-2026 11:17:11: [info] Step started → the user accepts all consent options
+info: Sep-21-2026 11:17:24: [success] Accepted all consent options
+info: Sep-21-2026 11:17:33: [success] Welcome screen is displayed
+info: Sep-21-2026 11:17:33: [info] Step started → the Welcome screen should be displayed
+info: Sep-21-2026 11:17:42: [success] Welcome screen is displayed
+info: Sep-21-2026 11:17:42: [info] Step started → the user opens Continental Account login
+info: Sep-21-2026 11:17:47: [success] Continental Account login opened
+info: Sep-21-2026 11:17:47: [info] Step started → the email and password fields should be displayed
+info: Sep-21-2026 11:17:49: [success] Email and password fields are displayed
+info: Sep-21-2026 11:17:49: [info] Step started → the user provides username as "notanemail" and password as "********"
+Waiting 500ms...
+Waiting 500ms...
+info: Sep-21-2026 11:18:00: [success] Credentials entered for notanemail
+info: Sep-21-2026 11:18:00: [info] Step started → the user clicks on the login button
+info: Sep-21-2026 11:18:03: [success] Login button clicked
+info: Sep-21-2026 11:18:03: [info] Step started → the email field shows the error "Please enter valid email" and the password field shows the error ""
+info: Sep-21-2026 11:18:04: [success] Email field shows validation error: "Please enter valid email"
+info: Sep-21-2026 11:18:04: [info] Step started → no login request should be sent
+info: Sep-21-2026 11:18:06: [success] No login request was sent; user remains on the Login screen

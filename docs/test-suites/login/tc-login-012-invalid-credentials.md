@@ -1,6 +1,6 @@
 # TC-LOGIN-012 — Login with invalid credentials shows authentication error
 
-> Suite: [Login](./index.md) | Priority: Critical | Status: 📋 Planned
+> Suite: [Login](./index.md) | Priority: Critical | Status: 🟢 Active — Automated
 
 ---
 
@@ -14,9 +14,9 @@
 | **Type** | Regression |
 | **Suggested Tags** | `@regression @both` |
 | **Data Key** | `login_invalid` |
-| **Feature File** | `features/regression/login.feature` |
+| **Feature File** | `features/regression/login/login.feature` (automated) |
 | **Page Objects** | `src/pages/login.page.ts` |
-| **Status** | 📋 Planned |
+| **Status** | 🟢 Active — Automated |
 | **Platform** | iOS + Android |
 | **Environments** | STG |
 

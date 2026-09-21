@@ -2,11 +2,12 @@ import { Page, BrowserContext, APIRequestContext, TestInfo } from '@playwright/t
 import { Device, Screen } from 'mobilewright';
 import { Logger } from 'winston';
 import { HTMLSubStepLogger } from './htmlSubStepLogger';
- 
+
 import { LoginPage } from '../pages/login.page';
 import { HomePage } from '../pages/home.page';
 import { AppLaunchPage } from '../pages/app-launch.page';
 import { ConveyorPage } from '../pages/conveyor.page';
+import { LoginScreenPage } from '../pages/login-screen.page';
 import { ApiFactory } from '../helper/api-factory';
 import { ConfigurationManager } from '../config/ConfigurationManager';
 
@@ -58,6 +59,7 @@ export class ScenarioContext implements ISoftAssertState {
   private _homePage?: HomePage;
   private _appLaunchPage?: AppLaunchPage;
   private _conveyorPage?: ConveyorPage;
+  private _loginScreenPage?: LoginScreenPage;
 
   get appLaunchPage(): AppLaunchPage {
     if (!this._appLaunchPage) {
@@ -77,6 +79,13 @@ export class ScenarioContext implements ISoftAssertState {
       this._conveyorPage = new ConveyorPage(this.screen, this.subStepLogger);
     }
     return this._conveyorPage;
+  }
+
+  get loginScreenPage(): LoginScreenPage {
+    if (!this._loginScreenPage) {
+      this._loginScreenPage = new LoginScreenPage(this.screen, this.subStepLogger);
+    }
+    return this._loginScreenPage;
   }
 
   get loginPage(): LoginPage {

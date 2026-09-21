@@ -1,0 +1,13 @@
+◇ injected env (7) from resources/.env.STG // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+info: Sep-20-2026 22:21:05: [info] Step started → the Conti+ app is launched
+info: Sep-20-2026 22:21:05: [info] Preparing fresh install for com.continental.contiplus
+info: Sep-20-2026 22:21:05: [info] Uninstalling existing app: com.continental.contiplus
+info: Sep-20-2026 22:21:05: [info] Installing fresh app from: /Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk
+info: Sep-20-2026 22:21:15: [success] Fresh app launched: com.continental.contiplus
+info: Sep-20-2026 22:21:15: [info] Step started → the Conti+ app has loaded completely
+info: Sep-20-2026 22:21:15: [info] Waiting for Conti+ app to finish loading
+info: Sep-20-2026 22:21:44: [success] Conti+ app finished loading
+info: Sep-20-2026 22:21:44: [info] Step started → the user accepts all consent options
+info: Sep-20-2026 22:22:00: [success] Accepted all consent options
+info: Sep-20-2026 22:22:06: [logFailure] Step failed → the user accepts all consent options
+info: Sep-20-2026 22:22:06: Execution report generated

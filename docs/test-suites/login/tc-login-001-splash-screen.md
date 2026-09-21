@@ -1,6 +1,6 @@
 # TC-LOGIN-001 — Splash screen displays correct branding
 
-> Suite: [Login](./index.md) | Priority: High | Status: 📋 Planned
+> Suite: [Login](./index.md) | Priority: High | Status: 🟢 Active — Automated
 
 ---
 
@@ -14,9 +14,9 @@
 | **Type** | Smoke |
 | **Suggested Tags** | `@smoke @both` |
 | **Data Key** | *(none)* |
-| **Feature File** | `features/smoke/login.feature` |
+| **Feature File** | `features/smoke/login.feature` (automated) |
 | **Page Objects** | `src/pages/splash.page.ts` *(to create)* |
-| **Status** | 📋 Planned |
+| **Status** | 🟢 Active — Automated |
 | **Platform** | iOS + Android |
 
 ---

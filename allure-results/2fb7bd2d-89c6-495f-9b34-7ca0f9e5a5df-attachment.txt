@@ -1,0 +1,19 @@
+◇ injected env (7) from resources/.env.STG // tip: ◈ secrets for agents [www.dotenvx.com]
+info: Sep-20-2026 22:10:45: [info] Step started → the Conti+ app is launched
+info: Sep-20-2026 22:10:45: [info] Preparing fresh install for com.continental.contiplus
+info: Sep-20-2026 22:10:45: [info] Uninstalling existing app: com.continental.contiplus
+info: Sep-20-2026 22:10:45: [info] Installing fresh app from: /Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk
+info: Sep-20-2026 22:10:52: [success] Fresh app launched: com.continental.contiplus
+info: Sep-20-2026 22:10:52: [info] Step started → the Conti+ app has loaded completely
+info: Sep-20-2026 22:10:52: [info] Waiting for Conti+ app to finish loading
+info: Sep-20-2026 22:11:15: [success] Conti+ app finished loading
+info: Sep-20-2026 22:11:15: [info] Step started → the user accepts all consent options
+info: Sep-20-2026 22:11:29: [success] Accepted all consent options
+info: Sep-20-2026 22:11:38: [success] Welcome screen is displayed
+info: Sep-20-2026 22:11:38: [info] Step started → the Welcome screen should be displayed
+info: Sep-20-2026 22:11:46: [success] Welcome screen is displayed
+info: Sep-20-2026 22:11:46: [info] Step started → the user taps the "Continue as a Guest" button on the Welcome screen
+info: Sep-20-2026 22:11:49: [success] "Continue as a Guest" button tapped
+info: Sep-20-2026 22:11:49: [info] Step started → the Onboarding screen should be displayed
+info: Sep-20-2026 22:11:59: [logFailure] Step failed → the Onboarding screen should be displayed
+info: Sep-20-2026 22:12:00: Execution report generated

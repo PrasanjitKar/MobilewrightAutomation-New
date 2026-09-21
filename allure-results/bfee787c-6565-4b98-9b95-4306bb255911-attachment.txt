@@ -1,0 +1,16 @@
+◇ injected env (7) from resources/.env.STG // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+info: Sep-20-2026 22:05:36: [info] Step started → the Conti+ app is launched
+info: Sep-20-2026 22:05:36: [info] Preparing fresh install for com.continental.contiplus
+info: Sep-20-2026 22:05:37: [info] Uninstalling existing app: com.continental.contiplus
+info: Sep-20-2026 22:05:37: [info] Installing fresh app from: /Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk
+info: Sep-20-2026 22:05:43: [success] Fresh app launched: com.continental.contiplus
+info: Sep-20-2026 22:05:43: [info] Step started → the Conti+ app has loaded completely
+info: Sep-20-2026 22:05:43: [info] Waiting for Conti+ app to finish loading
+info: Sep-20-2026 22:05:50: [success] Conti+ app finished loading
+info: Sep-20-2026 22:05:50: [info] Step started → the user accepts all consent options
+info: Sep-20-2026 22:06:03: [success] Accepted all consent options
+info: Sep-20-2026 22:06:12: [success] Welcome screen is displayed
+info: Sep-20-2026 22:06:12: [info] Step started → the Welcome screen should be displayed
+info: Sep-20-2026 22:06:21: [success] Welcome screen is displayed
+info: Sep-20-2026 22:06:21: [info] Step started → the Welcome screen displays the Contiplus logo, heading, both login buttons and separator
+info: Sep-20-2026 22:06:25: [success] Welcome screen displays the Conti+ logo, heading, both login buttons and separator

@@ -1,6 +1,6 @@
 # TC-LOGIN-005 — Login screen displays correct UI elements
 
-> Suite: [Login](./index.md) | Priority: Critical | Status: 📋 Planned
+> Suite: [Login](./index.md) | Priority: Critical | Status: 🟢 Active — Automated
 
 ---
 
@@ -14,9 +14,9 @@
 | **Type** | Smoke |
 | **Suggested Tags** | `@smoke @both` |
 | **Data Key** | *(none)* |
-| **Feature File** | `features/smoke/login.feature` |
+| **Feature File** | `features/smoke/login.feature` (automated) |
 | **Page Objects** | `src/pages/login.page.ts` |
-| **Status** | 📋 Planned |
+| **Status** | 🟢 Active — Automated |
 | **Platform** | iOS + Android |
 
 ---

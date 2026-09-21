@@ -1,7 +1,7 @@
 # Login — Test Suite
 
 > Module: `login` | Flutter source: `contiplus/lib/src/blocs/authentication/` + `contiplus/lib/src/ui/screens/`  
-> Feature files: `features/smoke/login.feature`, `features/regression/login.feature`
+> Feature files: `features/smoke/login.feature`, `features/regression/login/login.feature`
 
 ---
 
@@ -57,9 +57,9 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 | Metric | Value |
 |--------|-------|
 | Total Test Cases | 42 |
-| 📋 Planned | 33 |
+| 📋 Planned | 19 |
 | 🔴 Blocked (infra) | 9 |
-| 🟢 Active — Automated | 0 (0%) |
+| 🟢 Active — Automated | 14 (33%) |
 | 🔵 In Progress | 0 |
 | 🟢 Smoke TCs | 4 |
 | 🟡 Regression TCs | 38 |
@@ -74,17 +74,17 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 
 | ID | Title | Priority | Status |
 |----|-------|----------|--------|
-| [TC-LOGIN-001](./tc-login-001-splash-screen.md) | Splash screen displays correct branding | High | 📋 Planned |
-| [TC-LOGIN-002](./tc-login-002-welcome-screen-ui.md) | Welcome screen displays correct UI elements | Critical | 📋 Planned |
-| [TC-LOGIN-005](./tc-login-005-login-screen-ui.md) | Login screen displays correct UI elements | Critical | 📋 Planned |
-| [TC-LOGIN-006](./tc-login-006-successful-login.md) | Successful login with valid credentials | Critical | 📋 Planned |
+| [TC-LOGIN-001](./tc-login-001-splash-screen.md) | Splash screen displays correct branding | High | 🟢 Active — Automated |
+| [TC-LOGIN-002](./tc-login-002-welcome-screen-ui.md) | Welcome screen displays correct UI elements | Critical | 🟢 Active — Automated |
+| [TC-LOGIN-005](./tc-login-005-login-screen-ui.md) | Login screen displays correct UI elements | Critical | 🟢 Active — Automated |
+| [TC-LOGIN-006](./tc-login-006-successful-login.md) | Successful login with valid credentials | Critical | 🟢 Active — Automated |
 
 ### 🟡 Regression — Welcome & Navigation
 
 | ID | Title | Priority | Status |
 |----|-------|----------|--------|
-| [TC-LOGIN-003](./tc-login-003-continental-account-button.md) | Continental Account clears Hive and launches Continental login flow | High | 📋 Planned |
-| [TC-LOGIN-004](./tc-login-004-continue-as-guest.md) | Continue as Guest navigates to Onboarding screen | Medium | 📋 Planned |
+| [TC-LOGIN-003](./tc-login-003-continental-account-button.md) | Continental Account clears Hive and launches Continental login flow | High | 🟢 Active — Automated |
+| [TC-LOGIN-004](./tc-login-004-continue-as-guest.md) | Continue as Guest navigates to Onboarding screen | Medium | 🟢 Active — Automated |
 | [TC-LOGIN-036](./tc-login-036-legal-privacy-link.md) | Legal & Privacy link opens in-app / platform browser | Medium | 📋 Planned |
 | [TC-LOGIN-037](./tc-login-037-app-reinstall.md) | App reinstall clears credentials and starts at Welcome | Medium | 📋 Planned |
 
@@ -92,15 +92,15 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 
 | ID | Title | Priority | Status |
 |----|-------|----------|--------|
-| [TC-LOGIN-007](./tc-login-007-email-lowercase-on-submit.md) | Email value is lowercased and trimmed on submit (not live as-you-type) | Medium | 📋 Planned |
-| [TC-LOGIN-008](./tc-login-008-password-visibility-toggle.md) | Password field visibility toggle (eye icon) | Medium | 📋 Planned |
-| [TC-LOGIN-009](./tc-login-009-login-form-empty-fields.md) | Login form validation — empty fields _(Outline × 3)_ | Critical | 📋 Planned |
-| [TC-LOGIN-010](./tc-login-010-login-form-invalid-email.md) | Login form validation — invalid email format _(Outline × 4)_ | High | 📋 Planned |
-| [TC-LOGIN-011](./tc-login-011-login-form-invalid-password.md) | Login form validation — password not meeting policy _(Outline × 4)_ | High | 📋 Planned |
-| [TC-LOGIN-012](./tc-login-012-invalid-credentials.md) | Login with invalid credentials → AuthenticationLoginErrorState | Critical | 📋 Planned |
+| [TC-LOGIN-007](./tc-login-007-email-lowercase-on-submit.md) | Email value is lowercased and trimmed on submit (not live as-you-type) | Medium | 🟢 Active — Automated |
+| [TC-LOGIN-008](./tc-login-008-password-visibility-toggle.md) | Password field visibility toggle (eye icon) | Medium | 🟢 Active — Automated |
+| [TC-LOGIN-009](./tc-login-009-login-form-empty-fields.md) | Login form validation — empty fields _(Outline × 3)_ | Critical | 🟢 Active — Automated |
+| [TC-LOGIN-010](./tc-login-010-login-form-invalid-email.md) | Login form validation — invalid email format _(Outline × 4)_ | High | 🟢 Active — Automated |
+| [TC-LOGIN-011](./tc-login-011-login-form-invalid-password.md) | Login form validation — password not meeting policy _(Outline × 4)_ | High | 🟢 Active — Automated |
+| [TC-LOGIN-012](./tc-login-012-invalid-credentials.md) | Login with invalid credentials → AuthenticationLoginErrorState | Critical | 🟢 Active — Automated |
 | [TC-LOGIN-013](./tc-login-013-login-offline-error.md) | Login while offline → offlineError state | High | 🔴 Blocked |
-| [TC-LOGIN-014](./tc-login-014-login-loading-state.md) | Login button disabled + snackbar during authentication | Medium | 📋 Planned |
-| [TC-LOGIN-015](./tc-login-015-autofill-support.md) | Autofill support (iOS Keychain / Android Autofill) | Low | 📋 Planned |
+| [TC-LOGIN-014](./tc-login-014-login-loading-state.md) | Login button disabled + snackbar during authentication | Medium | 🟢 Active — Automated |
+| [TC-LOGIN-015](./tc-login-015-autofill-support.md) | Autofill support (iOS Keychain / Android Autofill) | Low | 🟢 Active — Automated |
 | [TC-LOGIN-016](./tc-login-016-back-button-login.md) | Back button on Login screen returns to Welcome | Medium | 📋 Planned |
 | [TC-LOGIN-034](./tc-login-034-paste-password.md) | Paste text into password field | Medium | 📋 Planned |
 | [TC-LOGIN-035](./tc-login-035-email-password-spaces-trim.md) | Leading/trailing spaces trimmed on email and password _(Outline × 3)_ | Medium | 📋 Planned |
@@ -184,15 +184,18 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 
 | Artefact | Path |
 |----------|------|
-| Feature file — smoke | `features/smoke/login.feature` |
-| Feature file — regression | `features/regression/login.feature` |
-| Step definitions | `src/steps/login.steps.ts` |
-| Page object — Login | `src/pages/login.page.ts` |
+| Feature file — smoke | `features/smoke/login.feature` (TC-001, 002, 005, 006) |
+| Feature file — regression | `features/regression/login/login.feature` (TC-003, 004, 007–012, 014, 015) |
+| Feature file — legacy POC | `features/regression/login/app-launch.feature` *(unmodified — do not edit)* |
+| Step definitions | `src/steps/login-screen.steps.ts`, `src/steps/app-launch.steps.ts` (reused) |
+| Page object — Welcome/Login screens | `src/pages/login-screen.page.ts` |
+| Page object — App launch/home | `src/pages/app-launch.page.ts` (reused) |
+| Page object — legacy Login (unused by new suite) | `src/pages/login.page.ts` |
 | Page object — Profile | `src/pages/profile.page.ts` *(to create)* |
 | Page object — Forgot Password | `src/pages/forgot-password.page.ts` *(to create)* |
 | Page object — Reset Password | `src/pages/reset-password.page.ts` *(to create)* |
 | Page object — Change Password | `src/pages/change-password.page.ts` *(to create)* |
-| Test data | `resources/data/smokedata.csv`, `resources/data/logindata.csv` |
+| Test data | `resources/data/smokedata.csv` (`login_valid`), `resources/data/logindata.csv` (`login_invalid`), `resources/data/testdata.csv` (`app_launch_login`) |
 | Passwords | `resources/data/.env.passwords` |
 
 ---
@@ -219,10 +222,20 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 
 | Sprint | TCs | Focus |
 |--------|-----|-------|
-| **Sprint 1** | TC-001, TC-002, TC-005, TC-006 | Smoke — splash, welcome, login UI, successful login |
-| **Sprint 2** | TC-009, TC-010, TC-011, TC-007, TC-008, TC-014 | Login form validations + email lowercase + eye icon + loading |
-| **Sprint 3** | TC-012, TC-016, TC-017, TC-018, TC-034, TC-035 | Invalid credentials, navigation, paste, trim |
-| **Sprint 4** | TC-003, TC-004, TC-020, TC-021, TC-022, TC-023, TC-025 | Continental/Guest, forgot/reset password flows |
+| **Sprint 1** ✅ Done | TC-001, TC-002, TC-005, TC-006 | Smoke — splash, welcome, login UI, successful login |
+| **Sprint 2** ✅ Done | TC-009, TC-010, TC-011, TC-007, TC-008, TC-014 | Login form validations + email lowercase + eye icon + loading |
+| **Sprint 3** ✅ Done (TC-012, TC-015) | TC-012, TC-016, TC-017, TC-018, TC-034, TC-035 | Invalid credentials, navigation, paste, trim |
+| **Sprint 4** ✅ Done (TC-003, TC-004) | TC-003, TC-004, TC-020, TC-021, TC-022, TC-023, TC-025 | Continental/Guest, forgot/reset password flows |
 | **Sprint 5** | TC-026, TC-028, TC-029, TC-030, TC-031, TC-032, TC-033 | Change pw, session, logout, delete account, session isolation |
-| **Sprint 6** | TC-036, TC-037, TC-015 | Legal link, reinstall, autofill |
+| **Sprint 6** | TC-036, TC-037 | Legal link, reinstall |
 | **Sprint 7** | TC-013, TC-019, TC-024, TC-027, TC-038–042 | Infrastructure-dependent TCs |
+
+> **Automation status (this update):** TC-LOGIN-001 through TC-LOGIN-012, TC-LOGIN-014 and
+> TC-LOGIN-015 are automated across `features/smoke/login.feature` and
+> `features/regression/login/login.feature`, using the new `LoginScreenPage` object
+> (`src/pages/login-screen.page.ts`) alongside the existing `AppLaunchPage` for the shared
+> launch → consent → Welcome → Login flow. TC-LOGIN-013 remains 🔴 Blocked (requires a
+> device-level network toggle not exposed by MobileWright). TC-LOGIN-015 automates only the
+> automatable prerequisite (fields declare the correct `AutofillHints` and accept input) —
+> genuine OS autofill-selection remains a manual check. The existing `features/regression/login/app-launch.feature`
+> POC scenario was left unmodified.

@@ -2,7 +2,7 @@
 
 > Repository: `CT-CONTIPLUS/ctp-contiplus-web-qa-mobilewright-automation`  
 > Framework: MobileWright + Playwright-BDD (Cucumber) | TypeScript  
-> Last updated: 2026-09-21
+> Last updated: 2026-09-28
 
 ---
 
@@ -12,9 +12,9 @@
 |--------|-------|
 | Total Suites | 3 |
 | Total Test Cases | 108 |
-| 🟢 Active — Automated | 0 (0%) |
+| 🟢 Active — Automated | 14 (13%) |
 | 🔵 In Progress | 0 |
-| 📋 Planned | 99 |
+| 📋 Planned | 85 |
 | 🔴 Blocked (infra) | 9 |
 | 🟢 Smoke TCs | 7 |
 | 🟡 Regression TCs | 101 |
@@ -27,7 +27,7 @@
 
 | Suite | Flutter Source | Test Cases | Automated | 🟢 Smoke | 🟡 Regression | Platforms | Status |
 |-------|---------------|:----------:|:---------:|:--------:|:-------------:|:---------:|--------|
-| [**login**](./login/index.md) | `lib/src/blocs/authentication/` + `lib/src/ui/screens/` | **42** | 0 (0%) | 4 | 38 | iOS + Android | 📋 Planned |
+| [**login**](./login/index.md) | `lib/src/blocs/authentication/` + `lib/src/ui/screens/` | **42** | 14 (33%) | 4 | 38 | iOS + Android | 🔵 In Progress |
 | [**dashboard**](./dashboard/index.md) | `lib/src/ui/screens/home/` + `lib/src/ui/app.dart` + `lib/src/ui/app/conti_app_bar.dart` | **32** | 0 (0%) | 1 | 31 | iOS + Android | 📋 Planned |
 | [**conveyors**](./conveyors/index.md) | `lib/src/ui/screens/conveyors/` + `lib/src/blocs/conveyor/` | **34** | 0 (0%) | 2 | 32 | iOS + Android | 📋 Planned |
 

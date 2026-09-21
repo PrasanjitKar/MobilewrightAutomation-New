@@ -239,6 +239,13 @@ export class AppLaunchPage extends BasePage {
   private async focusThenFill(locator: Locator, value: string): Promise<void> {
     await this.tap(locator, 15_000);
     await this.waitForTime(500);
+
+    if (!value) {
+      // Underlying driver RPC (`typeText`) rejects an empty string with "text is required".
+      // Fields start empty by default, so there is nothing to type — leave the field blank.
+      return;
+    }
+
     await locator.fill(value, { timeout: 15_000 });
   }
 

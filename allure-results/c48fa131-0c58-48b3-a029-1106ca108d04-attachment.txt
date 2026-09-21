@@ -1,0 +1,22 @@
+◇ injected env (7) from resources/.env.STG // tip: ⌁ auth for agents [www.vestauth.com]
+info: Sep-20-2026 23:25:43: [info] Step started → the Conti+ app is launched
+info: Sep-20-2026 23:25:43: [info] Preparing fresh install for com.continental.contiplus
+info: Sep-20-2026 23:25:43: [info] Uninstalling existing app: com.continental.contiplus
+info: Sep-20-2026 23:25:44: [info] Installing fresh app from: /Users/prasanjitkar/contiApp/ctp-contiplus-flutter-app/contiplus/build/app/outputs/flutter-apk/app-dev-debug.apk
+info: Sep-20-2026 23:25:51: [success] Fresh app launched: com.continental.contiplus
+info: Sep-20-2026 23:25:51: [info] Step started → the Conti+ app has loaded completely
+info: Sep-20-2026 23:25:51: [info] Waiting for Conti+ app to finish loading
+info: Sep-20-2026 23:25:58: [success] Conti+ app finished loading
+info: Sep-20-2026 23:25:58: [info] Step started → the user accepts all consent options
+info: Sep-20-2026 23:26:12: [success] Accepted all consent options
+info: Sep-20-2026 23:26:21: [success] Welcome screen is displayed
+info: Sep-20-2026 23:26:21: [info] Step started → the Welcome screen should be displayed
+info: Sep-20-2026 23:26:30: [success] Welcome screen is displayed
+info: Sep-20-2026 23:26:30: [info] Step started → the user taps the "Continue as a Guest" button on the Welcome screen
+info: Sep-20-2026 23:26:32: [success] "Continue as a Guest" button tapped
+info: Sep-20-2026 23:26:32: [info] Step started → the Onboarding screen should be displayed
+info: Sep-20-2026 23:26:33: [success] Onboarding screen is displayed
+info: Sep-20-2026 23:26:33: [info] Step started → the user taps the "Skip Introduction" button
+info: Sep-20-2026 23:26:36: [success] "Skip Introduction" button tapped
+info: Sep-20-2026 23:26:36: [info] Step started → the Dashboard screen should be displayed
+info: Sep-20-2026 23:26:52: [success] User logged in successfully

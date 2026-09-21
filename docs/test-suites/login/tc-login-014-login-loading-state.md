@@ -1,6 +1,6 @@
 # TC-LOGIN-014 — Login button shows loading state during authentication
 
-> Suite: [Login](./index.md) | Priority: Medium | Status: 📋 Planned
+> Suite: [Login](./index.md) | Priority: Medium | Status: 🟢 Active — Automated
 
 ---
 
@@ -14,9 +14,9 @@
 | **Type** | Regression |
 | **Suggested Tags** | `@regression @both` |
 | **Data Key** | `login_valid` |
-| **Feature File** | `features/regression/login.feature` |
+| **Feature File** | `features/regression/login/login.feature` (automated) |
 | **Page Objects** | `src/pages/login.page.ts` |
-| **Status** | 📋 Planned |
+| **Status** | 🟢 Active — Automated |
 | **Platform** | iOS + Android |
 
 ---

@@ -1,6 +1,6 @@
 # TC-LOGIN-003 — Continental Account button launches Continental login flow
 
-> Suite: [Login](./index.md) | Priority: High | Status: 📋 Planned
+> Suite: [Login](./index.md) | Priority: High | Status: 🟢 Active — Automated
 
 ---
 
@@ -14,9 +14,9 @@
 | **Type** | Regression |
 | **Suggested Tags** | `@regression @both` |
 | **Data Key** | *(none)* |
-| **Feature File** | `features/regression/login.feature` |
+| **Feature File** | `features/regression/login/login.feature` (automated) |
 | **Page Objects** | `src/pages/welcome.page.ts` *(to create)* |
-| **Status** | 📋 Planned |
+| **Status** | 🟢 Active — Automated |
 | **Platform** | iOS + Android |
 
 ---

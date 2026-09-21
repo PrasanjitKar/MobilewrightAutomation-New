@@ -1,6 +1,6 @@
 # TC-LOGIN-015 — Autofill support for email and password fields
 
-> Suite: [Login](./index.md) | Priority: Low | Status: 📋 Planned
+> Suite: [Login](./index.md) | Priority: Low | Status: 🟢 Active — Automated
 
 ---
 
@@ -14,12 +14,22 @@
 | **Type** | Regression |
 | **Suggested Tags** | `@regression @both` |
 | **Data Key** | *(none)* |
-| **Feature File** | `features/regression/login.feature` |
+| **Feature File** | `features/regression/login/login.feature` (automated) |
 | **Page Objects** | `src/pages/login.page.ts` |
-| **Status** | 📋 Planned |
+| **Status** | 🟢 Active — Automated |
 | **Platform** | iOS + Android |
 
 ---
+
+## ⚠️ Automation Scope Note
+
+MobileWright's `Screen`/`Device` APIs do not expose a way to drive the platform's native
+autofill UI (iOS QuickType bar / Android Autofill dropdown), so genuine autofill *selection*
+cannot be automated end-to-end. The automated scenario in `features/regression/login/login.feature`
+verifies the automatable prerequisite instead: both fields are standard, focusable text inputs
+that declare `AutofillHints.email` / `AutofillHints.password` in the Flutter source, making
+them eligible for platform autofill. Full autofill-selection coverage (steps 1–4 below) remains
+a manual test.
 
 ## 🎯 Objective
 
