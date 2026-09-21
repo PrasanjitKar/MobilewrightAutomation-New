@@ -1,2 +1,0 @@
-◇ injected env (7) from resources/.env.STG // tip: ◈ secrets for agents [www.dotenvx.com]
-info: Sep-20-2026 12:37:57: Execution report generated

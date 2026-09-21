@@ -1,2 +1,0 @@
-◇ injected env (7) from resources/.env.STG // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
-info: Sep-20-2026 22:09:57: Execution report generated

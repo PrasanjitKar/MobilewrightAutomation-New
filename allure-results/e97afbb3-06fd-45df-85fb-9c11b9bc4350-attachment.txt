@@ -1,6 +1,0 @@
-◇ injected env (7) from resources/.env.STG // tip: ⌘ custom filepath { path: '/custom/path/.env' }
-info: Sep-21-2026 00:17:53: [info] Step started → the Conti+ app is launched
-info: Sep-21-2026 00:17:53: [info] Preparing fresh install for com.continental.contiplus
-info: Sep-21-2026 00:18:05: [info] Uninstalling existing app: com.continental.contiplus
-info: Sep-21-2026 00:20:05: [logFailure] Step failed → the Conti+ app is launched
-info: Sep-21-2026 00:21:08: Execution report generated

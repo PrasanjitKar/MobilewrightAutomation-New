@@ -1,1 +1,0 @@
-[mobilewright] warning: could not verify "com.continental.contiplus" reached foreground — proceeding anyway. This is a known mobilecli issue on some Android devices.

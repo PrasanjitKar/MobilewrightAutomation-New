@@ -1,8 +1,0 @@
-2026/09/20 12:43:01.766881 [VERBOSE] device: Pixel 9 Pro XL (Pixel_9_Pro_XL)
-2026/09/20 12:43:01.767413 [VERBOSE] platform: android
-2026/09/20 12:43:01.767415 [VERBOSE] type: emulator
-2026/09/20 12:43:01.835408 [VERBOSE] downloading agent from https://github.com/mobile-next/devicekit-android/releases/download/1.2.0/mobilenext-devicekit.apk
-2026/09/20 12:43:02.886902 [VERBOSE] downloaded agent to /var/folders/xr/rxbxqrcx6611pk9g0q08fj0c0000gp/T/mobilecli-agent-1663578502/mobilenext-devicekit.apk
-2026/09/20 12:43:04.068610 [VERBOSE] checksum verified for mobilenext-devicekit.apk
-2026/09/20 12:43:04.068640 [VERBOSE] installing agent on device Pixel_9_Pro_XL
-[mobilewright] warning: could not verify "com.continental.contiplus" reached foreground — proceeding anyway. This is a known mobilecli issue on some Android devices.

@@ -5,6 +5,8 @@ node_modules/
 /playwright/.cache/
 /test-result/
 /test-results/
+/allure-results/
+/allure-report/
 cucumber-report.html
 assets
 index.html
