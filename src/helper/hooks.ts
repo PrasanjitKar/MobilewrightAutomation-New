@@ -64,12 +64,9 @@ Before(async function (this: ScenarioContext, { $tags }: Pick<BddAutoFixtures, '
   this.logger.info(`Starting Scenario: ${this.testInfo.title}`);
 
   // subStepLogger — HTML badge attachments mirrored to terminal logger
-  this.subStepLogger = new HTMLSubStepLogger(
-    async (data, mediaType) => {
-      await this.attach(data as string, mediaType);
-    },
-    this,
-  );
+  this.subStepLogger = new HTMLSubStepLogger(async (data, mediaType) => {
+    await this.attach(data as string, mediaType);
+  }, this);
   (['success', 'info', 'warning', 'failure', 'logFailure', 'softFailure'] as const).forEach((fn) => {
     const proxy = this.subStepLogger as unknown as Record<string, (msg: string) => unknown>;
     const orig = proxy[fn].bind(this.subStepLogger);
@@ -85,9 +82,7 @@ Before(async function (this: ScenarioContext, { $tags }: Pick<BddAutoFixtures, '
 
   if (keyTag) {
     const key = keyTag.replace('@Key:', '').trim();
-    const dataFilePath = dataFileTag
-      ? dataFileTag.replace('@DataFile:', '').trim()
-      : 'resources/data/testdata.csv';
+    const dataFilePath = dataFileTag ? dataFileTag.replace('@DataFile:', '').trim() : 'resources/data/testdata.csv';
 
     const fullPath = path.resolve(process.cwd(), dataFilePath);
     const fileExt = path.extname(fullPath).toLowerCase();
@@ -199,104 +194,100 @@ AfterStep(async function (this: ScenarioContext, { $step }: Pick<BddAutoFixtures
 After(
   { timeout: 120000 },
   async function (this: ScenarioContext, { $bddContext }: Pick<BddAutoFixtures, '$bddContext'>) {
-  const end = Date.now();
-  const scenarioPassed = this.testInfo.status === 'passed';
-  const hasSoftErrors = this.softAssertErrors?.length > 0;
-  const softFailures = [...(this.softAssertStepFailures ?? [])];
+    const end = Date.now();
+    const scenarioPassed = this.testInfo.status === 'passed';
+    const hasSoftErrors = this.softAssertErrors?.length > 0;
+    const softFailures = [...(this.softAssertStepFailures ?? [])];
 
-  let videoPath: string | undefined;
-  let savedTracePath: string | undefined;
-  const config = ConfigurationManager.config();
+    let videoPath: string | undefined;
+    let savedTracePath: string | undefined;
+    const config = ConfigurationManager.config();
 
-  // ---- Video path ----
-  try {
-    videoPath = (await this.page?.video()?.path()) ?? undefined;
-  } catch {
-    logger.warn('Could not retrieve video path');
-  }
-
-  // ---- Final screenshot ----
-  try {
-    if (this.page) {
-      const screenshot = await this.page.screenshot({ fullPage: true });
-      await this.attach(screenshot, 'image/png');
+    // ---- Video path ----
+    try {
+      videoPath = (await this.page?.video()?.path()) ?? undefined;
+    } catch {
+      logger.warn('Could not retrieve video path');
     }
-  } catch (err) {
-    logger.error('Failed to capture final screenshot', err);
-  }
 
-  // ---- Stop tracing ----
-  try {
-    if (this.context) {
-      if (config.traceEnabled) {
-        savedTracePath = path.join(
-          config.tracePath,
-          `${safeFileName(this.testInfo.title)}-${this.testInfo.testId.slice(0, 8)}.zip`,
-        );
-        await this.context.tracing.stop({ path: savedTracePath });
-        logger.info(`Trace saved: ${savedTracePath}`);
-      } else {
-        await this.context.tracing.stop();
+    // ---- Final screenshot ----
+    try {
+      if (this.page) {
+        const screenshot = await this.page.screenshot({ fullPage: true });
+        await this.attach(screenshot, 'image/png');
       }
+    } catch (err) {
+      logger.error('Failed to capture final screenshot', err);
     }
-  } catch (err) {
-    logger.error('Failed to stop tracing', err);
-  }
 
-  // ---- Attach trace note ----
-  if (savedTracePath && fs.existsSync(savedTracePath)) {
-    await this.attach(
-      `Trace: ${savedTracePath}\nOpen at: https://trace.playwright.dev/`,
-      'text/plain',
-    );
-  }
-
-  // ---- Attach video ----
-  try {
-    if (videoPath && fs.existsSync(videoPath)) {
-      await this.attach(fs.readFileSync(videoPath), 'video/webm');
-    } else if (videoPath) {
-      logger.warn(`Video file not found at: ${videoPath}`);
+    // ---- Stop tracing ----
+    try {
+      if (this.context) {
+        if (config.traceEnabled) {
+          savedTracePath = path.join(
+            config.tracePath,
+            `${safeFileName(this.testInfo.title)}-${this.testInfo.testId.slice(0, 8)}.zip`,
+          );
+          await this.context.tracing.stop({ path: savedTracePath });
+          logger.info(`Trace saved: ${savedTracePath}`);
+        } else {
+          await this.context.tracing.stop();
+        }
+      }
+    } catch (err) {
+      logger.error('Failed to stop tracing', err);
     }
-  } catch (err) {
-    logger.warn('Unable to attach video', err);
-  }
 
-  const effectiveStatus =
-    scenarioPassed && hasSoftErrors
-      ? 'FAILED'
-      : scenarioPassed
-        ? 'PASSED'
-        : this.testInfo.status === 'failed' || this.testInfo.status === 'timedOut'
-          ? 'FAILED'
-          : 'SKIPPED';
+    // ---- Attach trace note ----
+    if (savedTracePath && fs.existsSync(savedTracePath)) {
+      await this.attach(`Trace: ${savedTracePath}\nOpen at: https://trace.playwright.dev/`, 'text/plain');
+    }
 
-  ResultStore.add({
-    module: path.basename($bddContext.featureUri, '.feature'),
-    name: this.testInfo.title,
-    status: effectiveStatus,
-    duration: end - (this.scenarioStart ?? end),
-    error: this.testInfo.error?.message || (hasSoftErrors ? this.softAssertErrors.join('\n') : ''),
-    startTime: time(this.scenarioStart ?? end),
-    endTime: time(end),
-    },
-  );
+    // ---- Attach video ----
+    try {
+      if (videoPath && fs.existsSync(videoPath)) {
+        await this.attach(fs.readFileSync(videoPath), 'video/webm');
+      } else if (videoPath) {
+        logger.warn(`Video file not found at: ${videoPath}`);
+      }
+    } catch (err) {
+      logger.warn('Unable to attach video', err);
+    }
 
-  this.softAssertErrors = [];
-  this.softAssertStepFailures = [];
-  this.currentStepSoftFailures = [];
-  this.currentStepHasSoftFailure = false;
-  this.currentStepHasWarning = false;
+    const effectiveStatus =
+      scenarioPassed && hasSoftErrors
+        ? 'FAILED'
+        : scenarioPassed
+          ? 'PASSED'
+          : this.testInfo.status === 'failed' || this.testInfo.status === 'timedOut'
+            ? 'FAILED'
+            : 'SKIPPED';
 
-  if (scenarioPassed && softFailures.length > 0) {
-    throw new Error(
-      'Soft assertion failures:\n' +
-        softFailures.map((f, i) => `${i + 1}. [${f.step}] ${f.message}`).join('\n'),
-    );
-  }
+    ResultStore.add({
+      module: path.basename($bddContext.featureUri, '.feature'),
+      name: this.testInfo.title,
+      status: effectiveStatus,
+      duration: end - (this.scenarioStart ?? end),
+      error: this.testInfo.error?.message || (hasSoftErrors ? this.softAssertErrors.join('\n') : ''),
+      startTime: time(this.scenarioStart ?? end),
+      endTime: time(end),
+    });
 
-  this.logger?.info(`Scenario finished: ${this.testInfo.title}`);
-});
+    this.softAssertErrors = [];
+    this.softAssertStepFailures = [];
+    this.currentStepSoftFailures = [];
+    this.currentStepHasSoftFailure = false;
+    this.currentStepHasWarning = false;
+
+    if (scenarioPassed && softFailures.length > 0) {
+      throw new Error(
+        'Soft assertion failures:\n' + softFailures.map((f, i) => `${i + 1}. [${f.step}] ${f.message}`).join('\n'),
+      );
+    }
+
+    this.logger?.info(`Scenario finished: ${this.testInfo.title}`);
+  },
+);
 
 // =====================================================
 // AfterAll

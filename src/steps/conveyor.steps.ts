@@ -41,36 +41,37 @@ Then('the user should see the add conveyor screen', async function (this: Scenar
   await this.conveyorPage.verifyAddConveyorScreenDisplayed();
 });
 
-When('user provides the conveyor name as {string} from test data', async function (
-  this: ScenarioContext,
-  conveyorNameToken: string,
-) {
-  const baseName = resolveTestDataToken(this.testData, conveyorNameToken);
-  // Append a unique suffix so repeated runs never collide with a previously created conveyor name.
-  const uniqueName = `${baseName}_${Date.now()}`;
-  this.testData['_createdConveyorName'] = uniqueName;
-  await this.conveyorPage.enterConveyorName(uniqueName);
-});
+When(
+  'user provides the conveyor name as {string} from test data',
+  async function (this: ScenarioContext, conveyorNameToken: string) {
+    const baseName = resolveTestDataToken(this.testData, conveyorNameToken);
+    // Append a unique suffix so repeated runs never collide with a previously created conveyor name.
+    const uniqueName = `${baseName}_${Date.now()}`;
+    this.testData['_createdConveyorName'] = uniqueName;
+    await this.conveyorPage.enterConveyorName(uniqueName);
+  },
+);
 
-When('user provides the customer site as {string} from test data', async function (
-  this: ScenarioContext,
-  customerSiteToken: string,
-) {
-  const siteName = resolveTestDataToken(this.testData, customerSiteToken);
-  await this.conveyorPage.selectCustomerSite(siteName);
-});
+When(
+  'user provides the customer site as {string} from test data',
+  async function (this: ScenarioContext, customerSiteToken: string) {
+    const siteName = resolveTestDataToken(this.testData, customerSiteToken);
+    await this.conveyorPage.selectCustomerSite(siteName);
+  },
+);
 
 When('user clicks on the Create button', async function (this: ScenarioContext) {
   await this.conveyorPage.clickCreateButton();
   await this.conveyorPage.ensureOnConveyorListScreenAfterCreate();
 });
 
-Then('the user should see the conveyor details screen with the newly added conveyor', async function (
-  this: ScenarioContext,
-) {
-  const conveyorName = String(this.testData['_createdConveyorName']);
-  await this.conveyorPage.verifyConveyorCreated(conveyorName);
-});
+Then(
+  'the user should see the conveyor details screen with the newly added conveyor',
+  async function (this: ScenarioContext) {
+    const conveyorName = String(this.testData['_createdConveyorName']);
+    await this.conveyorPage.verifyConveyorCreated(conveyorName);
+  },
+);
 
 Then(
   'verify the conveyor count is updated on the conveyor details screen after adding a new conveyor',
@@ -95,3 +96,35 @@ Then(
     await this.conveyorPage.verifyHomeConveyorCountIncreasedBy(countBeforeAdd, 1);
   },
 );
+
+// =====================================================
+// Dashboard Speed Dial / Navigation / Cancel / Back
+// =====================================================
+
+When('the user clicks on add button in dashboard', async function (this: ScenarioContext) {
+  await this.conveyorPage.clickAddButtonInDashboard();
+});
+
+Then('the user should see the list of module', async function (this: ScenarioContext) {
+  await this.conveyorPage.verifySpeedDialModuleListDisplayed();
+});
+
+When('the user clicks on the Add Conveyor module', async function (this: ScenarioContext) {
+  await this.conveyorPage.clickAddConveyorModule();
+});
+
+When('the user clicks cancel button', async function (this: ScenarioContext) {
+  await this.conveyorPage.clickCancelButton();
+});
+
+When('the user clicks on Conveyor tab in the bottom navigation', async function (this: ScenarioContext) {
+  await this.conveyorPage.goToConveyorTab();
+});
+
+When('the user clicks on add button in conveyor details screen', async function (this: ScenarioContext) {
+  await this.conveyorPage.clickAddButtonInConveyorDetails();
+});
+
+When('the user clicks back button', async function (this: ScenarioContext) {
+  await this.conveyorPage.clickBackButton();
+});

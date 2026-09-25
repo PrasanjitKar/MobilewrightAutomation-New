@@ -177,13 +177,14 @@ The "Add Conveyor" speed-dial option (semantic `addConveyor`, label `AppLocaliza
 
 | Metric | Value |
 |--------|-------|
-| Total Test Cases | 34 |
-| 📋 Planned | 34 |
+| Total Test Cases | 36 |
+| 📋 Planned | 36 |
 | 🟢 Active — Automated | 0 (0%) |
 | 🔵 In Progress | 0 |
 | 🔴 Blocked (infra) | 0 |
 | 🟢 Smoke TCs | 2 |
 | 🟡 Regression TCs | 32 |
+| 🟣 E2E TCs | 2 |
 | Platforms | iOS + Android |
 | Environments | STG / PRD |
 
@@ -197,6 +198,13 @@ The "Add Conveyor" speed-dial option (semantic `addConveyor`, label `AppLocaliza
 |----|-------|----------|--------|
 | [TC-CONVEYORS-001](./tc-conveyors-001-list-loads-with-permitted-view.md) | Conveyors list loads with tracked conveyors for a permitted user | Critical | 📋 Planned |
 | [TC-CONVEYORS-002](./tc-conveyors-002-add-conveyor-happy-path.md) | Add Conveyor — create a new conveyor with required fields (happy path) | Critical | 📋 Planned |
+
+### 🟣 End-to-End (E2E)
+
+| ID | Title | Priority | Status |
+|----|-------|----------|--------|
+| [TC-CONVEYORS-035](./tc-conveyors-035-e2e-full-conveyor-lifecycle.md) | E2E Full Conveyor Lifecycle (Create, Hub Navigation, Edit, Delete) | Critical | 📋 Planned |
+| [TC-CONVEYORS-036](./tc-conveyors-036-e2e-offline-conveyor-creation-and-sync.md) | E2E Offline Conveyor Creation & Background Sync | High | 📋 Planned |
 
 ### 🟡 Regression — List & RBAC
 

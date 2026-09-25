@@ -1,4 +1,4 @@
-import { Locator, Screen } from 'mobilewright';
+import { Device, Locator, Screen } from 'mobilewright';
 import { expect } from '@mobilewright/test';
 import BasePage from './base.page';
 import { HTMLSubStepLogger } from '../utils/htmlSubStepLogger';
@@ -13,7 +13,11 @@ import { HTMLSubStepLogger } from '../utils/htmlSubStepLogger';
  * coverage needed for `docs/test-suites/login` (TC-LOGIN-001 through TC-LOGIN-015).
  */
 export class LoginScreenPage extends BasePage {
-  constructor(screen: Screen, subStepLogger?: HTMLSubStepLogger) {
+  constructor(
+    screen: Screen,
+    private readonly device?: Device,
+    subStepLogger?: HTMLSubStepLogger,
+  ) {
     super(screen, subStepLogger);
   }
 
@@ -367,5 +371,172 @@ export class LoginScreenPage extends BasePage {
       'Email and password fields accept keyboard input and declare AutofillHints.email / AutofillHints.password ' +
         'in the Flutter source, making them eligible for platform autofill (Keychain / Autofill Service)',
     );
+  }
+
+  // ==================== Navigation Actions (TC-LOGIN-016) ====================
+
+  async tapBackButton(): Promise<void> {
+    await this.tap(this.backButton, 15_000);
+    await this.logSuccess('Back button tapped');
+  }
+
+  // ==================== Forgot Password Screen (TC-LOGIN-017..022) ====================
+
+  get forgotPasswordHeading(): Locator {
+    return this.screen.getByText('Forgot password', { exact: true });
+  }
+
+  get getVerificationCodeButton(): Locator {
+    return this.screen.getByText('Get Verification Code', { exact: true });
+  }
+
+  get verificationCodeAlreadyReceivedLink(): Locator {
+    return this.screen.getByText('Verification Code already received', { exact: true });
+  }
+
+  get forgotPasswordLoginLink(): Locator {
+    return this.screen.getByText('Login', { exact: true });
+  }
+
+  get forgotPasswordEmailLabel(): Locator {
+    return this.screen.getByText('E-Mail', { exact: false });
+  }
+
+  async tapForgotPasswordLink(): Promise<void> {
+    await this.tap(this.forgotPasswordLink, 15_000);
+    await this.logSuccess('"Forgot password" link tapped');
+  }
+
+  async verifyForgotPasswordScreenDisplayed(): Promise<void> {
+    await expect(this.forgotPasswordHeading).toBeVisible({ timeout: 15_000 });
+    await this.logSuccess('Forgot Password screen is displayed');
+  }
+
+  async verifyForgotPasswordUIElements(): Promise<void> {
+    await expect(this.forgotPasswordHeading).toBeVisible({ timeout: 15_000 });
+    await expect(this.screen.getByText('E-Mail', { exact: false })).toBeVisible({ timeout: 10_000 });
+    await expect(this.getVerificationCodeButton).toBeVisible({ timeout: 10_000 });
+    await expect(this.verificationCodeAlreadyReceivedLink).toBeVisible({ timeout: 10_000 });
+    await expect(this.forgotPasswordLoginLink).toBeVisible({ timeout: 10_000 });
+    await expect(this.backButton).toBeVisible({ timeout: 10_000 });
+    await this.logSuccess(
+      'Forgot Password screen displays heading, email field, Get Verification Code button, links, and Back button',
+    );
+  }
+
+  async typeForgotPasswordEmail(email: string): Promise<void> {
+    if (!email) {
+      // Empty input — leave the field blank as expected for empty validation
+      return;
+    }
+    const box = await this.forgotPasswordEmailLabel.boundingBox({ timeout: 15_000 });
+    await this.screen.tap(box.x + 50, box.y + box.height + 40);
+    await this.waitForTime(500);
+    if (this.device) {
+      await this.device.driver.typeText(email);
+    }
+    await this.logSuccess(`Entered email "${email}" on Forgot Password screen`);
+  }
+
+  async tapGetVerificationCodeButton(): Promise<void> {
+    await this.tap(this.getVerificationCodeButton, 15_000);
+    await this.logSuccess('"Get Verification Code" button tapped');
+  }
+
+  async verifyForgotPasswordEmailError(expectedError: string): Promise<void> {
+    const byText = this.screen.getByText(expectedError, { exact: false });
+    const byLabel = this.screen.getByLabel(expectedError, { exact: false });
+    const match = await this.findFirstVisible([byText, byLabel], 10_000);
+    if (!match) {
+      throw new Error(`Forgot Password screen did not display expected error "${expectedError}"`);
+    }
+    await this.logSuccess(`Forgot Password screen shows email validation error: "${expectedError}"`);
+  }
+
+  async tapVerificationCodeAlreadyReceivedLink(): Promise<void> {
+    await this.tap(this.verificationCodeAlreadyReceivedLink, 15_000);
+    await this.logSuccess('"Verification Code already received" link tapped');
+  }
+
+  async tapForgotPasswordLoginLink(): Promise<void> {
+    await this.tap(this.forgotPasswordLoginLink, 15_000);
+    await this.logSuccess('"Login" link tapped on Forgot Password screen');
+  }
+
+  // ==================== Reset Password Screen (TC-LOGIN-023..025) ====================
+
+  get resetPasswordHeading(): Locator {
+    return this.screen.getByText('Reset password', { exact: true });
+  }
+
+  get resetPasswordSubmitButton(): Locator {
+    return this.screen.getByText('Submit', { exact: true });
+  }
+
+  async verifyResetPasswordScreenDisplayed(): Promise<void> {
+    await expect(this.resetPasswordHeading).toBeVisible({ timeout: 15_000 });
+    await this.logSuccess('Reset Password screen is displayed');
+  }
+
+  async verifyResetPasswordUIElements(): Promise<void> {
+    await expect(this.resetPasswordHeading).toBeVisible({ timeout: 15_000 });
+    await expect(this.screen.getByText('E-Mail', { exact: false })).toBeVisible({ timeout: 10_000 });
+    await expect(this.screen.getByText('Verification Code', { exact: false })).toBeVisible({ timeout: 10_000 });
+    await expect(this.screen.getByText('New Password', { exact: false })).toBeVisible({ timeout: 10_000 });
+    await expect(this.screen.getByText('Confirm Password', { exact: false })).toBeVisible({ timeout: 10_000 });
+    await expect(this.resetPasswordSubmitButton).toBeVisible({ timeout: 10_000 });
+    await expect(this.backButton).toBeVisible({ timeout: 10_000 });
+    await this.logSuccess('Reset Password screen displays all required fields, Submit button, and Back button');
+  }
+
+  async fillResetPasswordForm(code: string, newPassword: string, confirmPassword: string): Promise<void> {
+    const inputs = this.screen.getByType('android.widget.EditText');
+    if (code) {
+      const codeInput = inputs.nth(1);
+      await this.tap(codeInput, 10_000);
+      await codeInput.fill(code, { timeout: 10_000 });
+    }
+    if (newPassword) {
+      const newPwInput = inputs.nth(2);
+      await this.tap(newPwInput, 10_000);
+      await newPwInput.fill(newPassword, { timeout: 10_000 });
+    }
+    if (confirmPassword) {
+      const confirmPwInput = inputs.nth(3);
+      await this.tap(confirmPwInput, 10_000);
+      await confirmPwInput.fill(confirmPassword, { timeout: 10_000 });
+    }
+    await this.logSuccess(`Filled Reset Password form with code: "${code}", new password, and confirm password`);
+  }
+
+  async tapResetPasswordSubmitButton(): Promise<void> {
+    await this.tap(this.resetPasswordSubmitButton, 15_000);
+    await this.logSuccess('Reset Password "Submit" button tapped');
+  }
+
+  async verifyResetPasswordValidationError(expectedError: string): Promise<void> {
+    const byText = this.screen.getByText(expectedError, { exact: false });
+    const byLabel = this.screen.getByLabel(expectedError, { exact: false });
+    const match = await this.findFirstVisible([byText, byLabel], 10_000);
+    if (!match) {
+      throw new Error(`Reset Password screen did not display expected error "${expectedError}"`);
+    }
+    await this.logSuccess(`Reset Password screen shows validation error: "${expectedError}"`);
+  }
+
+  // ==================== Paste Password & Space Trimming (TC-LOGIN-034, 035) ====================
+
+  async pastePasswordIntoField(password: string): Promise<void> {
+    await this.tap(this.passwordTextField, 15_000);
+    await this.passwordTextField.fill(password, { timeout: 15_000 });
+    await this.logSuccess(`Pasted password into password field (length ${password.length})`);
+  }
+
+  async enterUsernameAndPasswordWithSpaces(username: string, password: string): Promise<void> {
+    await this.tap(this.emailTextField, 15_000);
+    await this.emailTextField.fill(username, { timeout: 15_000 });
+    await this.tap(this.passwordTextField, 15_000);
+    await this.passwordTextField.fill(password, { timeout: 15_000 });
+    await this.logSuccess(`Entered username "${username}" and password with surrounding spaces`);
   }
 }

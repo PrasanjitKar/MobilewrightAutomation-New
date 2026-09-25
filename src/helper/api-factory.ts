@@ -3,71 +3,47 @@ import { ConfigurationManager } from '../config/ConfigurationManager';
 import logger from '../utils/logger';
 
 export class ApiFactory {
+  private apiContext?: APIRequestContext;
 
-    private apiContext?: APIRequestContext;
+  async initApi(): Promise<APIRequestContext> {
+    logger.info('Initializing API session');
 
-    async initApi(): Promise<APIRequestContext> {
+    this.apiContext = await ApiClient.createSession();
 
-        logger.info(
-            'Initializing API session'
-        );
+    logger.info('API session initialized');
 
-        this.apiContext =
-            await ApiClient.createSession();
+    return this.apiContext;
+  }
 
-        logger.info(
-            'API session initialized'
-        );
-
-        return this.apiContext;
+  getApi(): APIRequestContext {
+    if (!this.apiContext) {
+      throw new Error('API session not initialized');
     }
 
-    getApi(): APIRequestContext {
+    return this.apiContext;
+  }
 
-        if (!this.apiContext) {
+  async closeApi(): Promise<void> {
+    if (this.apiContext) {
+      await this.apiContext.dispose();
 
-            throw new Error(
-                'API session not initialized'
-            );
-        }
-
-        return this.apiContext;
+      logger.info('API session closed');
     }
-
-    async closeApi(): Promise<void> {
-
-        if (this.apiContext) {
-
-            await this.apiContext.dispose();
-
-            logger.info(
-                'API session closed'
-            );
-        }
-    }
+  }
 }
 
 export class ApiClient {
+  static async createSession(): Promise<APIRequestContext> {
+    return await request.newContext({
+      baseURL: ConfigurationManager.config().baseUrl,
 
-    static async createSession(): Promise<APIRequestContext> {
+      extraHTTPHeaders: {
+        'Content-Type': 'application/json',
 
-        return await request.newContext({
+        Authorization: `Bearer ${ConfigurationManager.config().authToken}`,
+      },
 
-            baseURL:
-                ConfigurationManager.config().baseUrl,
-
-            extraHTTPHeaders: {
-
-                'Content-Type':
-                    'application/json',
-
-                Authorization:
-                    `Bearer ${ConfigurationManager.config().authToken}`,
-
-            },
-
-            timeout:
-                ConfigurationManager.config().apiTimeout
-        });
-    }
+      timeout: ConfigurationManager.config().apiTimeout,
+    });
+  }
 }

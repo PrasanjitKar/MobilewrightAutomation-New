@@ -83,13 +83,14 @@ Every card is a `HomeCard` (`home_screen/widgets/home_card.dart`) with:
 
 | Metric | Value |
 |--------|-------|
-| Total Test Cases | 32 |
-| 📋 Planned | 32 |
+| Total Test Cases | 46 |
+| 📋 Planned | 46 |
 | 🟢 Active — Automated | 0 (0%) |
 | 🔵 In Progress | 0 |
 | 🔴 Blocked (infra) | 0 |
-| 🟢 Smoke TCs | 1 |
-| 🟡 Regression TCs | 31 |
+| 🟢 Smoke TCs | 4 |
+| 🟡 Regression TCs | 41 |
+| 🟣 E2E TCs | 1 |
 | Platforms | iOS + Android |
 | Environments | STG / PRD |
 
@@ -102,6 +103,15 @@ Every card is a `HomeCard` (`home_screen/widgets/home_card.dart`) with:
 | ID | Title | Priority | Status |
 |----|-------|----------|--------|
 | [TC-DASHBOARD-001](./tc-dashboard-001-dashboard-loads-with-permitted-cards.md) | Dashboard loads with app bar title "Home" and all permission-eligible cards | Critical | 📋 Planned |
+| [TC-DASHBOARD-033](./tc-dashboard-033-bottom-nav-home-tab-navigation.md) | Bottom Nav — Home tab navigation to dashboard | Critical | 📋 Planned |
+| [TC-DASHBOARD-034](./tc-dashboard-034-bottom-nav-conveyors-tab-navigation.md) | Bottom Nav — Conveyors tab navigation to conveyor list | Critical | 📋 Planned |
+| [TC-DASHBOARD-037](./tc-dashboard-037-bottom-nav-inspections-tab-navigation.md) | Bottom Nav — Inspections tab navigation to inspection list | Critical | 📋 Planned |
+
+### 🟣 End-to-End (E2E)
+
+| ID | Title | Priority | Status |
+|----|-------|----------|--------|
+| [TC-DASHBOARD-046](./tc-dashboard-046-e2e-multi-module-dashboard-hub-journey.md) | E2E Multi-Module Dashboard Hub Journey (Login, Summary Counters, Quick Add, Multi-Tab) | Critical | 📋 Planned |
 
 ### 🟡 Regression — Layout & Permissions
 
@@ -158,6 +168,8 @@ Every card is a `HomeCard` (`home_screen/widgets/home_card.dart`) with:
 |----|-------|----------|--------|
 | [TC-DASHBOARD-026](./tc-dashboard-026-bottom-nav-active-state-and-user-type.md) | Home tab active state + 4-tab (guest) vs 5-tab (full user) bottom nav | High | 📋 Planned |
 | [TC-DASHBOARD-027](./tc-dashboard-027-back-button-behavior.md) | Hardware back button exits app on Home, returns to Home on other tabs | Medium | 📋 Planned |
+| [TC-DASHBOARD-035](./tc-dashboard-035-bottom-nav-corporates-tab-navigation.md) | Bottom Nav — Corporates tab navigation to companies/sites list | High | 📋 Planned |
+| [TC-DASHBOARD-036](./tc-dashboard-036-bottom-nav-tools-tab-navigation.md) | Bottom Nav — Tools tab navigation to engineering tools screen | High | 📋 Planned |
 
 ### 🟡 Regression — Add (Speed Dial) FAB
 
@@ -166,6 +178,14 @@ Every card is a `HomeCard` (`home_screen/widgets/home_card.dart`) with:
 | [TC-DASHBOARD-028](./tc-dashboard-028-fab-visibility-and-scoping.md) | FAB is hidden for guests and for Belt Scan / Minuteman / Heavy Equipment cards | High | 📋 Planned |
 | [TC-DASHBOARD-029](./tc-dashboard-029-fab-speed-dial-options-per-card.md) | FAB speed-dial options are scoped to the currently selected card | High | 📋 Planned |
 | [TC-DASHBOARD-030](./tc-dashboard-030-fab-connectivity-gating.md) | Add Corporate / Add Site / Add Conveyor speed-dial options require connectivity | Medium | 📋 Planned |
+| [TC-DASHBOARD-038](./tc-dashboard-038-fab-quick-add-corporate.md) | FAB Quick Add — Corporate (`CompanyAddScreen`) | High | 📋 Planned |
+| [TC-DASHBOARD-039](./tc-dashboard-039-fab-quick-add-site.md) | FAB Quick Add — Site (`SiteAddScreen`) | High | 📋 Planned |
+| [TC-DASHBOARD-040](./tc-dashboard-040-fab-quick-add-conveyor.md) | FAB Quick Add — Conveyor (`ConveyorDetailsScreen`) | High | 📋 Planned |
+| [TC-DASHBOARD-041](./tc-dashboard-041-fab-quick-add-cover-wear.md) | FAB Quick Add — Cover Wear (`CoverWearAddScreen`) | High | 📋 Planned |
+| [TC-DASHBOARD-042](./tc-dashboard-042-fab-quick-add-inspection.md) | FAB Quick Add — Inspection (`AddInspectionEventScreen`) | High | 📋 Planned |
+| [TC-DASHBOARD-043](./tc-dashboard-043-fab-quick-add-conveyor-inspect.md) | FAB Quick Add — Conveyor Inspect (`AddEditConveyorInspectEvent`) | High | 📋 Planned |
+| [TC-DASHBOARD-044](./tc-dashboard-044-fab-quick-add-monitoring-device.md) | FAB Quick Add — Monitoring Device (`MonitoringDeviceDetailsScreen`) | High | 📋 Planned |
+| [TC-DASHBOARD-045](./tc-dashboard-045-fab-quick-add-field-service-form.md) | FAB Quick Add — Field Service Form Modal & Navigation | High | 📋 Planned |
 
 ### 🟡 Regression — Deep Links
 

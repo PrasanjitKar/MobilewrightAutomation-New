@@ -26,24 +26,22 @@ Then('the email and password fields should be displayed', async function (this: 
   await this.appLaunchPage.verifyLoginFieldsDisplayed();
 });
 
-Then('the user provides username as {string} and password as {string}', async function (
-  this: ScenarioContext,
-  username: string,
-  password: string,
-) {
-  await this.appLaunchPage.provideCredentials(username, password);
-});
+Then(
+  'the user provides username as {string} and password as {string}',
+  async function (this: ScenarioContext, username: string, password: string) {
+    await this.appLaunchPage.provideCredentials(username, password);
+  },
+);
 
-Then('the user provides username as {string} and password as {string} from test data', async function (
-  this: ScenarioContext,
-  usernameToken: string,
-  passwordToken: string,
-) {
-  const username = resolveTestDataToken(this.testData, usernameToken);
-  const password = resolveTestDataToken(this.testData, passwordToken);
+Then(
+  'the user provides username as {string} and password as {string} from test data',
+  async function (this: ScenarioContext, usernameToken: string, passwordToken: string) {
+    const username = resolveTestDataToken(this.testData, usernameToken);
+    const password = resolveTestDataToken(this.testData, passwordToken);
 
-  await this.appLaunchPage.provideCredentials(username, password);
-});
+    await this.appLaunchPage.provideCredentials(username, password);
+  },
+);
 
 Then('the user clicks on the login button', async function (this: ScenarioContext) {
   await this.appLaunchPage.clickLoginButton();

@@ -1,0 +1,1570 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><title>testspec ContiPlus - Monitoring Devices</title>
+<link type="text/css" rel="stylesheet" href="http://testlink.1988.ec1.aws.contitech.cloud/gui/themes/default/css/tl_documents.css" />
+<style type="text/css" media="print">.notprintable { display:none;}</style>
+</head>
+<body>
+<div>
+<div style="float:right;">TestLink Community [configure $tlCfg-&gt;document_generator-&gt;company_name]</div>
+<div>&nbsp;</div><hr />
+<p style="text-align: center;"><img alt="TestLink logo" title="configure using $tlCfg->document_generator->company_logo"  width=231 height=56 src="http://testlink.1988.ec1.aws.contitech.cloud/gui/themes/default/images/tl-logo-transparent-25.png" /></p></div>
+<div class="doc_title"><p>Test Specification</p></div>
+<div class="doc_title" style="text-align:left;margin: auto;"><p>Test Project: ContiPlus<br/>Test Suite: ContiPlus - Monitoring Devices</p></div>
+<div class="summary"><p id="printedby">Printed by TestLink on 22/09/2026</p></div>
+<div class="pagefooter" id="copyright">2021 &copy; TestLink Community</div>
+<h1 class="general" style="page-break-before: always">Table Of Contents</h1><div class="toc"><p style="padding-left: 20px;"><b><a href="#toc_1">1.Monitoring Devices</a></b></p>
+<p style="padding-left: 45px;"><a href="#toc_tc25133">CTCP-2971: Verify the 'Monitoring Devices' card is visible on the Home page.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25138">CTCP-2972: Verify the UI of 'Monitoring Devices' card on the Home page.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25142">CTCP-2973: Verify the Count displayed on the 'Monitoring Devices' Card.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25146">CTCP-2974: Navigate to Monitoring Devices list page</a></p><p style="padding-left: 45px;"><a href="#toc_tc25151">CTCP-2975: Verify the UI of Top Navigation bar.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25157">CTCP-2976: Verify the values are available under each Device in Device list screen.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25163">CTCP-2977: Verify the Quick actions are available for each Device under Device list screen.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25169">CTCP-2978: Verify the Tab bar at bottom of the Device list page.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25175">CTCP-2979: Verify the Monitoring Devices tile available on Conveyor Level.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25180">CTCP-2980: Verify the Count displayed on the 'Monitoring Devices' Card at conveyor level.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25186">CTCP-2981: Click on 'File Manager' folder for specific Device under Device list page and Verify the functionali</a></p><p style="padding-left: 45px;"><a href="#toc_tc25192">CTCP-2982: Verify the &quot;Monitoring Devices&quot; folder is created automatically in the File Manager page after creat</a></p><p style="padding-left: 45px;"><a href="#toc_tc25199">CTCP-2983: Verify the Automatic folder is created under 'Monitoring Devices' filder with the Device Name.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25206">CTCP-2984: Verify the Conveyor on the File Manager screen after click on File Manager icon on Monitoring Device</a></p><p style="padding-left: 45px;"><a href="#toc_tc25213">CTCP-2985: Verify the number of &quot;Monitoring Devices&quot; folders on File Manager screen when we create the Monitori</a></p><p style="padding-left: 45px;"><a href="#toc_tc25220">CTCP-2986: Verify the folder with name as 'Device name' is created automatically inside the 'Monitoring Devices</a></p><p style="padding-left: 45px;"><a href="#toc_tc25227">CTCP-2987: Verify the latest created device is visible at the top under 'Monitoring Devices' folder under File</a></p><p style="padding-left: 45px;"><a href="#toc_tc25234">CTCP-2988: Verify the order of Devices visible under 'Monitoring Devices' folder when we have multiple duplicat</a></p><p style="padding-left: 45px;"><a href="#toc_tc25241">CTCP-2989: Click on back button at the top left corner of File Manager page and verify its functionality.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25248">CTCP-2990: Verify the visibility of 'Access to System Software' link for specific Device when user is not provi</a></p><p style="padding-left: 45px;"><a href="#toc_tc25254">CTCP-2991: Verify the visibility of 'Access to System Software' link for specific Device when user is provided</a></p><p style="padding-left: 45px;"><a href="#toc_tc25260">CTCP-2992: Verify the functionality when click on Active 'Access to System Software' button for specifc Device</a></p><p style="padding-left: 45px;"><a href="#toc_tc25267">CTCP-2993: Click on the 'Monitoring Device Location' pin which is visible for particular Device.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25273">CTCP-2994: Click on each pin under Map and verify the particular names are displayed.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25280">CTCP-2995: Verify the Header bar of the Map screen.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25287">CTCP-2996: Click on back button on the Map screen and verify the functionality.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25295">CTCP-2997: Click on QR Code which is visible for particular device.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25301">CTCP-2998: Click on the 'Close' button and X button on the QR Code popup and verify the functionality.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25308">CTCP-2999: Verify the Step &quot;1&quot; Device fields are visible when user click on specific Device.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25314">CTCP-3000: Verify the Step &quot;2&quot; Location fields are visible when user click on specific Device.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25322">CTCP-3001: Click on the Devices Pin visible on the Map under Step &quot;2&quot; Location page and verify the functionalit</a></p><p style="padding-left: 45px;"><a href="#toc_tc25330">CTCP-3002: Click on back button at top left corner of Devices list page and verify the functionality.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25336">CTCP-3003: Verify the Search functionality under Devices list page.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25342">CTCP-3004: Verify the Filter functionality under Devices list page.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25348">CTCP-3005: Verify the Refresh button fucntionality under Device list page.</a></p><p style="padding-left: 45px;"><a href="#toc_tc25354">CTCP-3006: Click on Profile button under Devices list page and verify the functionality.</a></p><p style="padding-left: 45px;"><a href="#toc_tc63567">CTCP-4108: Verify back navigation functionality when user scan the monitoring device</a></p><p style="padding-left: 45px;"><a href="#toc_tc67620">CTCP-4216: Verify user should display with Manufacturing status device for Master/CCM/Keyuser</a></p><p style="padding-left: 45px;"><a href="#toc_tc67628">CTCP-4217: Verify Except Master/Key/CCM, other user should not be displayed with manufacturing device.</a></p><p style="padding-left: 45px;"><a href="#toc_tc77727">CTCP-4608: Verify user should be able to add monitoring devices from device listing screen</a></p><p style="padding-left: 45px;"><a href="#toc_tc77736">CTCP-4609: Verify user create devices with status: Running</a></p><p style="padding-left: 45px;"><a href="#toc_tc77744">CTCP-4610: Verify user create devices with status: Prior to commissioning</a></p><p style="padding-left: 45px;"><a href="#toc_tc77752">CTCP-4611: Verify user create devices with status: Not in Operation</a></p><p style="padding-left: 45px;"><a href="#toc_tc77766">CTCP-4612: Verify user should be able to edit the monitoring device that was added</a></p><p style="padding-left: 45px;"><a href="#toc_tc77778">CTCP-4613: Verify the delete functionality of the monitoring device</a></p><p style="padding-left: 45px;"><a href="#toc_tc77785">CTCP-4614: Verify user edit the existing old monitoring devicesa</a></p><p style="padding-left: 45px;"><a href="#toc_tc77791">CTCP-4615: Verify the quick action are available for device added from mobile and their functionality</a></p><p style="padding-left: 45px;"><a href="#toc_tc77802">CTCP-4616: Verify the functionality when Manufacturing Status is selected from the drop down</a></p><p style="padding-left: 45px;"><a href="#toc_tc77813">CTCP-4617: Verify permission to select Manufacturing status while adding the MD for different users</a></p><p style="padding-left: 45px;"><a href="#toc_tc77823">CTCP-4618: Verify the functionality when user change the status from Manufacturing to Prior to Commissioning</a></p><p style="padding-left: 45px;"><a href="#toc_tc77834">CTCP-4619: Verify the card count is updated when status changed for manufacturing device.</a></p><p style="padding-left: 45px;"><a href="#toc_tc79655">CTCP-4670: Verify user Add, Edit, view and delete Monitoring Device from conveyor Level</a></p></div><a name='toc_1'></a>
+<h1 class='doclevel'>1.Test Suite : Monitoring Devices</h1>
+<a name="toc_tc25133"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2971: Verify the 'Monitoring Devices' card is visible on the Home page.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>Login to the Mobile Conti+ application.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>Login to the Mobile Conti+ application.</p>
+</td></tr><tr><td width="5">2</td><td><p>Click on Home page button.</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25138"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2972: Verify the UI of 'Monitoring Devices' card on the Home page.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the UI of &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the UI of &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td><td><p>UI of the &#39;Monitoring Devices&#39; tile contains below values -<br />
+- &#39;Monitoring Devices&#39; title.<br />
+- Logo of Monitoring Devices.<br />
+- Number is visible next to Logo.<br />
+- Count on the Green/Orange/Red boxes (if available) at the bottom of the tile.&nbsp;&nbsp; &nbsp;</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25142"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2973: Verify the Count displayed on the 'Monitoring Devices' Card.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Count displayed on the &#39;Monitoring Devices&#39; Card.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the Count displayed on the &#39;Monitoring Devices&#39; Card.</p>
+</td><td><p>User is able to see the exact count on the card when compared to available Devices inside &#39;Monitoring Devices&#39; card.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25146"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2974: Navigate to Monitoring Devices list page&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Navigate to Monitoring Devices list page</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25151"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2975: Verify the UI of Top Navigation bar.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the UI of Top Navigation bar.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the UI of Top Navigation bar.</p>
+</td><td><p>UI of the top Navigation bar contains below values -<br />
+- &lt;- (Back button)<br />
+- Devices (as a title)<br />
+- Search icon.<br />
+- Filter option. (Next to Search icon)<br />
+- Refresh button. (Next to Filter option)<br />
+- Profile image (Next to Refresh button)</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25157"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2976: Verify the values are available under each Device in Device list screen.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Last edit by:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the values are available under each Device in Device list screen.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the values are available under each Device in Device list screen.</p>
+</td><td><p>Each Device contains below values-<br />
+- Device name at Bold text.<br />
+- Site Name.<br />
+- Conveyor Name.<br />
+- Territory name.<br />
+- Status<br />
+- Installation Date.<br />
+- Conveyor Saves.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25163"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2977: Verify the Quick actions are available for each Device under Device list screen.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Quick actions are available for each Device under Device list screen.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the Quick actions are available for each Device under Device list screen.</p>
+</td><td><p>User could see below Quick actions:</p>
+
+<p>- File Manager<br />
+- Access to System Software<br />
+- Monitoring Device Location<br />
+- QR Code</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25169"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2978: Verify the Tab bar at bottom of the Device list page.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Last edit by:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Tab bar at bottom of the Device list page.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the Visibility of Tab bar at bottom of the Device list page (Means button like Home, Conveyor, Corporates, Free Tools and Inspections) - N/A in listing screen, only on home screen</p>
+</td><td><p>User is Not able to see the Tab bar at the bottom of the page.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25175"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2979: Verify the Monitoring Devices tile available on Conveyor Level.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Last edit by:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Monitoring Devices tile available on Conveyor Level.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Click on the Conveyors tile and open any specific conveyor which is having Monitoring Devices.</p>
+</td><td><p>User is able to open the Conveyor.</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the conveyor page.</p>
+</td><td><p>User could see the &#39;Monitoring Device&#39; tile is available.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user click on the MD tile</p>
+</td><td><p>All devices that belong to conveyor should be displayed</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user checks sequence of the devices that belong to conveyor in the conveyor level</p>
+</td><td><p>Mobile Device list Sequence should match as it is displayed on web Device list on conveyor level</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25180"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2980: Verify the Count displayed on the 'Monitoring Devices' Card at conveyor level.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Count displayed on the &#39;Monitoring Devices&#39; Card at conveyor level.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Click on the Conveyors tile and open any specific conveyor which is having Monitoring Devices.</p>
+</td><td><p>User is able to open the Conveyor.</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the conveyor page.</p>
+</td><td><p>User could see the &#39;Monitoring Device&#39; tile is available.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the Count displayed on the &#39;Monitoring Devices&#39; Card at conveyor level.</p>
+</td><td><p>User is able to see the exact count on the card when compared to available Devices inside &#39;Monitoring Devices&#39; card for specific conveyor.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25186"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2981: Click on 'File Manager' folder for specific Device under Device list page and Verify the functionali&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on &#39;File Manager&#39; folder for specific Device under Device list page and Verify the functionality.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on &#39;File Manager&#39; folder for specific Device under Device list page and Verify the functionality.</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25192"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2982: Verify the &quot;Monitoring Devices&quot; folder is created automatically in the File Manager page after creat&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the &quot;Monitoring Devices&quot; folder is created automatically in the File Manager page after creation of Monitoring Device.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on &#39;File Manager&#39; folder for specific Device under Device list page and Verify the functionality.</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the &quot;Monitoring Devices&quot; folder is created automatically in the File Manager page.</p>
+</td><td><p>User could see the &quot;Monitoring Devices&quot; folder is created automatically in the File Manager page.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25199"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2983: Verify the Automatic folder is created under 'Monitoring Devices' filder with the Device Name.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Automatic folder is created under &#39;Monitoring Devices&#39; filder with the Device Name.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on &#39;File Manager&#39; folder for specific Device under Device list page and Verify the functionality.</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the Automatic folder is created under &#39;Monitoring Devices&#39; filder with the Device Name.</p>
+</td><td><p>Automatic folder is created with Device Name under &#39;Monitoring Devices&#39; folder.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25206"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2984: Verify the Conveyor on the File Manager screen after click on File Manager icon on Monitoring Device&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Conveyor on the File Manager screen after click on File Manager icon on Monitoring Devices list page for specific Device.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on &#39;File Manager&#39; folder for specific Device under Device list page and Verify the functionality.</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the Conveyor on the File Manager screen is related to associated device.</p>
+</td><td><p>User could see the Conveyor name is assiciated to particular Device.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25213"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2985: Verify the number of &quot;Monitoring Devices&quot; folders on File Manager screen when we create the Monitori&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the number of &quot;Monitoring Devices&quot; folders on File Manager screen when we create the Monitoring device again with new device name on the same conveyor.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on the &#39;File Manager&#39; folder of specific device which is having new Device name on the same existing Conveyor (Means for this conveyor already Device is created).</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the number of &quot;Monitoring Devices&quot; folders on File Manager screen when we create the Monitoring device again with new device name on the same conveyor.</p>
+</td><td><p>User could see only one &quot;Monitoring Devices&quot; folder under &#39;File Manager&#39; screen even if we create multiple monitoring devices on the same conveyor.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25220"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2986: Verify the folder with name as 'Device name' is created automatically inside the 'Monitoring Devices&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the folder with name as &#39;Device name&#39; is created automatically inside the &#39;Monitoring Devices&#39; folder When we created with same existing device name for same conveyor.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click o the &#39;File Manager&#39; filder of specific device which is created with same existing Device name for Same Conveyor.</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the folder with name as &#39;Device name&#39; is created automatically inside the &#39;Monitoring Devices&#39; folder When we created with same existing device name for same conveyor.</p>
+</td><td><p>User could see the folder is created automatically with the created device name again with extenstion of (1) inside &#39;Monitoring Devices&#39; screen.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25227"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2987: Verify the latest created device is visible at the top under 'Monitoring Devices' folder under File&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the latest created device is visible at the top under &#39;Monitoring Devices&#39; folder under File Manager screen.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on the &#39;File Manager&#39; folder of specific device which is having multiple devices under same Conveyor.</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the latest created device is visible at the top under &#39;Monitoring Devices&#39; folder under File Manager screen.</p>
+</td><td><p>User could see recently created device under specific conveyor should be visible at top under &#39;Monitoring Devices&#39; folder under &#39;File Manager&#39; Screen.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25234"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2988: Verify the order of Devices visible under 'Monitoring Devices' folder when we have multiple duplicat&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the order of Devices visible under &#39;Monitoring Devices&#39; folder when we have multiple duplicate Devices for same conveyor.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on the &#39;File Manager&#39; folder of specific device which is having multiple duplicate Devices for the same conveyor.</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the order of Devices visible under &#39;Monitoring Devices&#39; folder when we have multiple duplicate Devices for same conveyor.</p>
+</td><td><p>User could see the multiple Devices created with the same name like below -<br />
+Device(2)<br />
+Device(1)<br />
+Device</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25241"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2989: Click on back button at the top left corner of File Manager page and verify its functionality.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on back button at the top left corner of File Manager page and verify its functionality.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on the &#39;File Manager&#39; folder of specific device.</p>
+</td><td><p>User is navigated to File Manager of associated conveyor.</p>
+</td></tr><tr><td width="5">5</td><td><p>Click on back button at the top left corner of File Manager page and verify its functionality.</p>
+</td><td><p>User is navigated to Device list page.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25248"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2990: Verify the visibility of 'Access to System Software' link for specific Device when user is not provi&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the visibility of &#39;Access to System Software&#39;<br />
+link for specific Device when user is not provided any value under &#39;Access to System Software&#39; while creation.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the visibility of &#39;Access to System Software&#39;<br />
+link for specific Device when user is not provided any value under &#39;Access to System Software&#39; while creation.</p>
+</td><td><p>User could see the button is greyed out.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25254"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2991: Verify the visibility of 'Access to System Software' link for specific Device when user is provided&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the visibility of &#39;Access to System Software&#39;<br />
+link for specific Device when user is provided http or www. url under &#39;Access to System Software&#39; while creation.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the visibility of &#39;Access to System Software&#39;<br />
+link for specific Device when user is provided http or www. url under &#39;Access to System Software&#39; while creation.</p>
+</td><td><p>User could see the button is activated.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25260"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2992: Verify the functionality when click on Active 'Access to System Software' button for specifc Device&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the functionality when click on Active &#39;Access to System Software&#39; button for specifc Device under Devices list page.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the visibility of &#39;Access to System Software&#39;<br />
+link for specific Device when user is provided http or www. url under &#39;Access to System Software&#39; while creation.</p>
+</td><td><p>User could see the button is activated.</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the functionality when click on Active &#39;Access to System Software&#39; button for specifc Device under Devices list page.</p>
+</td><td><p>Default browser will be opened with the url is given under &#39;Access to System Software&#39; field while creation of device.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25267"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2993: Click on the 'Monitoring Device Location' pin which is visible for particular Device.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on the &#39;Monitoring Device Location&#39; pin which is visible for particular Device.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on the &#39;Monitoring Device Location&#39; pin which is visible for particular Device.</p>
+</td><td><p>User is navigated to Map screen and able to see H, T and Monitoring Device pin (if available).</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25273"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2994: Click on each pin under Map and verify the particular names are displayed.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on each pin under Map and verify the particular names are displayed.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on the &#39;Monitoring Device Location&#39; pin which is visible for particular Device.</p>
+</td><td><p>User is navigated to Map screen and able to see H, T and Monitoring Device pin (if available).</p>
+</td></tr><tr><td width="5">5</td><td><p>Click on each pin under Map and verify the particular names are displayed.</p>
+</td><td><p>User could see below values -<br />
+- If user click on H, will get popup value as Head.<br />
+- If user click on T, will get popup value as Tail.<br />
+- If user click on Device, will get popup value as Device name.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25280"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2995: Verify the Header bar of the Map screen.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Last edit by:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Header bar of the Map screen.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on the &#39;Monitoring Device Location&#39; pin which is visible for particular Device.</p>
+</td><td><p>User is navigated to Map screen and able to see H, T and Monitoring Device pin (if available).</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the Header bar of the Map screen.</p>
+</td><td><p>Header bar contains the below values-<br />
+- &lt;-- (back button)<br />
+- Device name&nbsp;<br />
+- Bell icon.(N/A)<br />
+- Vertical 3 dots.(N/A)</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25287"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2996: Click on back button on the Map screen and verify the functionality.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Last edit by:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on back button on the Map screen and verify the functionality.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on the &#39;Monitoring Device Location&#39; pin which is visible for particular Device.</p>
+</td><td><p>User is navigated to Map screen and able to see H, T and Monitoring Device pin (if available).</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the Header bar of the Map screen.</p>
+</td><td><p>Header bar contains the below values-<br />
+- &lt;-- (back button)<br />
+- Device name<br />
+- Bell icon. (N/A)<br />
+- Vertical 3 dots. (N/A)</p>
+</td></tr><tr><td width="5">6</td><td><p>Click on back button on the Map screen and verify the functionality.</p>
+</td><td><p>User is landed to Device list page.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25295"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2997: Click on QR Code which is visible for particular device.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Last edit by:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on QR Code which is visible for particular device.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on QR Code which is visible for particular device.</p>
+</td><td><p>New popup will open with below values-<br />
+- Device Name- site is visible at the top.<br />
+- Cross (X) button to close the popup.<br />
+- Preview of the QR Code.<br />
+- &#39;Close&#39; button.<br />
+- &#39;Print QR&#39; (N/A) Download button&nbsp;is dislayed&nbsp;&nbsp;</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25301"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2998: Click on the 'Close' button and X button on the QR Code popup and verify the functionality.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on the &#39;Close&#39; button and X button on the QR Code popup and verify the functionality.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on QR Code which is visible for particular device.</p>
+</td><td><p>New popup will open with below values-<br />
+- Device Type is visible at the top.<br />
+- Cross (X) button to close the popup.<br />
+- Preview of the QR Code.<br />
+- &#39;Close&#39; button.<br />
+- &#39;Print QR&#39; button.</p>
+</td></tr><tr><td width="5">5</td><td><p>Click on the &#39;Close&#39; button and X button on the QR Code popup and verify the functionality.</p>
+</td><td><p>QR Code popup should gets closed.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25308"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-2999: Verify the Step &quot;1&quot; Device fields are visible when user click on specific Device.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Last edit by:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Step &quot;1&quot; Device fields are visible when user click on specific Device.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on any specific Device and verify the Step &quot;1&quot; Device fields are visible on the page.</p>
+</td><td><p>User could see the following details related to my Monitoring Device, when I click on it:</p>
+
+<p>Device Name<br />
+Device Type<br />
+(Load Sense / Multi Protect / Cord Protect / Rip Protect / Other)<br />
+Brand<br />
+Serial Number<br />
+Firmware version<br />
+Remote Connection<br />
+(3G/4G router / Local only / VPN through mine site)<br />
+Installation Date<br />
+Commissioning Date<br />
+Last Service Date<br />
+Access To System Software<br />
+Belt/Conveyor saves<br />
+Status<br />
+(Running / Not in Operation / Prior to Commissioning)</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25314"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-3000: Verify the Step &quot;2&quot; Location fields are visible when user click on specific Device.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Step &quot;2&quot; Location fields are visible when user click on specific Device.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on any specific Device from the list.</p>
+</td><td><p>User could see the Step &quot;1&quot; Device fields are visible on the page.</p>
+</td></tr><tr><td width="5">5</td><td><p>Click on &#39;Next&#39; button at the bottom of the page and verify the landing page.</p>
+</td><td><p>Usre is navigated to Step &quot;2&quot; Location screen.</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify the Step &quot;2&quot; Location fields are visible when user click on specific Device.</p>
+</td><td><p>User could see the following details related to the location of my Monitoring Device, when I click on it:</p>
+
+<p><br />
+Associated Distributor<br />
+Site<br />
+Conveyor<br />
+Latitude<br />
+Longitude<br />
+Map of Conveyor incl. Tail/Head/Monitoring Devices</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25322"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-3001: Click on the Devices Pin visible on the Map under Step &quot;2&quot; Location page and verify the functionalit&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Last edit by:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on the Devices Pin visible on the Map under Step &quot;2&quot; Location page and verify the functionality.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on any specific Device from the list.</p>
+</td><td><p>User could see the Step &quot;1&quot; Device fields are visible on the page.</p>
+</td></tr><tr><td width="5">5</td><td><p>Click on &#39;Next&#39; button at the bottom of the page and verify the landing page.</p>
+</td><td><p>Usre is navigated to Step &quot;2&quot; Location screen.</p>
+</td></tr><tr><td width="5">6</td><td><p>Click on the Devices Pin visible on the Map under Step &quot;2&quot; Location page and verify the functionality.</p>
+</td><td><p>On click user will get the Device name for specific pin&nbsp;</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25330"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-3002: Click on back button at top left corner of Devices list page and verify the functionality.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on back button at top left corner of Devices list page and verify the functionality.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on back button at top left corner of Devices list page and verify the functionality.</p>
+</td><td><p>User is navigate to Home page.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25336"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-3003: Verify the Search functionality under Devices list page.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Search functionality under Devices list page.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on Search button at the Top Navigation bar and Verify the Search functionality.</p>
+</td><td><p>Search functionality should work with Device Name and Associate Conveyors.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25342"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-3004: Verify the Filter functionality under Devices list page.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Filter functionality under Devices list page.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on Filter button at the Top Navigation bar and Verify the Filter functionality.</p>
+</td><td><p>New Filter popup will open and based on the search data will get the results on the Devices list page accordingly.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25348"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-3005: Verify the Refresh button fucntionality under Device list page.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the Refresh button fucntionality under Device list page.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on Refresh button at the Top Navigation bar and Verify the Filter functionality.</p>
+</td><td><p>Devices list page will gets refreshed.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc25354"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-3006: Click on Profile button under Devices list page and verify the functionality.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">Sandhani_uif65808</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Click on Profile button under Devices list page and verify the functionality.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on Home page.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Pre condition&nbsp;</p>
+</td><td><p>User is on Home page.</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is able to see the &#39;Monitoring Devices&#39; card on the Home page.</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on Profile button at the Top right corner Navigation bar and Verify the Filter functionality.</p>
+</td><td><p>My Profile page will gets opened and will contains user Profile information.</p>
+</td></tr><tr><td width="5">5</td><td><p>Click on back button of the Profile page.</p>
+</td><td><p>User is navigated to Device list page.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc63567"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4108: Verify back navigation functionality when user scan the monitoring device&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uie_32437</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify back navigation functionality when user scan the monitoring device&nbsp;</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User scan&nbsp; QA code of monitoring device via mobile&nbsp;</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Scan QR code of monitoring device&nbsp;</p>
+</td><td><p>User should be able to scan the device&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td><p>Post scanning landing page&nbsp;</p>
+</td><td><p>User should land to view mode of that particular device post scanning&nbsp;</p>
+</td></tr><tr><td width="5">3</td><td><p>Click on back button&nbsp;</p>
+</td><td><p>On click back button user will land to device listing screen at site level&nbsp;</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on back button&nbsp;</p>
+</td><td><p>User will land to conveyor details screen&nbsp;</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" ></td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-10231:  Mobile : Version v7 : Monitoring devices back navigation changes as per dee [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc67620"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4216: Verify user should display with Manufacturing status device for Master/CCM/Keyuser&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify user should display with Manufacturing status device for Master/CCM/Keyuser</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>Master/CCM/Key User should add device with&nbsp;manufacturing status from web&nbsp;</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify as master user, add a device with status as manufacturing&nbsp;</p>
+</td><td><p>Device should be added in web and check the count</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify as master user in mobile, check the Monitoring device card</p>
+</td><td><p>Card count should display the Yellow flag</p>
+
+<p>&nbsp;</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify mobile user navigate to listing screen</p>
+</td><td><p>Manufactur device that was added from the web should be displayed.</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the file manager icon will be disabled for Manufacturing status device</p>
+</td><td><p>File manger folder is disabled for the user</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the step from 1-4 for CCM</p>
+</td><td><p>Expected Result from Step1-4 should be dipslayed</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify from step1-4 for Key USer</p>
+</td><td><p>Expected Result: from step1-4 should be working as expected</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify for the above mentioned user,&nbsp;Yellow condition flag should be displayed</p>
+</td><td><p>&nbsp;Yellow condition flag should be displayed and correct count as per web should be displayed</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >To Be Analysed</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-13332:  Support Monitoring device Manufacturing status in Mobile [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc67628"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4217: Verify Except Master/Key/CCM, other user should not be displayed with manufacturing device.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify Except Master/Key/CCM, other user should not be displayed with manufacturing device.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User logged in as Cust/Dist/MM/TM/Std cont User and&nbsp;is on monitoring device listing page</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Login as Cust user and navigate to MD page</p>
+</td><td><p>Device having status with manifacturing should not be displayed</p>
+</td></tr><tr><td width="5">2</td><td><p>Login as Distuser and navigate to MD page</p>
+</td><td><p>Device having status with manifacturing should not be displayed</p>
+</td></tr><tr><td width="5">3</td><td><p>Login as MM user and navigate to MD page</p>
+</td><td><p>Device having status with manifacturing should not be displayed</p>
+</td></tr><tr><td width="5">4</td><td><p>Login as TM user and navigate to MD page</p>
+</td><td><p>Device having status with manifacturing should not be displayed</p>
+</td></tr><tr><td width="5">5</td><td><p>Login as std conti user and navigate to MD page</p>
+</td><td><p>Device having status with manifacturing should not be displayed</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >To Be Analysed</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-13332:  Support Monitoring device Manufacturing status in Mobile [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77727"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4608: Verify user should be able to add monitoring devices from device listing screen&nbsp;<span style="font-size: 80%;">[Version  : 3]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify user should be able to add monitoring devices from device listing screen</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is logged into mobile app and is on device listing screen</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify&nbsp;&quot;+&quot; button available to initiate the action on the device listing screen</p>
+</td><td><p>&quot;+&quot; ion is displayed</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify user click on + icon&nbsp;</p>
+</td><td><p>Add monitoring device header should be displayed with Create and cancel button&nbsp;</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify the field in step1 Add device tab</p>
+</td><td><p>Add device tab should be hoghlighted with below input fields</p>
+
+<ul>
+	<li>Device Name *</li>
+	<li>Device Type *
+	<ul>
+		<li>CordProtect</li>
+		<li>LoadSense</li>
+		<li>MultiProtect</li>
+		<li>Other</li>
+		<li>RipProtect</li>
+		<li>SurfaceProtect</li>
+	</ul>
+	</li>
+	<li>Brand</li>
+	<li>Serial Number</li>
+	<li>Firmware Version</li>
+	<li>Remote Connection</li>
+	<li>Installation Date</li>
+	<li>Commissioning Date</li>
+	<li>Last Service Date</li>
+	<li>Access to System Software</li>
+	<li>Belt / Conveyor Saves</li>
+	<li>Status *
+	<ul>
+		<li>Running</li>
+		<li>Not in Operation</li>
+		<li>Prior to Commissioning</li>
+		<li>Manufacturing</li>
+	</ul>
+	</li>
+	<li>Comments</li>
+</ul>
+</td></tr><tr><td width="5">4</td><td><p>Verify user enter all the fields in step 1 click on next button</p>
+</td><td><p>Step 2: &quot;Add Location&quot; tab selected with below fields</p>
+
+<ul>
+	<li>Associated Distributor</li>
+	<li>Site *</li>
+	<li>Conveyor *</li>
+	<li>Time Zone *</li>
+	<li>Latitude</li>
+	<li>Longitude</li>
+</ul>
+</td></tr><tr><td width="5">5</td><td><p>Verify default time zone dropdown</p>
+</td><td><p>local device timezone should be default and user is allowed to change the drop down</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify user enter all the values in step 2 and click on cancel</p>
+</td><td><p>Monitoring device is not created and redirected to device listing page</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify user click on + icon and enter all the details in step and step2 and click on create button</p>
+</td><td><p>Monitoring Device should be created</p>
+</td></tr><tr><td width="5">8</td><td><p>Verify all the drop down fields&nbsp;search field in dropdown is removed&nbsp;</p>
+
+<p>Drop dwon fields are</p>
+
+<p>1. Device type</p>
+
+<p>2. Remote Connection</p>
+
+<p>3.Status</p>
+
+<p>4. Associated distributor</p>
+
+<p>5. Site</p>
+
+<p>6. Conveyor</p>
+</td><td><p>search field in dropdown should removed&nbsp;if dropdown list is not scrollable.</p>
+
+<p>&nbsp;</p>
+</td></tr><tr><td width="5">9</td><td><p>Verify user search for the newly created device</p>
+</td><td><p>Newly created device should be displayed when searched</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br />CTCP-15199:  [Monitoring device] Mobile: Adding new field TimeZone [Version : 1]<br />CTCP-17015:  Remove Search in dropdown if list is not scrollable [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77736"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4609: Verify user create devices with status: Running&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify user create devices with status: Running</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is logged into mobile app and is on device listing screen</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user click on + icon&nbsp;on the device listing screen</p>
+
+<p>&nbsp;</p>
+</td><td><p>Step1: Add device is displayed</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify user enter only the below mandatory field and click on next</p>
+
+<ul>
+	<li>Device Name *</li>
+	<li>Device Type *</li>
+	<li>Status - Select status as running</li>
+</ul>
+</td><td><p>Step2 Add location page is displayed</p>
+</td></tr><tr><td width="5">3</td><td><p>Versiy user select site and click on conveyor dropdown</p>
+</td><td><p>Conveyor should be filtered based on the site selected</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user click on create button</p>
+</td><td><p>Device should be created successfully</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify Device count should be incremented&nbsp;</p>
+</td><td><p>DEvice count&nbsp;</p>
+
+<p>Main Count should be incremented by one&nbsp;</p>
+
+<p>Green status (Running) should be incrmeneted by one&nbsp;</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify user navigate to conveyor level Monitoring Devices and check the newly added device is displayed and count is correct</p>
+</td><td><p>Newly added device should be displayed with correct count (card and status count)</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77744"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4610: Verify user create devices with status: Prior to commissioning&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify user create devices with status: Running</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is logged into mobile app and is on device listing screen</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user click on + icon&nbsp;on the device listing screen</p>
+
+<p>&nbsp;</p>
+</td><td><p>Step1: Add device is displayed</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify user enter only the below mandatory field and click on next</p>
+
+<ul>
+	<li>Device Name *</li>
+	<li>Device Type *</li>
+	<li>Status - Select status as prior to commissioning</li>
+</ul>
+</td><td><p>Step2 Add location page is displayed</p>
+</td></tr><tr><td width="5">3</td><td><p>Versiy user select conveyor from the drop down linked to a Distributor shop</p>
+
+<p>Note: Conveyor should not have any location</p>
+</td><td><p>Site and Associated distributor shop should be autofilled</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user select the lat and long poistion from the map</p>
+</td><td><p>Monitoring device icon (Refer figma) should be on the map with site pin on the map</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user click on create button</p>
+</td><td><p>Device should be created successfully</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify Device count should be incremented&nbsp;</p>
+</td><td><p>DEvice count&nbsp;</p>
+
+<p>Main Count should be incremented by one&nbsp;</p>
+
+<p>ORange status (Prior to commissioning) should be incrmeneted by one&nbsp;</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify user navigate to conveyor level Monitoring Devices and check the newly added device is displayed and count is correct</p>
+</td><td><p>Newly added device should be displayed with correct count (card and status count)</p>
+</td></tr><tr><td width="5">8</td><td><p>Verify user view the monitoring device</p>
+</td><td><p>All entered fields should be displayed in view mode with monitoring device pin along with the site pin.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">&nbsp;None<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc77752"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4611: Verify user create devices with status: Not in Operation&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify user create devices with status: Running</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is logged into mobile app and is on device listing screen</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user click on + icon&nbsp;on the device listing screen</p>
+
+<p>&nbsp;</p>
+</td><td><p>Step1: Add device is displayed</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify user enter all the&nbsp;field and click on next</p>
+
+<ul>
+	<li>Status - Select status as Not in operation</li>
+</ul>
+</td><td><p>Step2 Add location page is displayed</p>
+</td></tr><tr><td width="5">3</td><td><p>Versiy user select associate distributor shop&nbsp;</p>
+</td><td><p>sites should be filtered based on the associated distrbutor shop</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user select the site&nbsp;</p>
+</td><td><p>Conveyor should be filtered based on the site&nbsp;</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user select the conveyor having cordinates and select the lat, long position on the maps</p>
+</td><td><p>Values should be sleected&nbsp;</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify user click on create button</p>
+</td><td><p>Device should be created successfully</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify Device count should be incremented&nbsp;</p>
+</td><td><p>DEvice count&nbsp;</p>
+
+<p>Main Count should be incremented by one&nbsp;</p>
+
+<p>Red status (Not in Operation) should be incrmeneted by one&nbsp;</p>
+</td></tr><tr><td width="5">8</td><td><p>Verify user navigate to conveyor level Monitoring Devices and check the newly added device is displayed and count is correct</p>
+</td><td><p>Newly added device should be displayed with correct count (card and status count)</p>
+</td></tr><tr><td width="5">9</td><td><p>Verify user view the device and check all the fields are displaying correct value</p>
+</td><td><p>Correct values sould be displayed on the view mode in step 1 and step2</p>
+</td></tr><tr><td width="5">10</td><td><p>Verify user is able to view the monitoring device on the map with conveyor cordinates</p>
+</td><td><p>Monitoring device should be displayed with device name and conveyor cordinates</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">&nbsp;None<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc77766"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4612: Verify user should be able to edit the monitoring device that was added&nbsp;<span style="font-size: 80%;">[Version  : 3]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify user should be able to edit the monitoring device that was added</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is on mobile device listing page&nbsp;</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user select a new monitoring device that has all the fields entered</p>
+</td><td><p>Monitoring device should be selected</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify edit option is available under 3dots</p>
+</td><td><p>Edit option should be displayed</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify user select the edit option</p>
+</td><td><p>Edit monitoring Device header is displayed</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user should be able to edit all the fields except the serial number</p>
+
+<p>Note:<strong> Change the status&nbsp; from running to not in operation</strong></p>
+</td><td><p>All the fields should be editable except the serial number</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user click on next</p>
+</td><td><p>Add location page is dislpayed</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify user update the site, conveyor,Time zone and location of the device</p>
+</td><td><p>site, conveyor, Time zone and location should be edited</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify all the drop down fields&nbsp;search field in dropdown is removed in edit mode&nbsp;</p>
+
+<p>Drop dwon fields are</p>
+
+<p>1. Device type</p>
+
+<p>2. Remote Connection</p>
+
+<p>3.Status</p>
+
+<p>4. Associated distributor</p>
+
+<p>5. Site</p>
+
+<p>6. Conveyor</p>
+</td><td><p>If dropdown is not scrollable, remove the search field from the drop dwon</p>
+</td></tr><tr><td width="5">8</td><td><p>Verify user is able to see save and cancel button</p>
+</td><td><p>save and cancel button should be displayed</p>
+</td></tr><tr><td width="5">9</td><td><p>Verify user click on save</p>
+</td><td><p>Data should be updated successfully</p>
+</td></tr><tr><td width="5">10</td><td><p>Verify user view the updated monitoring device</p>
+</td><td><p>All the fields(if edited)&nbsp;should see updated data</p>
+</td></tr><tr><td width="5">11</td><td><p>Verify the main card count and status count</p>
+</td><td><p>Main card&nbsp; count remains the same</p>
+
+<p>the status count of running - decremented by one</p>
+
+<p>the status count of not in operation - incremented by one</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br />CTCP-15199:  [Monitoring device] Mobile: Adding new field TimeZone [Version : 1]<br />CTCP-17015:  Remove Search in dropdown if list is not scrollable [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77778"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4613: Verify the delete functionality of the monitoring device&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the delete functionality of the monitoring device</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is on device listing screen</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user is select a monitoring device&nbsp;</p>
+</td><td><p>&nbsp;Monitoring device should be selected</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify user click on 3dots</p>
+</td><td><p>Delete option should be displayed</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify user click on delete option&nbsp;</p>
+</td><td><p>confirmation pop- up is displayed</p>
+
+<p>&quot;Are your sure, you want to delete the following monitoring device&quot;</p>
+
+<ul>
+	<li>List of the device1</li>
+</ul>
+
+<p>Yes and No option&nbsp;</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user click on yes</p>
+</td><td><p>Device should be deleted successfully and count should be updated accordingly</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user select multiple device and delete&nbsp;</p>
+</td><td><p>all selected devices should be deleted ssuccessfully and count should be updated accordingly</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77785"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4614: Verify user edit the existing old monitoring devicesa&nbsp;<span style="font-size: 80%;">[Version  : 2]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify user edit the existing old monitoring devicesa</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is on device listing screen</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user select an old exiting monitoring device and edit the device</p>
+</td><td><p>device should be in editing mode</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the time zone value for old existing device</p>
+</td><td><p>Local time zone should be displayed as default time zon for old existing time zone</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify user change the time zon in the edit mode</p>
+</td><td><p>Time zone should be changed</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user update few fields and save</p>
+</td><td><p>Device should be updated successfully and count should be updated accordingly</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user view the updated device&nbsp;</p>
+</td><td><p>Updated data should be displayed in the view mode</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify in the view mode user should not be able to edit any of the fields</p>
+</td><td><p>No fields should be editable in the view mode.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br />CTCP-15199:  [Monitoring device] Mobile: Adding new field TimeZone [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77791"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4615: Verify the quick action are available for device added from mobile and their functionality&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the quick action are available for device added from mobile and their functionality</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on device listing screen</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><table>
+	<tbody>
+		<tr>
+			<td>
+			<p>Click on the &#39;Monitoring Devices&#39; card is visible on the Home page.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</td><td><p>User is navigated to Monitoring Devices list page.</p>
+</td></tr><tr><td width="5">2</td><td><table>
+	<tbody>
+		<tr>
+			<td>
+			<p>Verify the Quick actions are available for each Device under Device list screen</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</td><td><table>
+	<tbody>
+		<tr>
+			<td>
+			<p>User could see below Quick actions:</p>
+
+			<p>- File Manager<br />
+			- Access to System Software<br />
+			- Monitoring Device Location<br />
+			- QR Code</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</td></tr><tr><td width="5">3</td><td><p>Verify user click on file manger icon</p>
+</td><td><p>User is redirected to file manger of the conveyor level with default&nbsp;folder(&nbsp;created under monitoring device folder&nbsp;</p>
+
+<p><em>Folder name will be device name</em></p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user should be able to upload image, video and files</p>
+</td><td><p>Images, videos and files should be uplodaed</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify the uploaded files should be able to download</p>
+</td><td><p>Uploaded files should be downloaded in the device</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify user click on Access to system software link</p>
+</td><td><p>USer should be redirected to the link provided in the system software link</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify user click on monitoring device location</p>
+</td><td><p>Monitoring Device&nbsp;pin should be displayed on the maps with the&nbsp;name of the device&nbsp;</p>
+</td></tr><tr><td width="5">8</td><td><p>Verify user click on the QR code icon</p>
+</td><td><p>QR code should be displayed</p>
+</td></tr><tr><td width="5">9</td><td><p>Verify user download the QR code</p>
+</td><td><p>QA should be downloaded in the device with device name</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77802"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4616: Verify the functionality when Manufacturing Status is selected from the drop down&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the functionality when Manufacturing Status is selected from the drop down</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User logged in as Master/CCM/KeyUser and&nbsp;is on monitoring device listing page</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user click on the Add icon from MD listing screen as master/CCM/Key user</p>
+</td><td><p>Add Device page should be displayed</p>
+
+<p>&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify user enter the device name,&nbsp;device type and status (mandatory fields)</p>
+</td><td><p>Device name, type and status should be entered and selected.</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify status drop down should be mandatory</p>
+</td><td><p>Status drop down should be mandatory i.e asterisk should be displayed</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user click on status drop down</p>
+</td><td><p>Status drop down should have new status added</p>
+
+<p>Manufacting (new Status)</p>
+
+<p>Prior to Commissioning</p>
+
+<p>Running</p>
+
+<p>Not in Operation</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user select status as &quot;Manufacturing&quot; and click on step 2 &quot;Add location&quot;</p>
+</td><td><p>&ldquo;Site&rdquo; and &ldquo;Conveyor&rdquo; fields are greyed out (not clickable).</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify User click on Create in Step 2 without entering location</p>
+</td><td><p>Monitoring device should be created</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify the created device is displayed on the listing screen</p>
+</td><td><p>Device is displayed on the listing screen with status as Manufacturing in Yellow under status column</p>
+</td></tr><tr><td width="5">8</td><td><p>Verify the Yellow flag is displayed on the Main card</p>
+</td><td><p>Yellow flag with total Yellow count(manufacturing) should be displayed for master, CCM and Key user</p>
+</td></tr><tr><td width="5">9</td><td><p>Verify user click on folder icon for the device with Manufacturing status</p>
+</td><td><p>User should not be redirected to file manger i.e&nbsp;Folder creation does not take place for status &quot;Manufacturing&quot;</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Automated</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77813"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4617: Verify permission to select Manufacturing status while adding the MD for different users&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify permission to select Manufacturing status while adding the MD for different users</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>User is on MD listing page&nbsp;</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Login as&nbsp;Master user and click on Add icon&nbsp;in MD Listing screen</p>
+</td><td><p>Master user&nbsp;is able to select the status &quot;Manufacturuing.)</p>
+</td></tr><tr><td width="5">2</td><td><p>Login as&nbsp;CCM user and click on Add icon&nbsp;in MD Listing screen</p>
+</td><td><p>CCM is able to select the status &quot;Manufacturuing.</p>
+</td></tr><tr><td width="5">3</td><td><p>Login as Key&nbsp;user and click on Add icon&nbsp;in MD Listing screen</p>
+</td><td><p>Key is able to select the status &quot;Manufacturuing.</p>
+</td></tr><tr><td width="5">4</td><td><p>Login as&nbsp;customer user and click on Add icon&nbsp;in MD Listing screen</p>
+</td><td><p>Customer user should not be&nbsp;able to select the status &quot;Manufacturuing.</p>
+</td></tr><tr><td width="5">5</td><td><p>Login as&nbsp;Distributor user and click on Add icon&nbsp;in MD Listing screen</p>
+</td><td><p>Distributor user should not be&nbsp;able to select the status &quot;Manufacturuing.</p>
+</td></tr><tr><td width="5">6</td><td><p>Login as&nbsp;Std Conti user and click on Add icon&nbsp;in MD Listing screen</p>
+</td><td><p>Std Conti&nbsp;user should not be&nbsp;able to select the status &quot;Manufacturuing.</p>
+</td></tr><tr><td width="5">7</td><td><p>Login as&nbsp;Market Manager user and click on Add icon&nbsp;in MD Listing screen</p>
+</td><td><p>Market Manager user should not be&nbsp;able to select the status &quot;Manufacturuing.</p>
+</td></tr><tr><td width="5">8</td><td><p>Login as&nbsp;Territory Manager user and click on Add icon&nbsp;in MD Listing screen</p>
+</td><td><p>Territory Manager user should not be&nbsp;able to select the status &quot;Manufacturuing.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Automated</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77823"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4618: Verify the functionality when user change the status from Manufacturing to Prior to Commissioning&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the functionality when user change the status from Manufacturing to Prior to Commissioning</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is on MD&nbsp;listing page</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user select a device with status as manufacturing from device listing screen</p>
+</td><td><p>Action button should display option to edit</p>
+</td></tr><tr><td width="5">2</td><td><p>Click on edit</p>
+</td><td><p>User is allowed to open device in Edit button</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify user change the status from manufacturing to Prior to commissiong&nbsp;</p>
+</td><td><p>Prior to commissioning should be slected&nbsp;</p>
+</td></tr><tr><td width="5">4</td><td><p>Click on step2 or add location page&nbsp;</p>
+</td><td><p>&ldquo;Site&rdquo; and &ldquo;Conveyor&rdquo; fields become mandatory when status changed from manufacturing to Prior to commissioning&nbsp;</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user change the status from manufacturing to Running</p>
+</td><td><p>&ldquo;Site&rdquo; and &ldquo;Conveyor&rdquo; fields become mandatory when status changed from manufacturing to Running</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify user change the status from manufacturing to Not in Operation</p>
+</td><td><p>&ldquo;Site&rdquo; and &ldquo;Conveyor&rdquo; fields become mandatory when status changed from manufacturing to Not in Operation</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify user Save the updated status by selecting the site, conveyor and location</p>
+</td><td><p>Monitoring device is successfully updated and status should display as Not in operation, with selected site, conveyor and location in the listing screen</p>
+</td></tr><tr><td width="5">8</td><td><p>Verify after changing the status, user click on file manger folder</p>
+</td><td><p>User is directed to file manger page, and device folder is added under Monitoring device folder</p>
+</td></tr><tr><td width="5">9</td><td><p>Verify user edit the above updated device and check the status drop down</p>
+</td><td><p>Manufacturing status should not display&nbsp;in the drop down for user (master/CCM/Key User)</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc77834"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4619: Verify the card count is updated when status changed for manufacturing device.&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify the card count is updated when status changed from manufacturing to Running, Not in Operation and Prior to Commissioning.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>user is on MD listing screem</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user edit the device with status from manufacturing to running&nbsp;</p>
+</td><td><p>Status should be saved as Running&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify the count of running i.e Green flag</p>
+</td><td><p>Green&nbsp;flag should increment by 1</p>
+</td></tr><tr><td width="5">3</td><td><table>
+	<tbody>
+		<tr>
+			<td>
+			<p>Verify user edit the device with status from manufacturing to Not in operation&nbsp;</p>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</td><td><p>Status should be saved as Not in operation</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify the count of not in opertation i.e Red flag</p>
+</td><td><p>Red Flag should increment by 1</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user edit the device with status from manufacturing to&nbsp;Prior to Commissioning</p>
+</td><td><p>Status should be saved as Prior to Commissioning</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify the count of&nbsp;Prior to Commissioning i.e Orange flag</p>
+</td><td><p>Orange flag should be incremented by 1</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify user delete the device with manufacturing status</p>
+</td><td><p>Device should be deleted and count should be updated.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+<a name="toc_tc79655"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case CTCP-4670: Verify user Add, Edit, view and delete Monitoring Device from conveyor Level&nbsp;<span style="font-size: 80%;">[Version  : 2]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">uig84184</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Verify user Add, Edit, view and delete Monitoring Device from conveyor Level</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>USer is on conveyor details page</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Verify user add Device from conveyor Level</p>
+</td><td><p>Device should be added with shop,site and cv prefilled&nbsp;</p>
+
+<p>&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td><p>Verify shop site and cv is greyed out</p>
+</td><td><p>Shop site and Cv is non-editable</p>
+</td></tr><tr><td width="5">3</td><td><p>Verify user click on create</p>
+</td><td><p>Device should be created</p>
+</td></tr><tr><td width="5">4</td><td><p>Verify user edit the same device from CV level</p>
+</td><td><p>Edit mode shop, site and cv is prefilled and non editable</p>
+</td></tr><tr><td width="5">5</td><td><p>Verify user Edit Device from conveyor Level</p>
+</td><td><p>Device should be Edited(Change status from Running to prior to commissioning/not in operation) and count of flag should be incremented in conveyor level Card</p>
+
+<p>&nbsp;</p>
+</td></tr><tr><td width="5">6</td><td><p>Verify user View Device from conveyor Level</p>
+</td><td><p>Device should be viewed and correct details should be displayed</p>
+</td></tr><tr><td width="5">7</td><td><p>Verify user Delete Device from conveyor Level</p>
+</td><td><p>Device should be deleted and correct count should be updated in conveyor level MD card</p>
+</td></tr><tr><td width="5">8</td><td><p>Verify quick action are enabled and respective&nbsp;quick action functionality should work as expected</p>
+</td><td><p>Quick action functionality should work as expected</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">High</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > Automation Status:</td><td  colspan = "3" >Ready for Automation</td></tr>
+<tr><td > Notes:</td><td  colspan = "3" ></td></tr>
+<tr><td > Review Comments:</td><td  colspan = "3" ></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">CTCP-14290:  Monitoring Device Add and Edit [Version : 1]<br />CTCP-14690:  Mobile: When device added from conveyor level, associated distributor, site [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">Regression<br /></td></tr>
+</table>
+</div>
+
+</body>
+</html>

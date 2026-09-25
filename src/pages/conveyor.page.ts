@@ -36,6 +36,33 @@ export class ConveyorPage extends BasePage {
     return this.screen.getByLabel('homeTab');
   }
 
+  get homeFloatingActionButton(): Locator {
+    return this.screen.getByLabel('homeFloatingActionButton');
+  }
+
+  get conveyorFloatingActionButton(): Locator {
+    return this.screen.getByLabel('conveyorFloatingActionButton');
+  }
+
+  get conveyorTab(): Locator {
+    return this.screen.getByLabel('conveyorTab');
+  }
+
+  // ---- Speed dial module options ----
+  get speedDialModuleOptions(): Locator[] {
+    return [
+      this.screen.getByLabel('addConveyor'),
+      this.screen.getByText('Add Conveyor', { exact: false }),
+      this.screen.getByText('Add Site', { exact: false }),
+      this.screen.getByText('Add Corporate', { exact: false }),
+      this.screen.getByText('Add Cover Wear', { exact: false }),
+      this.screen.getByText('Add Inspection', { exact: false }),
+      this.screen.getByText('Add Conveyor Inspect', { exact: false }),
+      this.screen.getByText('Add Monitoring Device', { exact: false }),
+      this.screen.getByText('Add Field Service Form', { exact: false }),
+    ];
+  }
+
   // ---- Conveyor list screen ----
   // The list screen's count widget renders the label ("listCountConveyor") on a wrapper node
   // and the actual "<N> Results Found" text on a separate child node, so we target the text
@@ -71,6 +98,25 @@ export class ConveyorPage extends BasePage {
 
   get createButtonCandidates(): Locator[] {
     return [this.screen.getByLabel('bottomActionButton'), this.screen.getByLabel('bottomActionButtonTab')];
+  }
+
+  get cancelButtonCandidates(): Locator[] {
+    return [
+      this.screen.getByLabel('cancelButton'),
+      this.screen.getByLabel('cancelButtonTab'),
+      this.screen.getByText('Cancel', { exact: true }),
+    ];
+  }
+
+  get backButtonCandidates(): Locator[] {
+    return [
+      this.screen.getByLabel('appbarBackButton'),
+      this.screen.getByLabel('backArrowFromConveyor'),
+      this.screen.getByLabel('Back'),
+      this.screen.getByLabel('Navigate up'),
+      this.screen.getByType('android.widget.ImageView').first(),
+      this.screen.getByType('android.widget.ImageButton').first(),
+    ];
   }
 
   // ---- Actions ----
@@ -222,12 +268,67 @@ export class ConveyorPage extends BasePage {
     await this.logSuccess('Navigated to Home tab');
   }
 
+  async clickAddButtonInDashboard(): Promise<void> {
+    await this.tap(this.homeFloatingActionButton, 15_000);
+    await this.logSuccess('Tapped add button in dashboard (home speed dial)');
+  }
+
+  async verifySpeedDialModuleListDisplayed(): Promise<void> {
+    const visibleModule = await this.findFirstVisible(this.speedDialModuleOptions, 15_000);
+    if (!visibleModule) {
+      throw new Error('Speed dial module list (e.g. Add Conveyor) did not become visible');
+    }
+    await this.logSuccess('Speed dial list of modules is displayed');
+  }
+
+  async clickAddConveyorModule(): Promise<void> {
+    const addConveyorOption = await this.findFirstVisible(
+      [this.addConveyorSpeedDialOption, this.screen.getByText('Add Conveyor', { exact: false })],
+      15_000,
+    );
+    if (!addConveyorOption) {
+      throw new Error('Add Conveyor module option was not found in speed dial');
+    }
+    await this.tap(addConveyorOption, 10_000);
+    await this.logSuccess('Tapped Add Conveyor module from speed dial');
+  }
+
+  async clickCancelButton(): Promise<void> {
+    const cancelButton = await this.findFirstVisible(this.cancelButtonCandidates, 15_000);
+    if (!cancelButton) {
+      throw new Error('Cancel button was not visible on the Add Conveyor screen');
+    }
+    await this.tap(cancelButton, 10_000);
+    await this.logSuccess('Cancel button tapped');
+  }
+
+  async goToConveyorTab(): Promise<void> {
+    await this.tap(this.conveyorTab, 15_000);
+    await this.logSuccess('Navigated to Conveyor tab in bottom navigation');
+  }
+
+  async clickAddButtonInConveyorDetails(): Promise<void> {
+    await this.tap(this.conveyorFloatingActionButton, 15_000);
+    await this.logSuccess('Tapped add button (FAB) on conveyor details screen');
+  }
+
+  async clickBackButton(): Promise<void> {
+    const backButton = await this.findFirstVisible(this.backButtonCandidates, 15_000);
+    if (!backButton) {
+      throw new Error('Back button was not visible on the screen');
+    }
+    await this.tap(backButton, 10_000);
+    await this.logSuccess('Back button tapped');
+  }
+
   async verifyHomeConveyorCountIncreasedBy(previousCount: number, expectedIncrease: number): Promise<void> {
     const count = await this.captureConveyorCountFromHome();
     const expected = previousCount + expectedIncrease;
 
     if (count !== expected) {
-      throw new Error(`Expected Home screen conveyor count to be ${expected} (was ${previousCount}), but found ${count}`);
+      throw new Error(
+        `Expected Home screen conveyor count to be ${expected} (was ${previousCount}), but found ${count}`,
+      );
     }
 
     await this.logSuccess(`Home screen conveyor count updated correctly: ${previousCount} -> ${count}`);

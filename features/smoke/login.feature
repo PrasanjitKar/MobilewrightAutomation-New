@@ -15,18 +15,18 @@ Feature: Login smoke — Welcome and Login screen essentials
   # via the accessibility tree. The automatable, still-valuable equivalent verified here is
   # that the app transitions past the splash screen to the Welcome screen within the loading
   # timeout, without the user having to take any action.
-  @TC-LOGIN-001 @smoke
+  @TC-LOGIN-001 @smoke @passed
   Scenario: Splash screen transitions automatically to the Welcome screen
     Then the Welcome screen should be displayed
 
   # TC-LOGIN-002 — Welcome screen displays correct UI elements
-  @TC-LOGIN-002 @smoke
+  @TC-LOGIN-002 @smoke @passed
   Scenario: Welcome screen displays all required UI elements
     Then the Welcome screen should be displayed
     And the Welcome screen displays the Contiplus logo, heading, both login buttons and separator
 
   # TC-LOGIN-005 — Login screen displays correct UI elements
-  @TC-LOGIN-005 @smoke
+  @TC-LOGIN-005 @smoke @passed
   Scenario: Login screen displays all required UI elements
     Then the Welcome screen should be displayed
     When the user opens Continental Account login
@@ -36,7 +36,7 @@ Feature: Login smoke — Welcome and Login screen essentials
     And the "Forgot password" link is visible on the Login screen
 
   # TC-LOGIN-006 — Successful login with valid credentials
-  @TC-LOGIN-006 @smoke @DataFile:resources/data/smokedata.csv @Key:login_valid @timeout:300000
+  @TC-LOGIN-006 @smoke @passed @DataFile:resources/data/smokedata.csv @Key:login_valid @timeout:300000
   Scenario: Successful login with valid credentials navigates to the Home screen
     Then the Welcome screen should be displayed
     When the user opens Continental Account login

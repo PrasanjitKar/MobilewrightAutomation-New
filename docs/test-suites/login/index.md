@@ -56,13 +56,14 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 
 | Metric | Value |
 |--------|-------|
-| Total Test Cases | 42 |
-| 📋 Planned | 19 |
+| Total Test Cases | 43 |
+| 📋 Planned | 10 |
 | 🔴 Blocked (infra) | 9 |
-| 🟢 Active — Automated | 14 (33%) |
+| 🟢 Active — Automated | 24 (56%) |
 | 🔵 In Progress | 0 |
 | 🟢 Smoke TCs | 4 |
 | 🟡 Regression TCs | 38 |
+| 🟣 E2E TCs | 1 |
 | Platforms | iOS + Android |
 | Environments | STG / PRD |
 
@@ -78,6 +79,12 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 | [TC-LOGIN-002](./tc-login-002-welcome-screen-ui.md) | Welcome screen displays correct UI elements | Critical | 🟢 Active — Automated |
 | [TC-LOGIN-005](./tc-login-005-login-screen-ui.md) | Login screen displays correct UI elements | Critical | 🟢 Active — Automated |
 | [TC-LOGIN-006](./tc-login-006-successful-login.md) | Successful login with valid credentials | Critical | 🟢 Active — Automated |
+
+### 🟣 End-to-End (E2E)
+
+| ID | Title | Priority | Status |
+|----|-------|----------|--------|
+| [TC-LOGIN-043](./tc-login-043-e2e-first-time-user-onboarding-and-auth-lifecycle.md) | E2E First-Time User Onboarding & Complete Authentication Lifecycle | Critical | 📋 Planned |
 
 ### 🟡 Regression — Welcome & Navigation
 
@@ -101,28 +108,28 @@ Regex: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$%&*~+"=',-.:;?{}|_` + "
 | [TC-LOGIN-013](./tc-login-013-login-offline-error.md) | Login while offline → offlineError state | High | 🔴 Blocked |
 | [TC-LOGIN-014](./tc-login-014-login-loading-state.md) | Login button disabled + snackbar during authentication | Medium | 🟢 Active — Automated |
 | [TC-LOGIN-015](./tc-login-015-autofill-support.md) | Autofill support (iOS Keychain / Android Autofill) | Low | 🟢 Active — Automated |
-| [TC-LOGIN-016](./tc-login-016-back-button-login.md) | Back button on Login screen returns to Welcome | Medium | 📋 Planned |
-| [TC-LOGIN-034](./tc-login-034-paste-password.md) | Paste text into password field | Medium | 📋 Planned |
-| [TC-LOGIN-035](./tc-login-035-email-password-spaces-trim.md) | Leading/trailing spaces trimmed on email and password _(Outline × 3)_ | Medium | 📋 Planned |
+| [TC-LOGIN-016](./tc-login-016-back-button-login.md) | Back button on Login screen returns to Welcome | Medium | 🟢 Active — Automated |
+| [TC-LOGIN-034](./tc-login-034-paste-password.md) | Paste text into password field | Medium | 🟢 Active — Automated |
+| [TC-LOGIN-035](./tc-login-035-email-password-spaces-trim.md) | Leading/trailing spaces trimmed on email and password _(Outline × 3)_ | Medium | 🟢 Active — Automated |
 
 ### 🟡 Regression — Forgot Password
 
 | ID | Title | Priority | Status |
 |----|-------|----------|--------|
-| [TC-LOGIN-017](./tc-login-017-forgot-password-navigation.md) | Forgot Password link navigates with email pre-fill | High | 📋 Planned |
-| [TC-LOGIN-018](./tc-login-018-forgot-password-screen-ui.md) | Forgot Password screen displays correct UI elements | High | 📋 Planned |
+| [TC-LOGIN-017](./tc-login-017-forgot-password-navigation.md) | Forgot Password link navigates with email pre-fill | High | 🟢 Active — Automated |
+| [TC-LOGIN-018](./tc-login-018-forgot-password-screen-ui.md) | Forgot Password screen displays correct UI elements | High | 🟢 Active — Automated |
 | [TC-LOGIN-019](./tc-login-019-forgot-password-valid-email.md) | Forgot password with valid email sends verification code | High | 🔴 Blocked |
-| [TC-LOGIN-020](./tc-login-020-forgot-password-validation.md) | Forgot password form validation _(Outline × 2)_ | High | 📋 Planned |
-| [TC-LOGIN-021](./tc-login-021-verification-code-already-received.md) | "Verification Code already received" skips API | Medium | 📋 Planned |
-| [TC-LOGIN-022](./tc-login-022-back-button-forgot-password.md) | Back button and Login link on Forgot Password _(Outline × 2)_ | Medium | 📋 Planned |
+| [TC-LOGIN-020](./tc-login-020-forgot-password-validation.md) | Forgot password form validation _(Outline × 2)_ | High | 🟢 Active — Automated |
+| [TC-LOGIN-021](./tc-login-021-verification-code-already-received.md) | "Verification Code already received" skips API | Medium | 🟢 Active — Automated |
+| [TC-LOGIN-022](./tc-login-022-back-button-forgot-password.md) | Back button and Login link on Forgot Password _(Outline × 2)_ | Medium | 🟢 Active — Automated |
 
 ### 🟡 Regression — Reset Password
 
 | ID | Title | Priority | Status |
 |----|-------|----------|--------|
-| [TC-LOGIN-023](./tc-login-023-reset-password-screen-ui.md) | Reset Password screen — fields, eye icons, Submit | High | 📋 Planned |
+| [TC-LOGIN-023](./tc-login-023-reset-password-screen-ui.md) | Reset Password screen — fields, eye icons, Submit | High | 🟢 Active — Automated |
 | [TC-LOGIN-024](./tc-login-024-reset-password-success.md) | Reset password — successful with valid OTP | High | 🔴 Blocked |
-| [TC-LOGIN-025](./tc-login-025-reset-password-validation.md) | Reset password form validation errors _(Outline × 5)_ | High | 📋 Planned |
+| [TC-LOGIN-025](./tc-login-025-reset-password-validation.md) | Reset password form validation errors _(Outline × 5)_ | High | 🟢 Active — Automated |
 
 ### 🟡 Regression — Change Password
 

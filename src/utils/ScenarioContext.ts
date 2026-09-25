@@ -8,6 +8,8 @@ import { HomePage } from '../pages/home.page';
 import { AppLaunchPage } from '../pages/app-launch.page';
 import { ConveyorPage } from '../pages/conveyor.page';
 import { LoginScreenPage } from '../pages/login-screen.page';
+import { ProfilePage } from '../pages/profile.page';
+import { ConveyorInspectPage } from '../pages/conveyor-inspect.page';
 import { ApiFactory } from '../helper/api-factory';
 import { ConfigurationManager } from '../config/ConfigurationManager';
 
@@ -60,6 +62,8 @@ export class ScenarioContext implements ISoftAssertState {
   private _appLaunchPage?: AppLaunchPage;
   private _conveyorPage?: ConveyorPage;
   private _loginScreenPage?: LoginScreenPage;
+  private _profilePage?: ProfilePage;
+  private _conveyorInspectPage?: ConveyorInspectPage;
 
   get appLaunchPage(): AppLaunchPage {
     if (!this._appLaunchPage) {
@@ -83,7 +87,7 @@ export class ScenarioContext implements ISoftAssertState {
 
   get loginScreenPage(): LoginScreenPage {
     if (!this._loginScreenPage) {
-      this._loginScreenPage = new LoginScreenPage(this.screen, this.subStepLogger);
+      this._loginScreenPage = new LoginScreenPage(this.screen, this.device, this.subStepLogger);
     }
     return this._loginScreenPage;
   }
@@ -101,6 +105,20 @@ export class ScenarioContext implements ISoftAssertState {
       this._homePage = new HomePage(this.screen, this.subStepLogger);
     }
     return this._homePage;
+  }
+
+  get profilePage(): ProfilePage {
+    if (!this._profilePage) {
+      this._profilePage = new ProfilePage(this.screen, this.subStepLogger);
+    }
+    return this._profilePage;
+  }
+
+  get conveyorInspectPage(): ConveyorInspectPage {
+    if (!this._conveyorInspectPage) {
+      this._conveyorInspectPage = new ConveyorInspectPage(this.screen, this.subStepLogger);
+    }
+    return this._conveyorInspectPage;
   }
 
   // Cucumber-compatible attach — delegates to Playwright's testInfo.attach()

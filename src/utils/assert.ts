@@ -174,16 +174,15 @@ export default class Assert {
   static async assertElementExists(locator: Locator, label?: string, logger?: AssertLogger) {
     const desc = label ?? 'element';
     await logger?.info?.(`Asserting ${desc} is visible`);
-    await this.verify(
-      () => expect(locator).toBeVisible(),
-      `${desc} is visible`,
-      `${desc} not visible`,
-      logger,
-      false,
-    );
+    await this.verify(() => expect(locator).toBeVisible(), `${desc} is visible`, `${desc} not visible`, logger, false);
   }
 
-  static async softAssertElementExists(locator: Locator, label?: string, logger?: AssertLogger, state?: ISoftAssertState) {
+  static async softAssertElementExists(
+    locator: Locator,
+    label?: string,
+    logger?: AssertLogger,
+    state?: ISoftAssertState,
+  ) {
     const desc = label ?? 'element';
     await logger?.info?.(`Soft-asserting ${desc} is visible`);
     await this.verify(

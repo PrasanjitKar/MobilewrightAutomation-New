@@ -7,7 +7,15 @@
 
 | Module | File | test-suites TCs | test-link TCs (in-scope) | Gaps Found | Gaps Addressed | Last Updated |
 |---|---|---|---|---|---|---|
-| [Login](./login.md) | `login.md` | 42 | 41 of 82 | 12 | 12 ✅ | 2026-06-15 |
+| [Login](./login.md) | `login.md` | 43 | 41 of 82 | 12 | 12 ✅ | 2026-06-15 |
+| [Dashboard](./dashboard.md) | `dashboard.md` | 46 | 17 of 27 (+18 cross-module) | 10 misplaced in TL | 46 ✅ | 2026-09-23 |
+| [Belt Scans](./belt-scans.md) | `belt-scans.md` | 36 | 17 of 17 | 0 gaps (expanded & refined) | 36 ✅ | 2026-09-23 |
+| [Company & Sites](./company.md) | `company.md` | 41 | 88 of 92 | 35 redundant in TL | 41 ✅ | 2026-09-23 |
+| [Conveyors](./conveyors.md) | `conveyors.md` | 36 | 65 of 65 | 25 fragmented in TL | 36 ✅ | 2026-09-23 |
+| [Heavy Equipment](./heavy-equipment.md) | `heavy-equipment.md` | 29 | 10 of 12 (2 OS/browser) | 0 gaps (expanded & refined) | 29 ✅ | 2026-09-23 |
+| [Inspections](./inspections.md) | `inspections.md` | 40 | 91 of 91 (50+ redundant in TL) | 50+ redundant in TL | 40 ✅ | 2026-09-23 |
+| [Minuteman Calculation](./minuteman.md) | `minuteman.md` | 35 | 18 of 18 | 0 gaps (expanded & refined) | 35 ✅ | 2026-09-23 |
+| [Monitoring Devices](./monitoring-devices.md) | `monitoring-devices.md` | 37 | 43 of 52 (9 in File Manager) | 9 misplaced in TL | 37 ✅ | 2026-09-23 |
 
 ## How to Read a Gap Report
 

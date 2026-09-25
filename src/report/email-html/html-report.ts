@@ -11,7 +11,7 @@ export class HtmlEmailReport {
     const failed = results.filter((result) => result.status === 'FAILED').length;
     const skipped = results.filter((result) => result.status === 'SKIPPED').length;
 
-   const html = `<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html>
 <body style="margin:0;background:#f4f6f8;font-family:Segoe UI,Arial,sans-serif;">
 
@@ -167,12 +167,7 @@ function groupByModule(results: Result[]): Map<string, Result[]> {
   return grouped;
 }
 
-function summaryCard(
-  title: string,
-  value: number,
-  color: string
-): string {
-
+function summaryCard(title: string, value: number, color: string): string {
   return `
     <div style="
       flex:1;
@@ -204,7 +199,9 @@ function renderRows(grouped: Map<string, Result[]>): string {
   const rows: string[] = [];
 
   for (const [module, results] of grouped.entries()) {
-    rows.push(`<tr style="background:#fff3cd;"><td colspan="6" style="padding:14px;font-weight:600;color:#2c3e50;">${escapeHtml(module)}</td></tr>`);
+    rows.push(
+      `<tr style="background:#fff3cd;"><td colspan="6" style="padding:14px;font-weight:600;color:#2c3e50;">${escapeHtml(module)}</td></tr>`,
+    );
 
     for (const result of results) {
       const bg = index % 2 === 0 ? '#ffffff' : '#fafbfc';
@@ -223,7 +220,9 @@ function renderRows(grouped: Map<string, Result[]>): string {
       </tr>`);
 
       if (error.length > 90) {
-        rows.push(`<tr id="${id}" style="display:none;background:#fff5f5;"><td colspan="6" style="padding:14px;border-left:4px solid #e74c3c;"><div style="font-family:monospace;font-size:12px;white-space:pre-wrap;color:#c0392b;">${escapeHtml(error)}</div></td></tr>`);
+        rows.push(
+          `<tr id="${id}" style="display:none;background:#fff5f5;"><td colspan="6" style="padding:14px;border-left:4px solid #e74c3c;"><div style="font-family:monospace;font-size:12px;white-space:pre-wrap;color:#c0392b;">${escapeHtml(error)}</div></td></tr>`,
+        );
       }
 
       index += 1;
@@ -243,41 +242,27 @@ function escapeHtml(value: string): string {
 }
 
 function formatDate(): string {
-
   const date = new Date();
 
-  return date.toLocaleString(
-    'en-GB',
-    {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
-    }
-  );
+  return date.toLocaleString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  });
 }
 
 async function getBase64Logo(): Promise<string> {
-
   try {
+    const filePath = path.join(process.cwd(), 'resources', 'conti_logo.png');
 
-    const filePath =
-      path.join(
-        process.cwd(),
-        'resources',
-        'conti_logo.png'
-      );
-
-    const buffer =
-      await fs.readFile(filePath);
+    const buffer = await fs.readFile(filePath);
 
     return buffer.toString('base64');
-
   } catch {
-
     return '';
   }
 }
