@@ -63,20 +63,17 @@ Feature: Login welcome flow
     Then the user should be logged in successfully
     And wait for the home screen to load completely
     Then the user should see the home screen
-
-    # And the user clicks on add button in dashboard
-    # Then the user should see the list of module
-    # And the user clicks on the Add Conveyor Inspect module
-    # Then the user should see the Add Conveyor Inspect Event screen
-    # And the user fills the conveyor name field with "CV-1 Pipe Belt A" from test data
-    # And the user fills the inspection date field with today's date
-    # And the user fills the inspector time field with current time
-    # And the user selects the colormap as "Hot (For Hot Weather)" from the dropdown
-    # And the user clicks on the Create button
-    # Then "Successfully created" message should be displayed
-    # Then the user should see the home screen
-
-    #Automate from here
+    And the user clicks on add button in dashboard
+    Then the user should see the list of module
+    And the user clicks on the Add Conveyor Inspect module
+    Then the user should see the Add Conveyor Inspect Event screen
+    And the user fills the conveyor name field with "CV-1 Pipe Belt A" from test data
+    And the user fills the inspection date field with today's date
+    And the user fills the inspector time field with current time
+    And the user selects the colormap as "Hot (For Hot Weather)" from the dropdown
+    And the user clicks on the Create button
+    Then "Successfully created" message should be displayed
+    Then the user should see the home screen
     And the user clicks on Conveyor Inspect card in the home screen
     Then the user should see the Conveyor Inspect list screen
     And the user clicks the first event in the list
@@ -89,6 +86,4 @@ Feature: Login welcome flow
     And the user clicks Save button
     Then "Upload successful" message should be displayed
     Then the user should see the View Conveyor Inspect Event details screen
-    # And the user clicks back button
-    # Then the user should see the Conveyor Inspect list screen
 

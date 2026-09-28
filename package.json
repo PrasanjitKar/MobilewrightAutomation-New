@@ -14,7 +14,7 @@
     "test:login": "PLATFORM=android npm run bddgen && PLATFORM=android mobilewright test --config config/mobilewright.config.ts --project=android --grep @login",
     "test:login-smoke": "PLATFORM=android npm run bddgen && PLATFORM=android mobilewright test --config config/mobilewright.config.ts --project=android --grep \"@login.*@smoke|@smoke.*@login\"",
     "test:login-regression": "PLATFORM=android npm run bddgen && PLATFORM=android mobilewright test --config config/mobilewright.config.ts --project=android --grep \"@login.*@regression|@regression.*@login\"",
-    "test:run-mobile-tc": "PLATFORM=android npm run bddgen && PLATFORM=android mobilewright test --config config/mobilewright.config.ts --project=android --grep @runThis1",    
+    "test:run-mobile-tc": "PLATFORM=android npm run bddgen && PLATFORM=android mobilewright test --config config/mobilewright.config.ts --project=android --grep @runThis",    
     "test:ios": "PLATFORM=ios npm run bddgen && PLATFORM=ios mobilewright test --config config/mobilewright.config.ts --project=ios",
     "test:tag": "npm run bddgen && mobilewright test --config config/mobilewright.config.ts --grep",
     "init": "node src/report/custom/init.ts",
