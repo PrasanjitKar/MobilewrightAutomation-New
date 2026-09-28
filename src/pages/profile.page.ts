@@ -24,6 +24,7 @@ export class ProfilePage extends BasePage {
     return [
       this.screen.getByText('Logout', { exact: true }),
       this.screen.getByLabel('logoutButton'),
+      this.screen.getByText(/Logout/i),
       this.screen.getByType('android.widget.Button').filter({ hasText: 'Logout' }),
     ];
   }
@@ -31,9 +32,14 @@ export class ProfilePage extends BasePage {
   get profileScreenIndicators(): Locator[] {
     return [
       this.screen.getByText('Logout', { exact: true }),
+      this.screen.getByLabel('logoutButton'),
       this.screen.getByText('Settings', { exact: true }),
       this.screen.getByText('View Profile', { exact: true }),
       this.screen.getByText('Profile', { exact: true }),
+      this.screen.getByText('Report Issue', { exact: true }),
+      this.screen.getByText('Privacy Settings', { exact: true }),
+      this.screen.getByText('Legal & Privacy', { exact: true }),
+      this.screen.getByLabel('profileHeader'),
       this.screen.getByText(/V\./),
     ];
   }
@@ -43,6 +49,7 @@ export class ProfilePage extends BasePage {
       this.screen.getByLabel('loginWithText'),
       this.screen.getByLabel('continentalAccountButton'),
       this.screen.getByText(/Continental Account/i),
+      this.screen.getByText(/Continental/i),
     ];
   }
 
@@ -54,23 +61,28 @@ export class ProfilePage extends BasePage {
       throw new Error('Profile icon was not visible in the top right corner of the app bar');
     }
     await this.tap(profileIcon, 10_000);
+    await this.waitForTime(3000, 'Waiting for profile screen animation and route transition');
     await this.logSuccess('Tapped Profile icon from top right corner');
   }
 
   async verifyProfileScreenDisplayed(): Promise<void> {
+    await this.waitForTime(3000, 'Waiting for profile screen to load properly');
     const visibleIndicator = await this.findFirstVisible(this.profileScreenIndicators, 30_000);
     if (!visibleIndicator) {
       throw new Error('Profile screen did not become visible');
     }
+    await this.waitForLoadingToComplete();
     await this.logSuccess('Profile screen is displayed');
   }
 
   async clickLogoutButton(): Promise<void> {
+    await this.waitForTime(1000, 'Waiting before clicking logout button');
     const logoutBtn = await this.findFirstVisible(this.logoutButtonCandidates, 15_000);
     if (!logoutBtn) {
       throw new Error('Logout button was not found on the Profile screen');
     }
     await this.tap(logoutBtn, 10_000);
+    await this.waitForTime(3000, 'Waiting for logout process and route transition');
     await this.logSuccess('Logout button tapped');
   }
 

@@ -4,7 +4,7 @@ Feature: Login welcome flow
   I want to launch the Conti+ mobile app and reach the login form
   So that I can confirm the native authentication entry flow is ready for automation
 
-  @DataFile:resources/data/testdata.csv @Key:app_launch_login @timeout:300000 @conveyorpoc @runThis
+  @DataFile:resources/data/testdata.csv @Key:app_launch_login @timeout:300000 @conveyorpoc @runThisNow
   Scenario: Add Conveyor and verify the conveyor count is updated on home screen and conveyor details screen
     Given the Conti+ app is launched
     And the Conti+ app has loaded completely
