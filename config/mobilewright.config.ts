@@ -25,10 +25,35 @@ const iosProject = () => {
         installApps: iosConfig.appPath,
         appLaunchTimeout: 60_000,
         installTimeout: 180_000,
-        ...(iosConfig.udid ? {} : { deviceName: new RegExp(iosConfig.deviceName) }),
+        ...(iosConfig.udid
+          ? { deviceId: iosConfig.udid }
+          : { deviceName: new RegExp(iosConfig.deviceName, 'i') }),
       },
     },
   };
+};
+
+const getAndroidDeviceConfig = () => {
+  const serial = androidConfig.serial;
+  const name = androidConfig.deviceName;
+
+  // 1. If explicit real device serial or device ID is provided (e.g. RZ8T315G0KB)
+  if (serial && !serial.startsWith('emulator-')) {
+    return { deviceId: serial };
+  }
+
+  // 2. If emulator serial is provided (e.g. emulator-5554), target any emulator AVD
+  if (serial && serial.startsWith('emulator-')) {
+    return { deviceName: /(emulator|pixel|sdk_gphone)/i };
+  }
+
+  // 3. If explicit device name is given
+  if (name && !name.startsWith('emulator-')) {
+    return { deviceName: new RegExp(name.replace(/_/g, '[_ ]?'), 'i') };
+  }
+
+  // 4. Default to emulator
+  return { deviceName: /(emulator|pixel|sdk_gphone)/i };
 };
 
 const androidProject = () => {
@@ -43,7 +68,7 @@ const androidProject = () => {
         installApps: androidConfig.appPath,
         appLaunchTimeout: 60_000,
         installTimeout: 180_000,
-        ...(androidConfig.serial ? {} : { deviceName: new RegExp(androidConfig.deviceName) }),
+        ...getAndroidDeviceConfig(),
       },
     },
   };
@@ -54,12 +79,11 @@ const platformConfigs =
 
 const projects = platformConfigs.map(({ project }) => project);
 const installApps = platformConfigs.map(({ appPath }) => appPath);
-const androidDeviceId = androidConfig.serial?.startsWith('emulator-') ? undefined : androidConfig.serial;
-const deviceId = platform === 'ios' ? iosConfig.udid : platform === 'android' ? androidDeviceId : undefined;
+const deviceId = platform === 'ios' ? iosConfig.udid : undefined;
 
 export default defineConfig({
   testDir,
-  timeout: 120_000,
+  timeout: 300_000,
   retries: process.env['CI'] ? 2 : 0,
   workers: 2,
   fullyParallel: true,

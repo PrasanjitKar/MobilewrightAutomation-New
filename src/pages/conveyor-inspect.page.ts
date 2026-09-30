@@ -168,12 +168,18 @@ export class ConveyorInspectPage extends BasePage {
   }
 
   get moreOptionsCandidates(): Locator[] {
-    return [this.screen.getByLabel('More options', { exact: false }), this.screen.getByLabel('Show more options', { exact: false })];
+    return [
+      this.screen.getByLabel('More options', { exact: false }),
+      this.screen.getByLabel('Show more options', { exact: false }),
+    ];
   }
 
   // Individual file thumbnails in the DocumentsUI grid ("Preview the file <name>")
   get fileThumbnailCandidates(): Locator[] {
-    return [this.screen.getByLabel('Preview the file', { exact: false }), this.screen.getByLabel('DJI_', { exact: false })];
+    return [
+      this.screen.getByLabel('Preview the file', { exact: false }),
+      this.screen.getByLabel('DJI_', { exact: false }),
+    ];
   }
 
   get systemSelectConfirmCandidates(): Locator[] {
@@ -322,7 +328,12 @@ export class ConveyorInspectPage extends BasePage {
    * would otherwise stall the whole scenario until the outer @timeout fires.
    * Racing against a hard ceiling here lets the flow fall back / continue instead.
    */
-  private async tapWithCeiling(locator: Locator, timeoutMs: number, ceilingMs: number, label: string): Promise<boolean> {
+  private async tapWithCeiling(
+    locator: Locator,
+    timeoutMs: number,
+    ceilingMs: number,
+    label: string,
+  ): Promise<boolean> {
     let ceilingTimer: NodeJS.Timeout;
     const ceiling = new Promise<'ceiling'>((resolve) => {
       ceilingTimer = setTimeout(() => resolve('ceiling'), ceilingMs);

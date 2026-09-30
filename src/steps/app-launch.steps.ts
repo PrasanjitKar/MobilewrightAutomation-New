@@ -55,6 +55,10 @@ Then('wait for the home screen to load completely', async function (this: Scenar
   await this.appLaunchPage.waitForHomeScreenToLoadCompletely();
 });
 
+When('the user clicks on later button in the update app popup', async function (this: ScenarioContext) {
+  await this.appLaunchPage.clickLaterInUpdateAppPopup();
+});
+
 Then('the user should see the home screen', async function (this: ScenarioContext) {
   await this.appLaunchPage.verifyHomeScreenDisplayed();
 });

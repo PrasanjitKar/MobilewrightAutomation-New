@@ -1,10 +1,26 @@
-@regression @android @launch @login
+@regression @both @launch @login
 Feature: Login welcome flow
   As a QA engineer
   I want to launch the Conti+ mobile app and reach the login form
   So that I can confirm the native authentication entry flow is ready for automation
 
   @DataFile:resources/data/testdata.csv @Key:app_launch_login @timeout:300000 @conveyorpoc @runThisNow
+  Scenario: Login successful flow
+    Given the Conti+ app is launched
+    And the Conti+ app has loaded completely
+    When the user accepts all consent options
+    Then the Welcome screen should be displayed
+    When the user opens Continental Account login
+    Then the email and password fields should be displayed
+    And the user provides username as "td.Username" and password as "td.Password" from test data
+    And the user clicks on the login button
+    Then the user should be logged in successfully
+    And the user clicks on later button in the update app popup
+    And wait for the home screen to load completely
+    Then the user should see the home screen
+
+
+  @DataFile:resources/data/testdata.csv @Key:app_launch_login @timeout:300000 @conveyorpoc
   Scenario: Add Conveyor and verify the conveyor count is updated on home screen and conveyor details screen
     Given the Conti+ app is launched
     And the Conti+ app has loaded completely
@@ -15,6 +31,7 @@ Feature: Login welcome flow
     And the user provides username as "td.Username" and password as "td.Password" from test data
     And the user clicks on the login button
     Then the user should be logged in successfully
+    And the user clicks on later button in the update app popup
     And wait for the home screen to load completely
     Then the user should see the home screen
     And verify the conveyor count is displayed on the home screen
@@ -47,10 +64,10 @@ Feature: Login welcome flow
     Then the user should see the profile screen
     And the user clicks on Logout button
     And the user should be logged out successfully
-    Then the Welcome screen should be displayed
+    Then the Welcome screen should be displayed  
 
 
-  @DataFile:resources/data/testdata.csv @Key:app_launch_login @timeout:300000 @conveyorpoc @runThis1
+  @DataFile:resources/data/testdata.csv @Key:app_launch_login @timeout:300000 @conveyorpoc
   Scenario: Verify Conveyor Inspect upload functionality in the Conti+ app
     Given the Conti+ app is launched
     And the Conti+ app has loaded completely
