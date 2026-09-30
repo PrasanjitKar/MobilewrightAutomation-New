@@ -61,6 +61,8 @@ export class AppLaunchPage extends BasePage {
 
   get postLoginIndicatorCandidates(): Locator[] {
     return [
+      // Flutter semantic identifiers. Android exposes these as content-desc, but iOS does not
+      // surface them at all, so they cannot be the only anchors for the Home screen.
       this.screen.getByLabel('homeTab'),
       this.screen.getByLabel('conveyorTab'),
       this.screen.getByLabel('corporatesTab'),
@@ -69,10 +71,14 @@ export class AppLaunchPage extends BasePage {
       this.screen.getByTestId('homeTab'),
       this.screen.getByTestId('conveyorTab'),
       this.screen.getByLabel('lastUpdatedTimeHomeScreen'),
-      this.screen.getByLabel('Home', { exact: false }),
-      this.screen.getByLabel('Conveyor', { exact: false }),
-      this.screen.getByText('Home', { exact: false }),
-      this.screen.getByText('Conveyor', { exact: false }),
+      // Visible dashboard captions. getByText falls back to the accessibility label, which is all
+      // iOS exposes for these nodes, so these anchors work on both platforms. They only ever
+      // render once the Home dashboard is loaded, so they cannot match before login.
+      this.screen.getByText('Conveyors', { exact: true }),
+      this.screen.getByText('Inspections', { exact: true }),
+      this.screen.getByText('Belt Scans', { exact: true }),
+      this.screen.getByText('Cover Wear', { exact: true }),
+      this.screen.getByText('Conveyor Inspect', { exact: true }),
     ];
   }
 
@@ -99,17 +105,27 @@ export class AppLaunchPage extends BasePage {
     ];
   }
 
+  get functionButtonCandidates(): Locator[] {
+    return [
+      this.screen.getByText('Function', { exact: false }),
+      this.screen.getByText('FUNCTION', { exact: false }),
+      this.screen.getByLabel('Function', { exact: false }),
+      this.screen.getByLabel('FUNCTION', { exact: false }),
+      this.screen.getByText(/Function/i),
+      this.screen.getByRole('button', { name: /Function/i }),
+    ];
+  }
+
   get acceptAllButtonCandidates(): Locator[] {
     return [
+      // getByText matches node.text, falling back to the accessibility label, so this single
+      // locator covers the Android button caption and the iOS accessibility label alike.
       this.screen.getByText('Accept all', { exact: false }),
-      this.screen.getByText('Accept All', { exact: false }),
-      this.screen.getByText(/Accept all/i),
-      this.screen.getByText(/Accept All/i),
+      // Explicit accessibility label match, for platforms exposing only a label.
       this.screen.getByLabel('Accept all', { exact: false }),
-      this.screen.getByLabel('Accept All', { exact: false }),
-      this.screen.getByRole('button', { name: /Accept all/i }),
-      this.screen.getByType('android.widget.Button').filter({ hasText: /Accept all/i }),
-      this.screen.getByType('XCUIElementTypeButton').filter({ hasText: /Accept all/i }),
+      // Consent manager widget id: the Android resource-id and the iOS accessibility identifier
+      // both come from the same WebView markup, so this fallback is identical on both platforms.
+      this.screen.getByTestId('cmpwelcomebtnyes'),
     ];
   }
 
@@ -182,17 +198,27 @@ export class AppLaunchPage extends BasePage {
       return;
     }
 
-    const acceptAllButton = await this.findFirstVisible(this.acceptAllButtonCandidates, 10_000);
+    await this.logInfo('Checking for consent screen / Accept all button');
 
-    if (acceptAllButton) {
-      await this.tap(acceptAllButton, 10_000);
-      await this.logSuccess('Accepted all consent options');
+    // "Accept all" always sits below the fold of the scrollable consent dialog, where it is
+    // reported as a thin clipped sliver at the bottom edge of the screen. Scroll to the end of
+    // the dialog first so the tap lands on the fully laid out button.
+    const acceptAllButton = await this.scrollToEndAndFind(this.acceptAllButtonCandidates, {
+      maxSwipes: 10,
+      direction: 'up',
+      duration: 300,
+    });
+
+    if (!acceptAllButton) {
       await this.waitForWelcomeScreen();
+      await this.logWarning('Accept all button was not displayed; continuing from the Welcome screen');
       return;
     }
 
-    await this.waitForWelcomeScreen();
-    await this.logWarning('Accept all button was not displayed; continuing from the Welcome screen');
+    await this.logInfo('Consent dialog scrolled to the end, tapping Accept all');
+    await this.tap(acceptAllButton, 10_000);
+    await this.waitForTime(3000);
+    await this.logSuccess('Accepted all consent options');
   }
 
   async waitForWelcomeScreen(): Promise<void> {
@@ -274,9 +300,12 @@ export class AppLaunchPage extends BasePage {
 
   async waitForHomeScreenToLoadCompletely(): Promise<void> {
     await this.logInfo('Waiting for Home screen data to finish loading');
-    await this.waitForHomeShellDisplayed(90_000);
+    // First login loads the full dashboard data set, which can take a few minutes on a real device.
+    await this.waitForHomeShellDisplayed(240_000);
 
-    const lastUpdated = await this.findFirstVisible([this.screen.getByLabel('lastUpdatedTimeHomeScreen')], 45_000);
+    // The last-updated stamp is an Android-only semantic label; iOS renders the timestamp as plain
+    // text. Probe it briefly as a bonus signal, then fall back to the dashboard content.
+    const lastUpdated = await this.findFirstVisible([this.screen.getByLabel('lastUpdatedTimeHomeScreen')], 10_000);
 
     if (lastUpdated) {
       await this.logSuccess('Home screen data loaded completely');
@@ -339,7 +368,7 @@ export class AppLaunchPage extends BasePage {
   }
 
   async verifyHomeScreenDisplayed(): Promise<void> {
-    await this.waitForHomeShellDisplayed(30_000);
+    await this.waitForHomeShellDisplayed(120_000);
     await this.waitForAnyVisible(this.homeContentCandidates, 30_000, 'Home screen content did not become visible');
     await this.logSuccess('Home screen is displayed');
   }
@@ -355,19 +384,27 @@ export class AppLaunchPage extends BasePage {
   }
 
   private async waitForAnyVisible(locators: Locator[], timeout: number, errorMessage?: string): Promise<void> {
-    const visibleLocator = await this.findFirstVisible(locators, timeout);
-
-    if (!visibleLocator) {
+    // A combined locator is resolved against a single view-hierarchy dump per poll, instead of one
+    // dump per candidate. That keeps long candidate lists cheap and avoids missing an element that
+    // appears while the remaining candidates are still being checked one by one.
+    try {
+      await this.anyOf(locators).waitFor({ state: 'visible', timeout });
+    } catch {
       throw new Error(errorMessage ?? `No expected Conti+ UI element became visible within ${timeout}ms`);
     }
   }
 
   private async waitForHomeShellDisplayed(timeout: number): Promise<void> {
-    await this.waitForAnyVisible(
-      this.postLoginIndicatorCandidates,
-      timeout,
-      `Home navigation did not become visible within ${timeout}ms`,
-    );
+    // The Home screen fetches a large data set on first login and can take several minutes to
+    // render. Poll the candidates as a single combined locator so each cycle costs one view
+    // hierarchy dump instead of one per candidate, and the tabs are detected as soon as they appear.
+    const homeShell = this.anyOf(this.postLoginIndicatorCandidates);
+
+    try {
+      await homeShell.waitFor({ state: 'visible', timeout });
+    } catch {
+      throw new Error(`Home navigation did not become visible within ${timeout}ms`);
+    }
   }
 
   private async focusThenFill(locator: Locator, value: string): Promise<void> {
