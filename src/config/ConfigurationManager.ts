@@ -4,6 +4,8 @@ import fs from 'fs';
 
 interface AppConfig {
   defaultTimeout: number;
+  /** Base URL of the Conti+ web app for the active environment (BASEURL in resources/.env.<ENV>). */
+  baseUrl: string;
   authToken: string;
   orgId: string;
   apiTimeout: number;
@@ -47,7 +49,9 @@ export class ConfigurationManager {
 
     return {
       defaultTimeout: Number(raw.defaultTimeOut) || 120000,
+      baseUrl: process.env.BASEURL || 'https://stage.contiplus.net/',
       authToken: process.env.AUTH_TOKEN || '',
+      orgId: process.env.ORG_ID || '',
       apiTimeout: Number(process.env.API_TIMEOUT) || 30000,
       screenshotPath: raw['screenshot.path'] || 'test-results/screenshots',
       videoPath: raw['video.path'] || 'test-results/videos',

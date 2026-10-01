@@ -20,7 +20,7 @@ const iosProject = () => {
       name: 'ios',
       grep: /@ios|@both/,
       use: {
-        platform: 'ios',
+        platform: 'ios' as const,
         bundleId: iosConfig.bundleId,
         installApps: iosConfig.appPath,
         appLaunchTimeout: 60_000,
@@ -63,7 +63,7 @@ const androidProject = () => {
       name: 'android',
       grep: /@android|@both/,
       use: {
-        platform: 'android',
+        platform: 'android' as const,
         bundleId: androidConfig.packageName,
         installApps: androidConfig.appPath,
         appLaunchTimeout: 60_000,
