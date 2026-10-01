@@ -73,6 +73,7 @@ export class ScenarioContext implements ISoftAssertState {
         this.bundleId,
         this.installApps,
         this.subStepLogger,
+        this.platform,
       );
     }
     return this._appLaunchPage;

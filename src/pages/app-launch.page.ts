@@ -10,6 +10,7 @@ export class AppLaunchPage extends BasePage {
     private readonly bundleId: string | undefined,
     private readonly installApps: string | string[] | undefined,
     subStepLogger?: HTMLSubStepLogger,
+    private readonly platform?: 'ios' | 'android',
   ) {
     super(screen, subStepLogger);
   }
@@ -116,6 +117,27 @@ export class AppLaunchPage extends BasePage {
     ];
   }
 
+  /**
+   * Buttons that dismiss an iOS native system permission alert by granting it.
+   *
+   * These alerts are owned by the OS, not by the Conti+ app, and only appear on a fresh install.
+   * Confirmed live on the iPhone 15 simulator, where the App Tracking Transparency prompt exposes:
+   *   Button label="Allow"                b=[61,528,270,44]
+   *   Button label="Ask App Not to Track" b=[61,483,270,44]
+   *
+   * Matching must be exact: the alert body is a StaticText beginning with
+   * 'Allow "Conti+ 2.0" to track your activity...', so a contains-match on 'Allow' would
+   * resolve to the non-tappable message instead of the button.
+   */
+  get systemPermissionAllowCandidates(): Locator[] {
+    return [
+      this.screen.getByLabel('Allow', { exact: true }),
+      this.screen.getByLabel('Allow While Using App', { exact: true }),
+      this.screen.getByLabel('Allow Once', { exact: true }),
+      this.screen.getByLabel('OK', { exact: true }),
+    ];
+  }
+
   get acceptAllButtonCandidates(): Locator[] {
     return [
       // getByText matches node.text, falling back to the accessibility label, so this single
@@ -161,8 +183,60 @@ export class AppLaunchPage extends BasePage {
     }
 
     await this.freshInstallApp();
-    await this.device.launchApp(this.bundleId);
+
+    if (this.platform === 'ios') {
+      // On a fresh install iOS shows the App Tracking Transparency alert on top of the app. That
+      // alert owns the foreground, so MobileWright's post-launch foreground check never passes and
+      // launchApp throws. Skip that check, clear the alert, then let waitForAppLoaded() confirm the
+      // app is genuinely up. Android raises no such alert, so it keeps the default verified launch.
+      await this.device.launchApp(this.bundleId, { noWaitAfter: true });
+      await this.handleSystemPermissionPrompts();
+    } else {
+      await this.device.launchApp(this.bundleId);
+    }
+
     await this.logSuccess(`Fresh app launched: ${this.bundleId}`);
+  }
+
+  /**
+   * Grants any iOS native system permission alerts raised immediately after a fresh launch.
+   *
+   * Android is a no-op: the Conti+ Android build raises no runtime permission dialog at launch,
+   * and skipping the probe avoids spending a UI dump (~1.6s on a real device) on every run.
+   *
+   * Several alerts can queue up (e.g. tracking, then notifications), so this drains them in a
+   * loop. Every step is best-effort — a missing alert is the normal case once the OS has already
+   * recorded a decision, so it must never fail the launch.
+   */
+  async handleSystemPermissionPrompts(): Promise<void> {
+    if (this.platform !== 'ios') {
+      return;
+    }
+
+    const maxPrompts = 3;
+
+    for (let attempt = 0; attempt < maxPrompts; attempt++) {
+      // The first alert can lag behind launch on a cold install; later ones queue up instantly.
+      const timeout = attempt === 0 ? 15_000 : 3_000;
+      const allowButton = await this.findFirstVisible(this.systemPermissionAllowCandidates, timeout);
+
+      if (!allowButton) {
+        if (attempt === 0) {
+          await this.logInfo('No iOS system permission alert appeared');
+        }
+        return;
+      }
+
+      try {
+        const label = await allowButton.getText().catch(() => 'Allow');
+        await allowButton.tap({ timeout: 10_000 });
+        await this.waitForTime(1500);
+        await this.logSuccess(`Dismissed iOS system permission alert via "${label}"`);
+      } catch {
+        await this.logWarning('iOS system permission alert disappeared before it could be tapped');
+        return;
+      }
+    }
   }
 
   async waitForAppLoaded(): Promise<void> {
