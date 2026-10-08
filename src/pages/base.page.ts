@@ -260,11 +260,11 @@ export default class BasePage {
   }
 
   async waitForTime(milliseconds: number, message?: string): Promise<void> {
-    if (message) {
-      console.log(`${message} - waiting ${milliseconds}ms...`);
-    } else {
-      console.log(`Waiting ${milliseconds}ms...`);
-    }
+    // if (message) {
+    //   console.log(`${message} - waiting ${milliseconds}ms...`);
+    // } else {
+    //   console.log(`Waiting ${milliseconds}ms...`);
+    // }
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
   }
 

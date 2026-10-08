@@ -4,12 +4,7 @@ import { Logger } from 'winston';
 import { HTMLSubStepLogger } from './htmlSubStepLogger';
 
 import { LoginPage } from '../pages/login.page';
-import { HomePage } from '../pages/home.page';
 import { AppLaunchPage } from '../pages/app-launch.page';
-import { ConveyorPage } from '../pages/conveyor.page';
-import { LoginScreenPage } from '../pages/login-screen.page';
-import { ProfilePage } from '../pages/profile.page';
-import { ConveyorInspectPage } from '../pages/conveyor-inspect.page';
 import { ApiFactory } from '../helper/api-factory';
 import { ConfigurationManager } from '../config/ConfigurationManager';
 
@@ -58,12 +53,7 @@ export class ScenarioContext implements ISoftAssertState {
 
   // Lazy-cached page objects (one instance per scenario, created on first access)
   private _loginPage?: LoginPage;
-  private _homePage?: HomePage;
   private _appLaunchPage?: AppLaunchPage;
-  private _conveyorPage?: ConveyorPage;
-  private _loginScreenPage?: LoginScreenPage;
-  private _profilePage?: ProfilePage;
-  private _conveyorInspectPage?: ConveyorInspectPage;
 
   get appLaunchPage(): AppLaunchPage {
     if (!this._appLaunchPage) {
@@ -79,47 +69,12 @@ export class ScenarioContext implements ISoftAssertState {
     return this._appLaunchPage;
   }
 
-  get conveyorPage(): ConveyorPage {
-    if (!this._conveyorPage) {
-      this._conveyorPage = new ConveyorPage(this.screen, this.subStepLogger);
-    }
-    return this._conveyorPage;
-  }
-
-  get loginScreenPage(): LoginScreenPage {
-    if (!this._loginScreenPage) {
-      this._loginScreenPage = new LoginScreenPage(this.screen, this.device, this.subStepLogger);
-    }
-    return this._loginScreenPage;
-  }
-
   get loginPage(): LoginPage {
     if (!this._loginPage) {
       const platform = (this.platform ?? ConfigurationManager.config().platform) as 'ios' | 'android' | undefined;
       this._loginPage = new LoginPage(this.screen, platform, this.subStepLogger);
     }
     return this._loginPage;
-  }
-
-  get homePage(): HomePage {
-    if (!this._homePage) {
-      this._homePage = new HomePage(this.screen, this.subStepLogger);
-    }
-    return this._homePage;
-  }
-
-  get profilePage(): ProfilePage {
-    if (!this._profilePage) {
-      this._profilePage = new ProfilePage(this.screen, this.subStepLogger);
-    }
-    return this._profilePage;
-  }
-
-  get conveyorInspectPage(): ConveyorInspectPage {
-    if (!this._conveyorInspectPage) {
-      this._conveyorInspectPage = new ConveyorInspectPage(this.screen, this.subStepLogger);
-    }
-    return this._conveyorInspectPage;
   }
 
   // Cucumber-compatible attach — delegates to Playwright's testInfo.attach()

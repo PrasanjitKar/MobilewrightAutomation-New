@@ -1,6 +1,7 @@
 import { Device, Locator, Screen } from 'mobilewright';
 import { expect } from '@mobilewright/test';
 import { HTMLSubStepLogger } from '../utils/htmlSubStepLogger';
+import { NativeTextInput } from '../utils/nativeTextInput';
 import BasePage from './base.page';
 
 export class AppLaunchPage extends BasePage {
@@ -13,6 +14,16 @@ export class AppLaunchPage extends BasePage {
     private readonly platform?: 'ios' | 'android',
   ) {
     super(screen, subStepLogger);
+  }
+
+  private _nativeTextInput?: NativeTextInput;
+
+  /** Drives the text inputs that mobilecli's processed dump hides from every locator. */
+  private get nativeTextInput(): NativeTextInput {
+    if (!this._nativeTextInput) {
+      this._nativeTextInput = new NativeTextInput(this.device);
+    }
+    return this._nativeTextInput;
   }
 
   get loginWithText(): Locator {
@@ -138,6 +149,30 @@ export class AppLaunchPage extends BasePage {
     ];
   }
 
+  /**
+   * Buttons that grant an Android runtime permission dialog.
+   *
+   * The dialog belongs to com.google.android.permissioncontroller, not to the app under test, and
+   * mobilecli's UI dump covers the whole screen, so these nodes are reachable without any context
+   * switch. Confirmed live on a Pixel 9 Pro XL emulator (Android 16):
+   *   Button text="Allow"       id="com.android.permissioncontroller:id/permission_allow_button"
+   *   Button text="Don\u2019t allow" id="com.android.permissioncontroller:id/permission_deny_button"
+   *
+   * Resource-ids are matched first because they survive locale changes and the button-caption
+   * differences between permission types (location offers "While using the app" / "Only this
+   * time" instead of a plain "Allow"). Text matching must stay exact: the dialog body is a
+   * TextView reading 'Allow <app> to send you notifications?', so a contains-match on 'Allow'
+   * would resolve to that non-tappable message instead of the button.
+   */
+  get systemPermissionAllowNotification(): Locator[] {
+    return [
+      this.screen.getByTestId('com.android.permissioncontroller:id/permission_allow_button'),
+      this.screen.getByRole('button', { name: 'Allow' }),
+      this.screen.getByText('Allow', { exact: true }),
+      this.screen.getByLabel('Allow', { exact: true }),
+    ];
+  }
+
   get acceptAllButtonCandidates(): Locator[] {
     return [
       // getByText matches node.text, falling back to the accessibility label, so this single
@@ -192,7 +227,14 @@ export class AppLaunchPage extends BasePage {
       await this.device.launchApp(this.bundleId, { noWaitAfter: true });
       await this.handleSystemPermissionPrompts();
     } else {
-      await this.device.launchApp(this.bundleId);
+      // Android raises its runtime permission dialog on top of the app on a fresh install. That
+      // dialog is owned by com.google.android.permissioncontroller, which becomes the foreground
+      // package, so MobileWright's post-launch foreground poll never sees the app and launchApp
+      // throws after appLaunchTimeout. Skip that check, grant the prompts, then let
+      // waitForAppLoaded() confirm the app is genuinely up.
+      await this.device.launchApp(this.bundleId, { noWaitAfter: true });
+      await this.waitForTime(2000);
+      await this.handleSystemPermissionPromptsInAndroid();
     }
 
     await this.logSuccess(`Fresh app launched: ${this.bundleId}`);
@@ -200,9 +242,6 @@ export class AppLaunchPage extends BasePage {
 
   /**
    * Grants any iOS native system permission alerts raised immediately after a fresh launch.
-   *
-   * Android is a no-op: the Conti+ Android build raises no runtime permission dialog at launch,
-   * and skipping the probe avoids spending a UI dump (~1.6s on a real device) on every run.
    *
    * Several alerts can queue up (e.g. tracking, then notifications), so this drains them in a
    * loop. Every step is best-effort — a missing alert is the normal case once the OS has already
@@ -234,6 +273,43 @@ export class AppLaunchPage extends BasePage {
         await this.logSuccess(`Dismissed iOS system permission alert via "${label}"`);
       } catch {
         await this.logWarning('iOS system permission alert disappeared before it could be tapped');
+        return;
+      }
+    }
+  }
+
+  /**
+   * Grants any Android runtime permission dialogs raised immediately after a fresh launch.
+   *
+   * Mirrors the iOS drain loop: several permissions can be requested back to back, and every step
+   * is best-effort so an already-granted permission never fails the launch.
+   */
+  async handleSystemPermissionPromptsInAndroid(): Promise<void> {
+    if (this.platform !== 'android') {
+      return;
+    }
+
+    const maxPrompts = 3;
+
+    for (let attempt = 0; attempt < maxPrompts; attempt++) {
+      // The first alert can lag behind launch on a cold install; later ones queue up instantly.
+      const timeout = attempt === 0 ? 15_000 : 3_000;
+      const allowButton = await this.findFirstVisible(this.systemPermissionAllowNotification, timeout);
+
+      if (!allowButton) {
+        if (attempt === 0) {
+          await this.logInfo('No Android system permission alert appeared');
+        }
+        return;
+      }
+
+      try {
+        const label = await allowButton.getText().catch(() => 'Allow');
+        await allowButton.tap({ timeout: 10_000 });
+        await this.waitForTime(1500);
+        await this.logSuccess(`Dismissed Android system permission alert via "${label}"`);
+      } catch {
+        await this.logWarning('Android system permission alert disappeared before it could be tapped');
         return;
       }
     }
@@ -540,4 +616,175 @@ export class AppLaunchPage extends BasePage {
     }
     return Boolean(await this.findFirstVisible(this.postLoginIndicatorCandidates, 3000));
   }
+
+  async waitForLoginScreenDisplayed(): Promise<void> {
+    await this.screen.getByLabel('LOGIN').waitFor({ state: 'visible', timeout: 30_000 });
+    // await this.waitForAnyVisible(this.homeContentCandidates, 30_000, 'Login screen content did not become visible');
+    await this.logSuccess('Login screen is displayed');
+  }
+
+  async clickOnTheLoginButton(): Promise<void> {
+    await this.screen.getByLabel('LOGIN').tap();
+    await this.logSuccess('Clicked on the login button');
+  }
+
+  get phoneNumberLabel(): Locator {
+    return this.screen.getByLabel('Enter registered phone number or email');
+  }
+
+  get emailLabel(): Locator {
+    return this.screen.getByLabel('Enter registered email');
+  }
+
+  /**
+   * Exact match, so this resolves the field caption and never the "Forgot Password?" link, which
+   * is a separate node whose label merely contains the word.
+   */
+  get passwordLabel(): Locator {
+    return this.screen.getByLabel('Password');
+  }
+
+  get sendOtpButton(): Locator {
+    return this.screen.getByLabel('SEND OTP');
+  }
+
+  async verifyLoginFormDisplayed(): Promise<void> {
+    await this.phoneNumberLabel.waitFor({ state: 'visible', timeout: 30_000 });
+    await this.sendOtpButton.waitFor({ state: 'visible', timeout: 30_000 });
+    await this.logSuccess('Login form is displayed');
+  }
+
+  async verifyLoginScreenDisplayed(): Promise<void> {
+    await this.emailLabel.waitFor({ state: 'visible', timeout: 30_000 });
+    await this.passwordLabel.waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('LOGIN').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.logSuccess('Login screen is displayed successfully');
+  }
+
+  /**
+   * Types into the phone number / email field on the OTP login form.
+   *
+   * See {@link NativeTextInput} for why the input itself cannot be addressed with a locator and
+   * is resolved from its caption instead.
+   */
+  async providePhoneNumber(value: string): Promise<void> {
+    await this.nativeTextInput.fillBelow(this.phoneNumberLabel, value);
+    await this.logSuccess(`Phone number entered: ${value}`);
+  }
+
+  /**
+   * Types into the registered email field on the password login form.
+   *
+   * See {@link NativeTextInput} for why the input itself cannot be addressed with a locator and
+   * is resolved from its caption instead.
+   */
+  async provideRegisteredEmail(value: string): Promise<void> {
+    await this.nativeTextInput.fillBelow(this.emailLabel, value);
+    await this.logSuccess(`Registered email entered: ${value}`);
+  }
+
+  /**
+   * Types into the password field on the password login form.
+   *
+   * The field masks its value, so {@link NativeTextInput} verifies the length that landed rather
+   * than the characters, and the value is never written to the report.
+   */
+  async providePassword(value: string): Promise<void> {
+    await this.nativeTextInput.fillBelow(this.passwordLabel, value, { obscured: true });
+    await this.logSuccess('Password entered');
+  }
+
+  async tapOnTheLoginButton(): Promise<void> {
+    await this.screen.getByLabel('LOGIN').tap();
+    await this.waitForTime(5_000);
+    await this.logSuccess('Tapped on the login button');
+  }
+  async locateStoreManually(): Promise<void> {
+    //await this.screen.getByRole('button', { name: 'I\'LL LOCATE THE STORE MANUALLY' }).tap();
+    await this.screen.getByLabel("I'LL LOCATE THE STORE MANUALLY").tap();
+    await this.waitForTime(5_000);
+    await this.logSuccess('Located the store manually');
+  }
+
+  async selectLocationAsSKIMMERSITEA(): Promise<void> {
+    await this.screen.getByLabel('Select Location').waitFor({ state: 'visible', timeout: 20_000 });
+    await this.screen.getByLabel('SKIMMERSITEA').tap();
+    await this.logSuccess('Selected location as SKIMMERSITEA');
+  }
+
+  async clickOnConfirmLocation(): Promise<void> {
+    await this.screen.getByLabel('CONFIRM LOCATION').tap();
+    await this.waitForTime(5_000);
+    await this.logSuccess('Clicked on confirm location');
+  }
+
+  async verifyDashboardScreenDisplayed(): Promise<void> {
+    await this.screen.getByLabel('Menu').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('Home\nTab 1 of 3').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('My Orders\nTab 2 of 3').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('More\nTab 3 of 3').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.logSuccess('Dashboard screen is displayed successfully');
+  }
+
+  async orderFoodAsChickenBiryani(): Promise<void> {
+    await this.screen.getByLabel('Menu').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('Menu').tap();
+    await this.screen.getByLabel('MENU').last().waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('MENU').last().tap();
+    await this.screen.getByLabel('Menu').nth(1).waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('Fnb\n08').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('Fnb\n08').tap();
+    await this.screen.getByLabel('Chicken Biriyani').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('Chicken Biriyani').tap();
+    await this.screen.getByLabel('Chicken Biriyani\n$ 300.00').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('Chicken Biriyani\n$ 300.00').tap();
+    await this.screen.getByLabel('1 item added\nView Cart').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('1 item added\nView Cart').tap();
+    await this.screen.getByLabel('Chicken Biriyani\n1\n$ 300.00').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('PROCEED TO PAY').tap();
+    await this.screen
+      .getByLabel('Payment Options\nTotal Bill | $ 300.00')
+      .waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('Cash').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.logSuccess('Ordered food successfully');
+  }
+
+  async selectPaymentMethodAsCard(): Promise<void> {
+    await this.screen.getByLabel('Debit Card').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('Debit Card').tap();
+    await this.logSuccess('Selected payment method as card');
+  }
+
+  async payWithCard(): Promise<void> {
+    await this.screen.getByLabel('CARD DETAILS').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('PAY WITH CARD').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('PAY WITH CARD').tap();
+    await this.logSuccess('Paid with card');
+  }
+
+  async verifyOrderPlacedSuccessfully(): Promise<void> {
+    await this.screen.getByLabel('Order Successful').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.screen.getByLabel('You have successfully placed your order!').waitFor({ state: 'visible', timeout: 30_000 });
+    await this.logSuccess('Order placed successfully');
+  }
+
+  async clickBackToHomeButton(): Promise<void> {
+    await this.screen.getByLabel('Back To Home').tap();
+    await this.logSuccess('Clicked on the back to home button');
+  }
+
+  async logoutFromApplication(): Promise<void> {
+    await this.screen.getByLabel('More\nTab 3 of 3').tap();
+
+    await this.screen.getByLabel('My Orders\nDetails on your transactions').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('Notifications\nNotification Inbox').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.swipe('up');
+    await this.screen.getByLabel('Store Locator\nFind a store near you').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('Logout').waitFor({ state: 'visible', timeout: 10_000 });
+    await this.screen.getByLabel('Logout').tap();
+    await this.logSuccess('Logged out from the application');
+  }
+
+
+
 }
